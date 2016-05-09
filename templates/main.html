@@ -15,10 +15,11 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-fixed-top" role="navigation">
       <div class="container">
-        <a class="navbar-brand custom-brand" href="/">Leave management system</a>
-        {% block navlink %}{% endblock %}
+        <nav class="nav navbar-nav">
+          <a class="navbar-brand" href="/">Leave management system</a>
+        </nav>
       </div>
     </nav>
 
@@ -28,7 +29,7 @@
     </div>
 
     <script type=text/javascript src="{{url_for('static', filename='jquery-214.min.js') }}"></script>
-    <script type=text/javascript src="{{url_for('static', filename='bootstrap.min.js') }}"></script>
+    <!--<script type=text/javascript src="{{url_for('static', filename='bootstrap.min.js') }}"></script>-->
 
   </body>
 </html>
