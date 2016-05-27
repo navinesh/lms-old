@@ -1,6 +1,6 @@
 import React from 'react';
 
-var url = 'http://localhost:8080/leave.api';
+var url = 'leave.api';
 
 class Record extends React.Component {
   render() {
