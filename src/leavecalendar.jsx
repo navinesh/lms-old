@@ -85,4 +85,4 @@ class LeaveCalendar extends React.Component {
   }
 }
 
-module.exports = LeaveCalendar;
+export default LeaveCalendar;
