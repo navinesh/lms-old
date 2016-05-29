@@ -62,9 +62,9 @@ class LeaveCalendar extends React.Component {
         success: (data) => {
           this.setState({data: data});
         },
-        error: function(xhr, status, err) {
+        error: (xhr, status, err) => {
           console.error(url, status, err.toString());
-        }.bind(this)
+        } 
       });
     }
 

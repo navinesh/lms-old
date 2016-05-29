@@ -20647,9 +20647,9 @@
 	        success: function success(data) {
 	          _this4.setState({ data: data });
 	        },
-	        error: function (xhr, status, err) {
+	        error: function error(xhr, status, err) {
 	          console.error(url, status, err.toString());
-	        }.bind(this)
+	        }
 	      });
 	    }
 	  }, {
