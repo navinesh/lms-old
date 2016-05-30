@@ -1,6 +1,7 @@
 import React from 'react';
 
 const url = 'leave.api';
+const pollInterval = 5000
 
 class Record extends React.Component {
   render() {
@@ -23,7 +24,7 @@ class RecordList extends React.Component {
           <td>{item.leave_name}</td>
           <td>{item.start_date}</td>
           <td>{item.end_date}</td>
-          <td>{item.leave_days}</td>
+          <td>{item.leave_days} day(s)</td>
         </tr>
       );
     });
@@ -61,7 +62,6 @@ class LeaveCalendar extends React.Component {
         cache: false,
         success: (data) => {
           this.setState({data: data});
-          console.log(data);
         },
         error: (xhr, status, err) => {
           console.error(url, status, err.toString());
@@ -71,6 +71,7 @@ class LeaveCalendar extends React.Component {
 
   componentDidMount() {
     this.loadRecordsFromServer();
+    setInterval(this.loadRecordsFromServer.bind(this), pollInterval);
   }
 
   componentWillUnmount() {

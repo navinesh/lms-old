@@ -20498,6 +20498,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var url = 'leave.api';
+	var pollInterval = 5000;
 
 	var Record = function (_React$Component) {
 	  _inherits(Record, _React$Component);
@@ -20567,7 +20568,8 @@
 	          _react2.default.createElement(
 	            'td',
 	            null,
-	            item.leave_days
+	            item.leave_days,
+	            ' day(s)'
 	          )
 	        );
 	      });
@@ -20646,7 +20648,6 @@
 	        cache: false,
 	        success: function success(data) {
 	          _this4.setState({ data: data });
-	          console.log(data);
 	        },
 	        error: function error(xhr, status, err) {
 	          console.error(url, status, err.toString());
@@ -20657,6 +20658,7 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.loadRecordsFromServer();
+	      setInterval(this.loadRecordsFromServer.bind(this), pollInterval);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
