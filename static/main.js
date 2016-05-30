@@ -20545,29 +20545,29 @@
 	          _react2.default.createElement(
 	            'td',
 	            null,
-	            item.othernames,
+	            item.user.othernames,
 	            ' ',
-	            item.surname
+	            item.user.surname
 	          ),
 	          _react2.default.createElement(
 	            'td',
 	            null,
-	            item.annual
+	            item.leave_name
 	          ),
 	          _react2.default.createElement(
 	            'td',
 	            null,
-	            item.designation
+	            item.start_date
 	          ),
 	          _react2.default.createElement(
 	            'td',
 	            null,
-	            item.gender
+	            item.end_date
 	          ),
 	          _react2.default.createElement(
 	            'td',
 	            null,
-	            item.email
+	            item.leave_days
 	          )
 	        );
 	      });
@@ -20631,7 +20631,7 @@
 
 	    var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveCalendar).call(this, props));
 
-	    _this3.state = { data: { leave_record: [] } };
+	    _this3.state = { data: { leave_records: [] } };
 	    return _this3;
 	  }
 
@@ -20646,6 +20646,7 @@
 	        cache: false,
 	        success: function success(data) {
 	          _this4.setState({ data: data });
+	          console.log(data);
 	        },
 	        error: function error(xhr, status, err) {
 	          console.error(url, status, err.toString());
@@ -20668,7 +20669,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'leaveCalendar' },
-	        _react2.default.createElement(RecordList, { data: this.state.data.leave_record })
+	        _react2.default.createElement(RecordList, { data: this.state.data.leave_records })
 	      );
 	    }
 	  }]);

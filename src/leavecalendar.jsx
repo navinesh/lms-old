@@ -1,6 +1,6 @@
 import React from 'react';
 
-var url = 'leave.api';
+const url = 'leave.api';
 
 class Record extends React.Component {
   render() {
@@ -19,11 +19,11 @@ class RecordList extends React.Component {
     var itemNodes = this.props.data.map(function(item) {
       return (
         <tr key={item.id}>
-          <td>{item.othernames} {item.surname}</td>
-          <td>{item.annual}</td>
-          <td>{item.designation}</td>
-          <td>{item.gender}</td>
-          <td>{item.email}</td>
+          <td>{item.user.othernames} {item.user.surname}</td>
+          <td>{item.leave_name}</td>
+          <td>{item.start_date}</td>
+          <td>{item.end_date}</td>
+          <td>{item.leave_days}</td>
         </tr>
       );
     });
@@ -51,7 +51,7 @@ class RecordList extends React.Component {
 class LeaveCalendar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {data: {leave_record:[]}}
+    this.state = {data: {leave_records:[]}}
   }
 
   loadRecordsFromServer() {
@@ -61,10 +61,11 @@ class LeaveCalendar extends React.Component {
         cache: false,
         success: (data) => {
           this.setState({data: data});
+          console.log(data);
         },
         error: (xhr, status, err) => {
           console.error(url, status, err.toString());
-        } 
+        }
       });
     }
 
@@ -79,7 +80,7 @@ class LeaveCalendar extends React.Component {
   render() {
     return (
       <div className="leaveCalendar">
-        <RecordList data={this.state.data.leave_record} />
+        <RecordList data={this.state.data.leave_records} />
       </div>
     );
   }
