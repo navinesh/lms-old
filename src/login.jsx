@@ -5,7 +5,6 @@ const url = 'login'
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {email: '', password: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -68,7 +67,6 @@ class LoginBox extends React.Component{
       data: login,
       success: (data) => {
         this.setState({data: data});
-        console.log(data);
       },
       error: (xhr, status, err) => {
         console.error(url, status, err.toString());

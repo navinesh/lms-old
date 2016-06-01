@@ -20412,7 +20412,6 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LoginForm).call(this, props));
 
-	    _this.state = { email: '', password: '' };
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    _this.handleEmailChange = _this.handleEmailChange.bind(_this);
 	    _this.handlePasswordChange = _this.handlePasswordChange.bind(_this);
@@ -20526,7 +20525,6 @@
 	        data: login,
 	        success: function success(data) {
 	          _this3.setState({ data: data });
-	          console.log(data);
 	        },
 	        error: function error(xhr, status, err) {
 	          console.error(url, status, err.toString());
