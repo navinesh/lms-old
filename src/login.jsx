@@ -12,12 +12,10 @@ class LoginForm extends React.Component {
   }
 
   handleEmailChange (e) {
-    e.persist()
     this.setState({email: e.target.value});
   }
 
   handlePasswordChange (e) {
-    e.persist()
     this.setState({password: e.target.value});
   }
 

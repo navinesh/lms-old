@@ -20422,13 +20422,11 @@
 	  _createClass(LoginForm, [{
 	    key: 'handleEmailChange',
 	    value: function handleEmailChange(e) {
-	      e.persist();
 	      this.setState({ email: e.target.value });
 	    }
 	  }, {
 	    key: 'handlePasswordChange',
 	    value: function handlePasswordChange(e) {
-	      e.persist();
 	      this.setState({ password: e.target.value });
 	    }
 	  }, {
