@@ -20489,7 +20489,7 @@
 	              { className: 'form-group' },
 	              _react2.default.createElement(
 	                'button',
-	                { type: 'submit', value: 'Post', className: 'btn btn-primary col-sm-12' },
+	                { type: 'submit', className: 'btn btn-primary col-sm-12' },
 	                'Log in'
 	              )
 	            )
@@ -20535,12 +20535,6 @@
 	        }
 	      });
 	    }
-
-	    //constructor(props) {
-	    //  super(props);
-	    //  this.state = {data: []}
-	    //}
-
 	  }, {
 	    key: 'render',
 	    value: function render() {

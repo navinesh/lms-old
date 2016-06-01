@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
               <small className="text-muted">Enter your leave management system password.</small>
             </fieldset>
             <fieldset className="form-group">
-              <button type="submit" value="Post" className="btn btn-primary col-sm-12">Log in</button>
+              <button type="submit" className="btn btn-primary col-sm-12">Log in</button>
             </fieldset>
           </form>
         </div>
@@ -77,11 +77,6 @@ class LoginBox extends React.Component{
       }
     });
   }
-
-  //constructor(props) {
-  //  super(props);
-  //  this.state = {data: []}
-  //}
 
   render(){
     return(
