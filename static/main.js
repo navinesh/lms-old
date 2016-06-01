@@ -20382,7 +20382,7 @@
 /* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -20402,67 +20402,103 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var url = 'login';
+
 	var LoginForm = function (_React$Component) {
 	  _inherits(LoginForm, _React$Component);
 
-	  function LoginForm() {
+	  function LoginForm(props) {
 	    _classCallCheck(this, LoginForm);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LoginForm).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LoginForm).call(this, props));
+
+	    _this.state = { email: '', password: '' };
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    _this.handleEmailChange = _this.handleEmailChange.bind(_this);
+	    _this.handlePasswordChange = _this.handlePasswordChange.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(LoginForm, [{
-	    key: "render",
+	    key: 'handleEmailChange',
+	    value: function handleEmailChange(e) {
+	      e.persist();
+	      this.setState({ email: e.target.value });
+	    }
+	  }, {
+	    key: 'handlePasswordChange',
+	    value: function handlePasswordChange(e) {
+	      e.persist();
+	      this.setState({ password: e.target.value });
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	      var email = this.state.email.trim();
+	      var password = this.state.password.trim();
+
+	      if (!email || !password) {
+	        return;
+	      }
+	      this.props.onFormSubmit({ email: email, password: password });
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "col-sm-4" },
+	        'div',
+	        { className: 'col-sm-4' },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "card card-block" },
+	          'div',
+	          { className: 'card card-block' },
 	          _react2.default.createElement(
-	            "form",
-	            null,
+	            'form',
+	            { onSubmit: this.handleSubmit },
 	            _react2.default.createElement(
-	              "fieldset",
-	              { className: "form-group" },
+	              'fieldset',
+	              { className: 'form-group' },
 	              _react2.default.createElement(
-	                "label",
-	                { "for": "email" },
-	                "Email address"
+	                'label',
+	                { 'for': 'email' },
+	                'Email address'
 	              ),
-	              _react2.default.createElement("input", { type: "email", className: "form-control", id: "email", placeholder: "Enter email" })
+	              _react2.default.createElement('input', { type: 'email', className: 'form-control',
+	                placeholder: 'Enter email', id: 'email',
+	                onChange: this.handleEmailChange })
 	            ),
 	            _react2.default.createElement(
-	              "fieldset",
-	              { className: "form-group" },
+	              'fieldset',
+	              { className: 'form-group' },
 	              _react2.default.createElement(
-	                "label",
-	                { "for": "password" },
-	                "Password"
+	                'label',
+	                { 'for': 'password' },
+	                'Password'
 	              ),
-	              _react2.default.createElement("input", { type: "password", className: "form-control", id: "password", placeholder: "Password" }),
+	              _react2.default.createElement('input', { type: 'password', className: 'form-control',
+	                placeholder: 'Password', id: 'password',
+	                onChange: this.handlePasswordChange }),
 	              _react2.default.createElement(
-	                "small",
-	                { className: "text-muted" },
-	                "Enter your leave management system password."
+	                'small',
+	                { className: 'text-muted' },
+	                'Enter your leave management system password.'
 	              )
 	            ),
 	            _react2.default.createElement(
-	              "fieldset",
-	              { className: "form-group" },
+	              'fieldset',
+	              { className: 'form-group' },
 	              _react2.default.createElement(
-	                "button",
-	                { type: "submit", className: "btn btn-primary col-sm-12" },
-	                "Log in"
+	                'button',
+	                { type: 'submit', value: 'Post', className: 'btn btn-primary col-sm-12' },
+	                'Log in'
 	              )
 	            )
 	          )
 	        ),
 	        _react2.default.createElement(
-	          "a",
-	          { href: "/login", className: "btn btn-primary-outline col-md-12" },
-	          "Forgot your password?"
+	          'a',
+	          { href: '/login', className: 'btn btn-primary-outline col-md-12' },
+	          'Forgot your password?'
 	        )
 	      );
 	    }
@@ -20471,7 +20507,51 @@
 	  return LoginForm;
 	}(_react2.default.Component);
 
-	exports.default = LoginForm;
+	var LoginBox = function (_React$Component2) {
+	  _inherits(LoginBox, _React$Component2);
+
+	  function LoginBox() {
+	    _classCallCheck(this, LoginBox);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LoginBox).apply(this, arguments));
+	  }
+
+	  _createClass(LoginBox, [{
+	    key: 'handleFormSubmit',
+	    value: function handleFormSubmit(login) {
+	      var _this3 = this;
+
+	      $.ajax({
+	        url: url,
+	        dataType: 'json',
+	        type: 'POST',
+	        data: login,
+	        success: function success(data) {
+	          _this3.setState({ data: data });
+	          console.log(data);
+	        },
+	        error: function error(xhr, status, err) {
+	          console.error(url, status, err.toString());
+	        }
+	      });
+	    }
+
+	    //constructor(props) {
+	    //  super(props);
+	    //  this.state = {data: []}
+	    //}
+
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(LoginForm, { onFormSubmit: this.handleFormSubmit });
+	    }
+	  }]);
+
+	  return LoginBox;
+	}(_react2.default.Component);
+
+	exports.default = LoginBox;
 
 /***/ },
 /* 170 */
@@ -20498,7 +20578,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var url = 'leave.api';
-	var pollInterval = 5000;
+	var pollInterval = 10000;
 
 	var Record = function (_React$Component) {
 	  _inherits(Record, _React$Component);

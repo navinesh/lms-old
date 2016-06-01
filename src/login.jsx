@@ -1,22 +1,57 @@
 import React from 'react';
 
-class LoginForm extends React.Component{
-  render() {
-    return (
+const url = 'login'
+
+class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {email: '', password: ''};
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+  }
+
+  handleEmailChange (e) {
+    e.persist()
+    this.setState({email: e.target.value});
+  }
+
+  handlePasswordChange (e) {
+    e.persist()
+    this.setState({password: e.target.value});
+  }
+
+  handleSubmit (e) {
+    e.preventDefault();
+    let email = this.state.email.trim();
+    let password = this.state.password.trim();
+
+    if (!email || !password) {
+      return;
+    }
+    this.props.onFormSubmit({email: email, password: password});
+  }
+
+  render(){
+    return(
       <div className="col-sm-4">
         <div className="card card-block">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <fieldset className="form-group">
               <label for="email">Email address</label>
-              <input type="email" className="form-control" id="email" placeholder="Enter email" />
+              <input type="email" className="form-control"
+                placeholder="Enter email" id="email"
+                onChange={this.handleEmailChange} />
             </fieldset>
             <fieldset className="form-group">
               <label for="password">Password</label>
-              <input type="password" className="form-control" id="password" placeholder="Password" />
+              <input type="password" className="form-control"
+                placeholder="Password" id="password"
+                onChange={this.handlePasswordChange} />
               <small className="text-muted">Enter your leave management system password.</small>
             </fieldset>
             <fieldset className="form-group">
-              <button type="submit" className="btn btn-primary col-sm-12">Log in</button>
+              <button type="submit" value="Post" className="btn btn-primary col-sm-12">Log in</button>
             </fieldset>
           </form>
         </div>
@@ -26,4 +61,33 @@ class LoginForm extends React.Component{
   }
 }
 
-export default LoginForm;
+class LoginBox extends React.Component{
+  handleFormSubmit (login) {
+    $.ajax({
+      url: url,
+      dataType: 'json',
+      type: 'POST',
+      data: login,
+      success: (data) => {
+        this.setState({data: data});
+        console.log(data);
+      },
+      error: (xhr, status, err) => {
+        console.error(url, status, err.toString());
+      }
+    });
+  }
+
+  //constructor(props) {
+  //  super(props);
+  //  this.state = {data: []}
+  //}
+
+  render(){
+    return(
+      <LoginForm onFormSubmit={this.handleFormSubmit} />
+    );
+  }
+}
+
+export default LoginBox;

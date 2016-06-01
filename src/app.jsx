@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginForm from './login.jsx';
+import LoginBox from './login.jsx';
 import LeaveCalendar from './leavecalendar.jsx';
 
 class PageContent extends React.Component {
@@ -8,7 +8,7 @@ class PageContent extends React.Component {
     return (
       <div className="pageContent">
           <LeaveCalendar />
-          <LoginForm />
+          <LoginBox />
       </div>
     );
   }
