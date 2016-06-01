@@ -1,7 +1,7 @@
 import React from 'react';
 
 const url = 'leave.api';
-const pollInterval = 5000
+const pollInterval = 10000
 
 class Record extends React.Component {
   render() {
