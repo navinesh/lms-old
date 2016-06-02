@@ -20410,7 +20410,7 @@
 	  function LoginForm(props) {
 	    _classCallCheck(this, LoginForm);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LoginForm).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LoginForm).call(this));
 
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    _this.handleEmailChange = _this.handleEmailChange.bind(_this);
@@ -20507,10 +20507,13 @@
 	var LoginBox = function (_React$Component2) {
 	  _inherits(LoginBox, _React$Component2);
 
-	  function LoginBox() {
+	  function LoginBox(props) {
 	    _classCallCheck(this, LoginBox);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LoginBox).apply(this, arguments));
+	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(LoginBox).call(this));
+
+	    _this2.state = { data: [] };
+	    return _this2;
 	  }
 
 	  _createClass(LoginBox, [{
@@ -20701,7 +20704,7 @@
 	  function LeaveCalendar(props) {
 	    _classCallCheck(this, LeaveCalendar);
 
-	    var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveCalendar).call(this, props));
+	    var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveCalendar).call(this));
 
 	    _this3.state = { data: { leave_records: [] } };
 	    return _this3;

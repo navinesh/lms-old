@@ -4,7 +4,7 @@ const url = 'login'
 
 class LoginForm extends React.Component {
   constructor(props) {
-    super(props);
+    super();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -59,6 +59,11 @@ class LoginForm extends React.Component {
 }
 
 class LoginBox extends React.Component{
+  constructor(props) {
+    super()
+    this.state = { data: [] }
+  }
+
   handleFormSubmit (login) {
     $.ajax({
       url: url,

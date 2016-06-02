@@ -51,7 +51,7 @@ class RecordList extends React.Component {
 
 class LeaveCalendar extends React.Component {
   constructor(props) {
-    super(props);
+    super();
     this.state = {data: {leave_records:[]}}
   }
 
