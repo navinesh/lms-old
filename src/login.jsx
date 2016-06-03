@@ -5,10 +5,11 @@ const url = 'login'
 class LoginForm extends React.Component {
   constructor(props) {
     super();
+    this.state = {email: '', password: '', message: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-  }
+  };
 
   handleEmailChange (e) {
     this.setState({email: e.target.value});
@@ -26,7 +27,14 @@ class LoginForm extends React.Component {
     if (!email || !password) {
       return;
     }
-    this.props.onFormSubmit({email: email, password: password});
+    this.props.onFormSubmit({
+      email: email,
+      password: password
+    },
+     (data) => {
+       this.setState({message: data.message});
+     }
+    );
   }
 
   render(){
@@ -51,6 +59,7 @@ class LoginForm extends React.Component {
               <button type="submit" className="btn btn-primary col-sm-12">Log in</button>
             </fieldset>
           </form>
+          <div className="text-danger">{this.state.message}</div>
         </div>
         <a href="/login" className="btn btn-primary-outline col-md-12">Forgot your password?</a>
       </div>
@@ -59,20 +68,17 @@ class LoginForm extends React.Component {
 }
 
 class LoginBox extends React.Component{
-  constructor(props) {
-    super()
-    this.state = { data: [] }
-  }
-
-  handleFormSubmit (login) {
+  handleFormSubmit (login, callback) {
     $.ajax({
       url: url,
       dataType: 'json',
       type: 'POST',
       data: login,
-      success: (data) => {
-        this.setState({data: data});
-      },
+      success: callback,
+      //(data) => {
+      //  console.log(data.message);
+      //  //this.setState({data: data});
+      //},
       error: (xhr, status, err) => {
         console.error(url, status, err.toString());
       }
