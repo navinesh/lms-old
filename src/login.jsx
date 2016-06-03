@@ -75,10 +75,6 @@ class LoginBox extends React.Component{
       type: 'POST',
       data: login,
       success: callback,
-      //(data) => {
-      //  console.log(data.message);
-      //  //this.setState({data: data});
-      //},
       error: (xhr, status, err) => {
         console.error(url, status, err.toString());
       }

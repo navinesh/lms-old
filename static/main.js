@@ -26048,10 +26048,6 @@
 	        type: 'POST',
 	        data: login,
 	        success: callback,
-	        //(data) => {
-	        //  console.log(data.message);
-	        //  //this.setState({data: data});
-	        //},
 	        error: function error(xhr, status, err) {
 	          console.error(url, status, err.toString());
 	        }
