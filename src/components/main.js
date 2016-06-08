@@ -1,7 +1,7 @@
 import React from 'react';
 
-import LoginBox from './login.jsx';
-import LeaveCalendar from './leavecalendar.jsx';
+import LoginBox from './login.js';
+import LeaveCalendar from './leavecalendar.js';
 
 class Main extends React.Component {
   render(){

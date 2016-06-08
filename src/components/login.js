@@ -6,7 +6,7 @@ const url = 'login'
 class LoginForm extends React.Component {
   constructor(props) {
     super();
-    this.state = {email: '', password: '', message: ''};
+    this.state = {email: '', password: '', message: '', token: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -34,6 +34,10 @@ class LoginForm extends React.Component {
     },
      (data) => {
        this.setState({message: data.message});
+       this.setState({token: data.token});
+       if (this.state.token){
+         //route to dashboard
+       }
      }
     );
   }
