@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
-class Record extends React.Component {
+class Record extends Component {
   render() {
     return (
       <tr>
@@ -12,7 +12,7 @@ class Record extends React.Component {
   }
 }
 
-class RecordList extends React.Component {
+class RecordList extends Component {
   render() {
     var itemNodes = this.props.records.map((record) => {
       return (
@@ -46,7 +46,7 @@ class RecordList extends React.Component {
   }
 }
 
-class LeaveCalendar extends React.Component {
+class LeaveCalendar extends Component {
   render() {
     return (
       <div className="leaveCalendar">
