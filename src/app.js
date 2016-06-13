@@ -1,6 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import 'babel-polyfill'
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import Main from './containers/main'
+import configureStore from './stores/configureStore'
 
-import routes from './routes.js';
+const store = configureStore()
 
-ReactDOM.render(routes, document.getElementById('body content'));
+render(
+  <Provider store={store}>
+    <Main />
+  </Provider>,
+  document.getElementById('body content')
+)
