@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { fetchLeave } from '../actions/actions'
-import LeaveRecord from '../components/leavecalendar'
+import LeaveCalendar from '../components/leavecalendar'
 import LoginBox from '../components/login'
 
 class Main extends Component {
@@ -18,7 +18,7 @@ class Main extends Component {
     const { records, isFetching, lastUpdated } = this.props
     return (
       <div className="Main">
-      {(isFetching ? <div className="col-sm-8"><h5>Loading...</h5></div> : <LeaveRecord records={records} />)}
+      {(isFetching ? <div className="col-sm-8"><h5>Loading...</h5></div> : <LeaveCalendar records={records} />)}
       <LoginBox />
       </div>
     )
