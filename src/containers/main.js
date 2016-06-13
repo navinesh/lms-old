@@ -18,8 +18,7 @@ class Main extends Component {
     const { records, isFetching, lastUpdated } = this.props
     return (
       <div className="Main">
-      {(isFetching ? <div className="col-sm-8"><h5>Loading...</h5></div> : <LeaveRecord records={records} />)
-      }
+      {(isFetching ? <div className="col-sm-8"><h5>Loading...</h5></div> : <LeaveRecord records={records} />)}
       <LoginBox />
       </div>
     )
