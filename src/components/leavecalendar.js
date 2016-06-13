@@ -1,7 +1,4 @@
-import React from 'react';
-
-const url = 'leave.api'
-const pollInterval = 10000
+import React, { Component, PropTypes } from 'react'
 
 class Record extends React.Component {
   render() {
@@ -17,14 +14,14 @@ class Record extends React.Component {
 
 class RecordList extends React.Component {
   render() {
-    var itemNodes = this.props.data.map(function(item) {
+    var itemNodes = this.props.records.map((record) => {
       return (
-        <tr key={item.id}>
-          <td>{item.user.othernames} {item.user.surname}</td>
-          <td>{item.leave_name}</td>
-          <td>{item.start_date}</td>
-          <td>{item.end_date}</td>
-          <td>{item.leave_days} day(s)</td>
+        <tr key={record.id}>
+          <td>{record.user.othernames} {record.user.surname}</td>
+          <td>{record.leave_name}</td>
+          <td>{record.start_date}</td>
+          <td>{record.end_date}</td>
+          <td>{record.leave_days} day(s)</td>
         </tr>
       );
     });
@@ -50,41 +47,17 @@ class RecordList extends React.Component {
 }
 
 class LeaveCalendar extends React.Component {
-  constructor(props) {
-    super();
-    this.state = {data: {leave_records:[]}};
-  }
-
-  loadRecordsFromServer() {
-      $.ajax({
-        url: url,
-        dataType: 'json',
-        cache: false,
-        success: (data) => {
-          this.setState({data: data});
-        },
-        error: (xhr, status, err) => {
-          console.error(url, status, err.toString());
-        }
-      });
-    }
-
-  componentDidMount() {
-    this.loadRecordsFromServer();
-    setInterval(this.loadRecordsFromServer.bind(this), pollInterval);
-  }
-
-  componentWillUnmount() {
-    this.loadRecordsFromServer.abort();
-  }
-
   render() {
     return (
       <div className="leaveCalendar">
-        <RecordList data={this.state.data.leave_records} />
+        <RecordList records={this.props.records} />
       </div>
     );
   }
+}
+
+LeaveCalendar.propTypes = {
+  records: PropTypes.array.isRequired
 }
 
 export default LeaveCalendar;
