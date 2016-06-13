@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchLeave } from '../actions/actions'
 import LeaveCalendar from '../components/leavecalendar'
 import LoginBox from '../components/login'
+var Loader = require('halogen/PulseLoader');
 
 class Main extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Main extends Component {
     const { records, isFetching, lastUpdated } = this.props
     return (
       <div className="Main">
-      {(isFetching ? <div className="col-sm-8"><h5>Loading...</h5></div> : <LeaveCalendar records={records} />)}
+      {(isFetching ? <div className="col-sm-8"><Loader color="#0088cc" size="15px" margin="4px" /></div> : <LeaveCalendar records={records} />)}
       <LoginBox />
       </div>
     )
