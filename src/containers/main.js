@@ -19,7 +19,7 @@ class Main extends Component {
     const { records, isFetching, lastUpdated } = this.props
     return (
       <div className="Main">
-      {(isFetching ? <div className="col-sm-8"><Loader color="#0088cc" size="15px" margin="4px" /></div> : <LeaveCalendar records={records} />)}
+      {(isFetching ? <div className="col-sm-8"><Loader color="#0275d8" size="15px" margin="4px" /></div> : <LeaveCalendar records={records} />)}
       <LoginBox />
       </div>
     )

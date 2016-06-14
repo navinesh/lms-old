@@ -35606,7 +35606,7 @@
 	        isFetching ? _react2.default.createElement(
 	          'div',
 	          { className: 'col-sm-8' },
-	          _react2.default.createElement(Loader, { color: '#0088cc', size: '15px', margin: '4px' })
+	          _react2.default.createElement(Loader, { color: '#0275d8', size: '15px', margin: '4px' })
 	        ) : _react2.default.createElement(_leavecalendar2.default, { records: records }),
 	        _react2.default.createElement(_login2.default, null)
 	      );
@@ -36684,7 +36684,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var url = 'login';
+	var url = 'userlogin';
 
 	var LoginForm = function (_React$Component) {
 	  _inherits(LoginForm, _React$Component);
