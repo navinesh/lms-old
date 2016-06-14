@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-const url = 'login'
+const url = 'userlogin'
 
 class LoginForm extends React.Component {
   constructor(props) {
