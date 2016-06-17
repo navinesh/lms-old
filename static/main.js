@@ -35908,6 +35908,8 @@
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _redux = __webpack_require__(473);
 
 	var _actions = __webpack_require__(558);
@@ -35919,15 +35921,13 @@
 
 	  switch (action.type) {
 	    case _actions.REQUEST_LEAVE_CALENDAR:
-	      return Object.assign({}, state, {
-	        isFetching: true
-	      });
+	      return _extends({}, state, {
+	        isFetching: true });
 	    case _actions.RECEIVE_LEAVE_CALENDAR:
-	      return Object.assign({}, state, {
+	      return _extends({}, state, {
 	        isFetching: false,
 	        items: action.records,
-	        lastUpdated: action.receivedAt
-	      });
+	        lastUpdated: action.receivedAt });
 	    default:
 	      return state;
 	  }

@@ -5,15 +5,13 @@ function leaveRecords(state = {isFetching: false,
   items: []}, action) {
   switch (action.type) {
     case REQUEST_LEAVE_CALENDAR:
-    return Object.assign({}, state, {
-      isFetching: true
-    })
+    return { ...state,
+      isFetching: true}
     case RECEIVE_LEAVE_CALENDAR:
-    return Object.assign({}, state, {
+    return { ...state,
       isFetching: false,
       items: action.records,
-      lastUpdated: action.receivedAt
-    })
+      lastUpdated: action.receivedAt}
     default:
       return state
   }
