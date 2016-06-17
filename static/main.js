@@ -70,17 +70,17 @@
 
 	var _reactRouter = __webpack_require__(492);
 
-	var _main = __webpack_require__(553);
-
-	var _main2 = _interopRequireDefault(_main);
-
 	var _configureStore = __webpack_require__(554);
 
 	var _configureStore2 = _interopRequireDefault(_configureStore);
 
-	var _leavecalendar = __webpack_require__(561);
+	var _main = __webpack_require__(553);
 
-	var _leavecalendar2 = _interopRequireDefault(_leavecalendar);
+	var _main2 = _interopRequireDefault(_main);
+
+	var _leavecalendarcontainer = __webpack_require__(570);
+
+	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
 	var _login = __webpack_require__(562);
 
@@ -99,8 +99,8 @@
 	    _react2.default.createElement(
 	      _reactRouter.Route,
 	      { path: '/', component: _main2.default },
-	      _react2.default.createElement(_reactRouter.Route, { path: 'leavecalendar', component: _leavecalendar2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _login2.default })
+	      _react2.default.createElement(_reactRouter.Route, { path: '/leavecalendar', component: _leavecalendarcontainer2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _login2.default })
 	    )
 	  )
 	), document.getElementById('body content'));
@@ -35554,13 +35554,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(466);
+	var _leavecalendarcontainer = __webpack_require__(570);
 
-	var _actions = __webpack_require__(558);
-
-	var _leavecalendar = __webpack_require__(561);
-
-	var _leavecalendar2 = _interopRequireDefault(_leavecalendar);
+	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
 	var _login = __webpack_require__(562);
 
@@ -35574,40 +35570,22 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Loader = __webpack_require__(563);
-
 	var Main = function (_Component) {
 	  _inherits(Main, _Component);
 
-	  function Main(props) {
+	  function Main() {
 	    _classCallCheck(this, Main);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Main).apply(this, arguments));
 	  }
 
 	  _createClass(Main, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var dispatch = this.props.dispatch;
-
-	      dispatch((0, _actions.fetchLeave)());
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _props = this.props;
-	      var records = _props.records;
-	      var isFetching = _props.isFetching;
-	      var lastUpdated = _props.lastUpdated;
-
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'Main' },
-	        isFetching ? _react2.default.createElement(
-	          'div',
-	          { className: 'col-sm-8' },
-	          _react2.default.createElement(Loader, { color: '#0275d8', size: '15px', margin: '4px' })
-	        ) : _react2.default.createElement(_leavecalendar2.default, { records: records }),
+	        null,
+	        _react2.default.createElement(_leavecalendarcontainer2.default, null),
 	        _react2.default.createElement(_login2.default, null)
 	      );
 	    }
@@ -35616,27 +35594,7 @@
 	  return Main;
 	}(_react.Component);
 
-	Main.propTypes = {
-	  records: _react.PropTypes.array.isRequired,
-	  isFetching: _react.PropTypes.bool.isRequired,
-	  lastUpdated: _react.PropTypes.number,
-	  dispatch: _react.PropTypes.func.isRequired
-	};
-
-	function mapStateToProps(state) {
-	  var leaveRecords = state.leaveRecords;
-	  var isFetching = leaveRecords.isFetching;
-	  var lastUpdated = leaveRecords.lastUpdated;
-	  var records = leaveRecords.items;
-
-	  return {
-	    records: records,
-	    isFetching: isFetching,
-	    lastUpdated: lastUpdated
-	  };
-	}
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Main);
+	exports.default = Main;
 
 /***/ },
 /* 554 */
@@ -37126,6 +37084,101 @@
 	  return cssVendorPrefix = '-' + pre + '-';
 	}
 
+
+/***/ },
+/* 570 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(466);
+
+	var _actions = __webpack_require__(558);
+
+	var _leavecalendar = __webpack_require__(561);
+
+	var _leavecalendar2 = _interopRequireDefault(_leavecalendar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Loader = __webpack_require__(563);
+
+	var LeaveCalendarContainer = function (_Component) {
+	  _inherits(LeaveCalendarContainer, _Component);
+
+	  function LeaveCalendarContainer(props) {
+	    _classCallCheck(this, LeaveCalendarContainer);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveCalendarContainer).call(this, props));
+	  }
+
+	  _createClass(LeaveCalendarContainer, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var dispatch = this.props.dispatch;
+
+	      dispatch((0, _actions.fetchLeave)());
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var records = _props.records;
+	      var isFetching = _props.isFetching;
+	      var lastUpdated = _props.lastUpdated;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'LeaveCalendarContainer' },
+	        isFetching ? _react2.default.createElement(
+	          'div',
+	          { className: 'col-sm-8' },
+	          _react2.default.createElement(Loader, { color: '#0275d8', size: '15px', margin: '4px' })
+	        ) : _react2.default.createElement(_leavecalendar2.default, { records: records })
+	      );
+	    }
+	  }]);
+
+	  return LeaveCalendarContainer;
+	}(_react.Component);
+
+	LeaveCalendarContainer.propTypes = {
+	  records: _react.PropTypes.array.isRequired,
+	  isFetching: _react.PropTypes.bool.isRequired,
+	  lastUpdated: _react.PropTypes.number,
+	  dispatch: _react.PropTypes.func.isRequired
+	};
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  var leaveRecords = state.leaveRecords;
+	  var isFetching = leaveRecords.isFetching;
+	  var lastUpdated = leaveRecords.lastUpdated;
+	  var records = leaveRecords.items;
+
+	  return {
+	    records: records,
+	    isFetching: isFetching,
+	    lastUpdated: lastUpdated
+	  };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeaveCalendarContainer);
 
 /***/ }
 /******/ ]);
