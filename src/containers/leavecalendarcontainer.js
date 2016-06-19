@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchLeave } from '../actions/actions'
+import { fetchLeave } from '../actions/leavecalendaractions'
 import LeaveCalendar from '../components/leavecalendar'
 
 var Loader = require('halogen/PulseLoader');
