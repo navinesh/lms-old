@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchLogin } from '../actions/actions'
+import { fetchLogin } from '../actions/userloginactions'
 import LoginBox from '../components/userlogin'
 
 var Loader = require('halogen/PulseLoader');
