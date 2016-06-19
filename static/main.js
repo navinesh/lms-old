@@ -35889,7 +35889,8 @@
 	      return _extends({}, state, {
 	        isFetching: false,
 	        isAuthenticated: true,
-	        token: action.token });
+	        token: action.token,
+	        message: 'Login successful!' });
 	    case _actions.LOGIN_USER_FAILURE:
 	      return _extends({}, state, {
 	        isFetching: false,

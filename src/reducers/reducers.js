@@ -30,7 +30,8 @@ function userLogin(state = {isFetching: false, isAuthenticated: false,
     return { ...state,
       isFetching: false,
       isAuthenticated: true,
-      token: action.token}
+      token: action.token,
+      message: 'Login successful!'}
       case LOGIN_USER_FAILURE:
       return { ...state,
         isFetching: false,
