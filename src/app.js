@@ -6,7 +6,7 @@ import { Router, Route, browserHistory } from 'react-router'
 import configureStore from './stores/configureStore'
 import Main from './containers/main'
 import LeaveCalendarContainer from './containers/leavecalendarcontainer'
-import LoginBox from './components/login'
+import UserLoginBox from './containers/userlogincontainer'
 
 const store = configureStore()
 
@@ -15,7 +15,7 @@ render(
     <Router history={browserHistory}>
       <Route path="/" component={Main}>
         <Route path="/leavecalendar" component={LeaveCalendarContainer} />
-        <Route path="/login" component={LoginBox} />
+        <Route path="/login" component={UserLoginBox} />
       </Route>
     </Router>
   </Provider>,
