@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import { REQUEST_LEAVE_CALENDAR, RECEIVE_LEAVE_CALENDAR,
-  LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER
-  } from '../actions/actions'
+import { REQUEST_LEAVE_CALENDAR, RECEIVE_LEAVE_CALENDAR } from '../actions/leavecalendaractions'
+import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE } from '../actions/userloginactions'
+import { LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, LOGOUT_USER_FAILURE } from '../actions/userlogoutactions'
 
 function leaveRecords(state = {isFetching: false,
   items: []}, action) {
