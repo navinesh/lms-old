@@ -35854,7 +35854,11 @@
 
 	var _redux = __webpack_require__(473);
 
-	var _actions = __webpack_require__(557);
+	var _leavecalendaractions = __webpack_require__(592);
+
+	var _userloginactions = __webpack_require__(591);
+
+	var _userlogoutactions = __webpack_require__(593);
 
 	function leaveRecords() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? { isFetching: false,
@@ -35862,10 +35866,10 @@
 	  var action = arguments[1];
 
 	  switch (action.type) {
-	    case _actions.REQUEST_LEAVE_CALENDAR:
+	    case _leavecalendaractions.REQUEST_LEAVE_CALENDAR:
 	      return _extends({}, state, {
 	        isFetching: true });
-	    case _actions.RECEIVE_LEAVE_CALENDAR:
+	    case _leavecalendaractions.RECEIVE_LEAVE_CALENDAR:
 	      return _extends({}, state, {
 	        isFetching: false,
 	        items: action.records,
@@ -35881,17 +35885,17 @@
 	  var action = arguments[1];
 
 	  switch (action.type) {
-	    case _actions.LOGIN_USER_REQUEST:
+	    case _userloginactions.LOGIN_USER_REQUEST:
 	      return _extends({}, state, {
 	        isFetching: true,
 	        isAuthenticated: false });
-	    case _actions.LOGIN_USER_SUCCESS:
+	    case _userloginactions.LOGIN_USER_SUCCESS:
 	      return _extends({}, state, {
 	        isFetching: false,
 	        isAuthenticated: true,
 	        token: action.token,
 	        message: 'Login successful!' });
-	    case _actions.LOGIN_USER_FAILURE:
+	    case _userloginactions.LOGIN_USER_FAILURE:
 	      return _extends({}, state, {
 	        isFetching: false,
 	        isAuthenticated: false,
@@ -35909,121 +35913,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 557 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.LOGOUT_USER = exports.LOGIN_USER_FAILURE = exports.LOGIN_USER_SUCCESS = exports.LOGIN_USER_REQUEST = exports.RECEIVE_LEAVE_CALENDAR = exports.REQUEST_LEAVE_CALENDAR = undefined;
-	exports.requestLeave = requestLeave;
-	exports.receiveLeave = receiveLeave;
-	exports.fetchLeave = fetchLeave;
-	exports.signUpUser = signUpUser;
-	exports.requestUserLogin = requestUserLogin;
-	exports.receiveUserLogin = receiveUserLogin;
-	exports.loginUserError = loginUserError;
-	exports.logOutUser = logOutUser;
-	exports.fetchLogin = fetchLogin;
-
-	var _isomorphicFetch = __webpack_require__(558);
-
-	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
-
-	var _axios = __webpack_require__(560);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var REQUEST_LEAVE_CALENDAR = exports.REQUEST_LEAVE_CALENDAR = 'REQUEST_LEAVE_CALENDAR';
-	var RECEIVE_LEAVE_CALENDAR = exports.RECEIVE_LEAVE_CALENDAR = 'RECEIVE_LEAVE_CALENDAR';
-
-	var LOGIN_USER_REQUEST = exports.LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
-	var LOGIN_USER_SUCCESS = exports.LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
-	var LOGIN_USER_FAILURE = exports.LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
-	var LOGOUT_USER = exports.LOGOUT_USER = 'LOGOUT_USER';
-
-	// leave calendar API call actions
-	function requestLeave() {
-	  return {
-	    type: REQUEST_LEAVE_CALENDAR
-	  };
-	}
-
-	function receiveLeave(json) {
-	  return {
-	    type: RECEIVE_LEAVE_CALENDAR,
-	    records: json.leave_records,
-	    receivedAt: Date.now()
-	  };
-	}
-
-	function fetchLeave() {
-	  return function (dispatch) {
-	    dispatch(requestLeave());
-	    return (0, _isomorphicFetch2.default)('leave.api').then(function (response) {
-	      return response.json();
-	    }).then(function (json) {
-	      return dispatch(receiveLeave(json));
-	    });
-	  };
-	}
-
-	// user signup actions
-	function signUpUser() {
-	  return {
-	    type: SIGNUP_USER
-	  };
-	}
-
-	// user login/logout actions
-	function requestUserLogin(creds) {
-	  return {
-	    type: LOGIN_USER_REQUEST,
-	    creds: creds
-	  };
-	}
-
-	function receiveUserLogin(data) {
-	  return {
-	    type: LOGIN_USER_SUCCESS,
-	    token: data.token
-	  };
-	}
-
-	function loginUserError(data) {
-	  return {
-	    type: LOGIN_USER_FAILURE,
-	    message: data.message
-	  };
-	}
-
-	function logOutUser() {
-	  return {
-	    type: 'LOGOUT_USER'
-	  };
-	}
-
-	function fetchLogin(creds) {
-	  return function (dispatch) {
-	    dispatch(requestUserLogin(creds));
-	    _axios2.default.post('userlogin', {
-	      email: creds.email,
-	      password: creds.password
-	    }).then(function (response) {
-	      if (response.status === 200) {
-	        dispatch(loginUserError(response.data));
-	      } else {
-	        dispatch(receiveUserLogin(response.data));
-	      }
-	    });
-	  };
-	}
-
-/***/ },
+/* 557 */,
 /* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -37762,7 +37652,7 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _actions = __webpack_require__(557);
+	var _leavecalendaractions = __webpack_require__(592);
 
 	var _leavecalendar = __webpack_require__(581);
 
@@ -37792,7 +37682,7 @@
 	    value: function componentDidMount() {
 	      var dispatch = this.props.dispatch;
 
-	      dispatch((0, _actions.fetchLeave)());
+	      dispatch((0, _leavecalendaractions.fetchLeave)());
 	    }
 	  }, {
 	    key: 'render',
@@ -38324,7 +38214,7 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _actions = __webpack_require__(557);
+	var _userloginactions = __webpack_require__(591);
 
 	var _userlogin = __webpack_require__(590);
 
@@ -38366,7 +38256,7 @@
 	        !isAuthenticated && _react2.default.createElement(_userlogin2.default, {
 	          message: message,
 	          onLoginClick: function onLoginClick(creds) {
-	            return dispatch((0, _actions.fetchLogin)(creds));
+	            return dispatch((0, _userloginactions.fetchLogin)(creds));
 	          } }),
 	        isAuthenticated //&&
 	        //  <Logout onLogoutClick={() => dispatch(logoutUser())} />
@@ -38536,6 +38426,155 @@
 	  onLoginClick: _react.PropTypes.func.isRequired,
 	  message: _react.PropTypes.string
 	};
+
+/***/ },
+/* 591 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.LOGIN_USER_FAILURE = exports.LOGIN_USER_SUCCESS = exports.LOGIN_USER_REQUEST = undefined;
+	exports.requestUserLogin = requestUserLogin;
+	exports.receiveUserLogin = receiveUserLogin;
+	exports.loginUserError = loginUserError;
+	exports.fetchLogin = fetchLogin;
+
+	var _axios = __webpack_require__(560);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var LOGIN_USER_REQUEST = exports.LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
+	var LOGIN_USER_SUCCESS = exports.LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+	var LOGIN_USER_FAILURE = exports.LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
+
+	function requestUserLogin(creds) {
+	  return {
+	    type: LOGIN_USER_REQUEST,
+	    creds: creds
+	  };
+	}
+
+	function receiveUserLogin(data) {
+	  return {
+	    type: LOGIN_USER_SUCCESS,
+	    token: data.token
+	  };
+	}
+
+	function loginUserError(data) {
+	  return {
+	    type: LOGIN_USER_FAILURE,
+	    message: data.message
+	  };
+	}
+
+	function fetchLogin(creds) {
+	  return function (dispatch) {
+	    dispatch(requestUserLogin(creds));
+	    _axios2.default.post('userlogin', {
+	      email: creds.email,
+	      password: creds.password
+	    }).then(function (response) {
+	      if (response.status === 200) {
+	        dispatch(loginUserError(response.data));
+	      } else {
+	        localStorage.setItem('token', response.data.token);
+	        dispatch(receiveUserLogin(response.data));
+	      }
+	    });
+	  };
+	}
+
+/***/ },
+/* 592 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.RECEIVE_LEAVE_CALENDAR = exports.REQUEST_LEAVE_CALENDAR = undefined;
+	exports.requestLeave = requestLeave;
+	exports.receiveLeave = receiveLeave;
+	exports.fetchLeave = fetchLeave;
+
+	var _isomorphicFetch = __webpack_require__(558);
+
+	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var REQUEST_LEAVE_CALENDAR = exports.REQUEST_LEAVE_CALENDAR = 'REQUEST_LEAVE_CALENDAR';
+	var RECEIVE_LEAVE_CALENDAR = exports.RECEIVE_LEAVE_CALENDAR = 'RECEIVE_LEAVE_CALENDAR';
+
+	function requestLeave() {
+	  return {
+	    type: REQUEST_LEAVE_CALENDAR
+	  };
+	}
+
+	function receiveLeave(json) {
+	  return {
+	    type: RECEIVE_LEAVE_CALENDAR,
+	    records: json.leave_records,
+	    receivedAt: Date.now()
+	  };
+	}
+
+	function fetchLeave() {
+	  return function (dispatch) {
+	    dispatch(requestLeave());
+	    return (0, _isomorphicFetch2.default)('leave.api').then(function (response) {
+	      return response.json();
+	    }).then(function (json) {
+	      return dispatch(receiveLeave(json));
+	    });
+	  };
+	}
+
+/***/ },
+/* 593 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.logoutUser = logoutUser;
+	var LOGOUT_REQUEST = exports.LOGOUT_REQUEST = 'LOGOUT_REQUEST';
+	var LOGOUT_SUCCESS = exports.LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+	var LOGOUT_FAILURE = exports.LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+
+	function requestLogout() {
+	  return {
+	    type: LOGOUT_REQUEST,
+	    isFetching: true,
+	    isAuthenticated: true
+	  };
+	}
+
+	function receiveLogout() {
+	  return {
+	    type: LOGOUT_SUCCESS,
+	    isFetching: false,
+	    isAuthenticated: false
+	  };
+	}
+
+	function logoutUser() {
+	  return function (dispatch) {
+	    dispatch(requestLogout());
+	    localStorage.removeItem('token');
+	    dispatch(receiveLogout());
+	  };
+	}
 
 /***/ }
 /******/ ]);
