@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
-import { REQUEST_LEAVE_CALENDAR, RECEIVE_LEAVE_CALENDAR } from '../actions/actions'
+import { REQUEST_LEAVE_CALENDAR, RECEIVE_LEAVE_CALENDAR,
+  LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER
+  } from '../actions/actions'
 
 function leaveRecords(state = {isFetching: false,
   items: []}, action) {
@@ -17,8 +19,31 @@ function leaveRecords(state = {isFetching: false,
   }
 }
 
+function userLogin(state = {isFetching: false, isAuthenticated: false,
+  token: '', message: ''}, action) {
+  switch (action.type) {
+    case LOGIN_USER_REQUEST:
+    return { ...state,
+      isFetching: true,
+      isAuthenticated: false}
+    case LOGIN_USER_SUCCESS:
+    return { ...state,
+      isFetching: false,
+      isAuthenticated: true,
+      token: action.token}
+      case LOGIN_USER_FAILURE:
+      return { ...state,
+        isFetching: false,
+        isAuthenticated: false,
+        message: action.message}
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
-  leaveRecords
+  leaveRecords,
+  userLogin
 })
 
 export default rootReducer
