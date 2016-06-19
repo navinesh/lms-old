@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import LeaveCalendarContainer from './leavecalendarcontainer'
-import LoginBox from '../components/login'
+import UserLoginBox from './userlogincontainer'
 
 export default class Main extends Component {
   render() {
     return (
       <div>
         <LeaveCalendarContainer />
-        <LoginBox />
+        <UserLoginBox />
       </div>
     )
   }
