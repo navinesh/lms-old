@@ -75,7 +75,7 @@ export function fetchLogin(creds) {
         email: creds.email,
         password: creds.password
       })
-      .then(function (response) {
+      .then((response) => {
         if (response.status === 200){
           dispatch(loginUserError(response.data))
         }
