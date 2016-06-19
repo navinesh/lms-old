@@ -36013,7 +36013,6 @@
 	      email: creds.email,
 	      password: creds.password
 	    }).then(function (response) {
-	      console.log(response);
 	      if (response.status === 200) {
 	        dispatch(loginUserError(response.data));
 	      } else {
