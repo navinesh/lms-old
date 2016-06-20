@@ -35879,9 +35879,10 @@
 	  }
 	}
 
-	function userLogin() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? { isFetching: false, isAuthenticated: false,
-	    token: '', message: '' } : arguments[0];
+	function userAuth() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? { isFetching: false,
+	    isAuthenticated: localStorage.getItem('token') ? true : false,
+	    message: '' } : arguments[0];
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -35893,13 +35894,17 @@
 	      return _extends({}, state, {
 	        isFetching: false,
 	        isAuthenticated: true,
-	        token: action.token,
 	        message: 'Login successful!' });
 	    case _userloginactions.LOGIN_USER_FAILURE:
 	      return _extends({}, state, {
 	        isFetching: false,
 	        isAuthenticated: false,
 	        message: action.message });
+	    case _userlogoutactions.LOGOUT_USER_SUCCESS:
+	      return _extends({}, state, {
+	        isFetching: false,
+	        isAuthenticated: false,
+	        message: '' });
 	    default:
 	      return state;
 	  }
@@ -35907,7 +35912,7 @@
 
 	var rootReducer = (0, _redux.combineReducers)({
 	  leaveRecords: leaveRecords,
-	  userLogin: userLogin
+	  userAuth: userAuth
 	});
 
 	exports.default = rootReducer;
@@ -38216,9 +38221,15 @@
 
 	var _userloginactions = __webpack_require__(591);
 
+	var _userlogoutactions = __webpack_require__(593);
+
 	var _userlogin = __webpack_require__(590);
 
 	var _userlogin2 = _interopRequireDefault(_userlogin);
+
+	var _userlogout = __webpack_require__(594);
+
+	var _userlogout2 = _interopRequireDefault(_userlogout);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38244,9 +38255,7 @@
 	    value: function render() {
 	      var _props = this.props;
 	      var dispatch = _props.dispatch;
-	      var token = _props.token;
 	      var message = _props.message;
-	      var isFetching = _props.isFetching;
 	      var isAuthenticated = _props.isAuthenticated;
 
 
@@ -38258,9 +38267,9 @@
 	          onLoginClick: function onLoginClick(creds) {
 	            return dispatch((0, _userloginactions.fetchLogin)(creds));
 	          } }),
-	        isAuthenticated //&&
-	        //  <Logout onLogoutClick={() => dispatch(logoutUser())} />
-
+	        isAuthenticated && _react2.default.createElement(_userlogout2.default, { onLogoutClick: function onLogoutClick() {
+	            return dispatch((0, _userlogoutactions.logoutUser)());
+	          } })
 	      );
 	    }
 	  }]);
@@ -38277,14 +38286,12 @@
 	};
 
 	var mapStateToProps = function mapStateToProps(state) {
-	  var userLogin = state.userLogin;
-	  var isFetching = userLogin.isFetching;
-	  var isAuthenticated = userLogin.isAuthenticated;
-	  var token = userLogin.token;
-	  var message = userLogin.message;
+	  var userAuth = state.userAuth;
+	  var isFetching = userAuth.isFetching;
+	  var isAuthenticated = userAuth.isAuthenticated;
+	  var message = userAuth.message;
 
 	  return {
-	    token: token,
 	    message: message,
 	    isFetching: isFetching,
 	    isAuthenticated: isAuthenticated
@@ -38317,16 +38324,16 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var LoginBox = function (_Component) {
-	  _inherits(LoginBox, _Component);
+	var Login = function (_Component) {
+	  _inherits(Login, _Component);
 
-	  function LoginBox() {
-	    _classCallCheck(this, LoginBox);
+	  function Login() {
+	    _classCallCheck(this, Login);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LoginBox).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Login).apply(this, arguments));
 	  }
 
-	  _createClass(LoginBox, [{
+	  _createClass(Login, [{
 	    key: "handleEmailChange",
 	    value: function handleEmailChange(e) {
 	      this.setState({ email: e.target.value });
@@ -38416,13 +38423,13 @@
 	    }
 	  }]);
 
-	  return LoginBox;
+	  return Login;
 	}(_react.Component);
 
-	exports.default = LoginBox;
+	exports.default = Login;
 
 
-	LoginBox.propTypes = {
+	Login.propTypes = {
 	  onLoginClick: _react.PropTypes.func.isRequired,
 	  message: _react.PropTypes.string
 	};
@@ -38548,13 +38555,12 @@
 	  value: true
 	});
 	exports.logoutUser = logoutUser;
-	var LOGOUT_REQUEST = exports.LOGOUT_REQUEST = 'LOGOUT_REQUEST';
-	var LOGOUT_SUCCESS = exports.LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-	var LOGOUT_FAILURE = exports.LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+	var LOGOUT_USER_REQUEST = exports.LOGOUT_USER_REQUEST = 'LOGOUT_USER_REQUEST';
+	var LOGOUT_USER_SUCCESS = exports.LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS';
 
 	function requestLogout() {
 	  return {
-	    type: LOGOUT_REQUEST,
+	    type: LOGOUT_USER_REQUEST,
 	    isFetching: true,
 	    isAuthenticated: true
 	  };
@@ -38562,7 +38568,7 @@
 
 	function receiveLogout() {
 	  return {
-	    type: LOGOUT_SUCCESS,
+	    type: LOGOUT_USER_SUCCESS,
 	    isFetching: false,
 	    isAuthenticated: false
 	  };
@@ -38575,6 +38581,68 @@
 	    dispatch(receiveLogout());
 	  };
 	}
+
+/***/ },
+/* 594 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Logout = function (_Component) {
+	  _inherits(Logout, _Component);
+
+	  function Logout() {
+	    _classCallCheck(this, Logout);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Logout).apply(this, arguments));
+	  }
+
+	  _createClass(Logout, [{
+	    key: "render",
+	    value: function render() {
+	      var onLogoutClick = this.props.onLogoutClick;
+
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "col-sm-4" },
+	        _react2.default.createElement(
+	          "button",
+	          { onClick: function onClick() {
+	              return onLogoutClick();
+	            }, className: "btn btn-primary col-md-12" },
+	          "Log out"
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Logout;
+	}(_react.Component);
+
+	exports.default = Logout;
+
+
+	Logout.propTypes = {
+	  onLogoutClick: _react.PropTypes.func.isRequired
+	};
 
 /***/ }
 /******/ ]);
