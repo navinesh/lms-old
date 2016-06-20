@@ -17,25 +17,18 @@ class UserLoginBox extends Component {
 
     return (
       <div className="UserLoginBox">
-
-      {!isAuthenticated &&
-        <Login
-        message={message}
-        onLoginClick={ creds => dispatch(fetchLogin(creds)) } />
-      }
-
-      {isAuthenticated &&
-        <Logout onLogoutClick={() => dispatch(logoutUser())} />
-      }
+        {!isAuthenticated &&
+          <Login
+          message={message}
+          onLoginClick={ creds => dispatch(fetchLogin(creds)) } />
+        }
       </div>
     )
   }
 }
 
 UserLoginBox.propTypes = {
-  token: PropTypes.string,
   message: PropTypes.string,
-  isFetching: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 }
@@ -43,13 +36,11 @@ UserLoginBox.propTypes = {
 const mapStateToProps = (state) => {
   const {userAuth} = state
   const {
-    isFetching,
     isAuthenticated,
     message
   } = userAuth
   return {
     message,
-    isFetching,    
     isAuthenticated
   }
 }
