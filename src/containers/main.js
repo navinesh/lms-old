@@ -1,14 +1,44 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import LeaveCalendarContainer from './leavecalendarcontainer'
 import UserLoginBox from './userlogincontainer'
 
-export default class Main extends Component {
+class Main extends Component {
   render() {
+    const { isAuthenticated } = this.props
+
     return (
-      <div>
-        <LeaveCalendarContainer />
-        <UserLoginBox />
+      <div className="MainView">
+        {!isAuthenticated &&
+          <div className="row">
+            <div className="col-sm-8">
+              <LeaveCalendarContainer />
+            </div>
+            <div className="col-sm-4">
+              <UserLoginBox />
+            </div>
+          </div>
+        }
+        <div className="row">
+          <div className="col-sm-12">
+            {isAuthenticated &&
+              <LeaveCalendarContainer />
+            }
+          </div>
+        </div>
       </div>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  const {userAuth} = state
+  const {
+    isAuthenticated,
+  } = userAuth
+  return {
+    isAuthenticated
+  }
+}
+
+export default connect(mapStateToProps)(Main)
