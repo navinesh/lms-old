@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { fetchLogin } from '../actions/userloginactions'
-import LoginBox from '../components/userlogin'
+import { logoutUser } from '../actions/userlogoutactions'
+import Login from '../components/userlogin'
+import Logout from '../components/userlogout'
 
 var Loader = require('halogen/PulseLoader');
 
@@ -11,19 +13,19 @@ class UserLoginBox extends Component {
   }
 
   render() {
-    const { dispatch, token, message, isFetching, isAuthenticated } = this.props
+    const { dispatch, message, isAuthenticated } = this.props
 
     return (
       <div className="UserLoginBox">
 
       {!isAuthenticated &&
-        <LoginBox
+        <Login
         message={message}
         onLoginClick={ creds => dispatch(fetchLogin(creds)) } />
       }
 
-      {isAuthenticated //&&
-      //  <Logout onLogoutClick={() => dispatch(logoutUser())} />
+      {isAuthenticated &&
+        <Logout onLogoutClick={() => dispatch(logoutUser())} />
       }
       </div>
     )
@@ -39,17 +41,15 @@ UserLoginBox.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  const {userLogin} = state
+  const {userAuth} = state
   const {
     isFetching,
     isAuthenticated,
-    token: token,
     message
-  } = userLogin
+  } = userAuth
   return {
-    token,
     message,
-    isFetching,
+    isFetching,    
     isAuthenticated
   }
 }
