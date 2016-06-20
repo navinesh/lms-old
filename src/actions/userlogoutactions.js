@@ -1,10 +1,10 @@
-export const LOGOUT_REQUEST = 'LOGOUT_REQUEST'
-export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
-export const LOGOUT_FAILURE = 'LOGOUT_FAILURE'
+export const LOGOUT_USER_REQUEST = 'LOGOUT_USER_REQUEST'
+export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS'
+
 
 function requestLogout() {
   return {
-    type: LOGOUT_REQUEST,
+    type: LOGOUT_USER_REQUEST,
     isFetching: true,
     isAuthenticated: true
   }
@@ -12,7 +12,7 @@ function requestLogout() {
 
 function receiveLogout() {
   return {
-    type: LOGOUT_SUCCESS,
+    type: LOGOUT_USER_SUCCESS,
     isFetching: false,
     isAuthenticated: false
   }
