@@ -16,7 +16,7 @@ class LeaveCalendarContainer extends Component {
   }
 
   render() {
-    const { records, isFetching, lastUpdated } = this.props
+    const { records, isFetching } = this.props
     return (
       <div className="LeaveCalendarContainer">
       {(isFetching ? <div className="col-sm-8"><Loader color="#0275d8" size="15px" margin="4px" /></div> : <LeaveCalendar records={records} />)}
@@ -28,7 +28,6 @@ class LeaveCalendarContainer extends Component {
 LeaveCalendarContainer.propTypes = {
   records: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.number,
   dispatch: PropTypes.func.isRequired
 }
 
@@ -36,13 +35,11 @@ const mapStateToProps = (state) => {
   const {leaveRecords} = state
   const {
     isFetching,
-    lastUpdated,
     items: records
   } = leaveRecords
   return {
     records,
-    isFetching,
-    lastUpdated
+    isFetching
   }
 }
 
