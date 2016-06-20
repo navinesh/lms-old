@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
-export default class LoginBox extends Component {
+export default class Login extends Component {
 
   handleEmailChange (e) {
     this.setState({email: e.target.value});
@@ -25,7 +25,7 @@ export default class LoginBox extends Component {
 
   render(){
     return(
-      <div className="col-sm-4">
+      <div className="Login">
         <div className="card card-block">
           <form onSubmit={this.handleSubmit.bind(this)}>
             <fieldset className="form-group">
@@ -53,7 +53,7 @@ export default class LoginBox extends Component {
   }
 }
 
-LoginBox.propTypes = {
+Login.propTypes = {
 onLoginClick: PropTypes.func.isRequired,
 message: PropTypes.string
 }
