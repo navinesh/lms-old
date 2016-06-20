@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { REQUEST_LEAVE_CALENDAR, RECEIVE_LEAVE_CALENDAR } from '../actions/leavecalendaractions'
 import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE } from '../actions/userloginactions'
-import { LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, LOGOUT_USER_FAILURE } from '../actions/userlogoutactions'
+import { LOGOUT_USER_SUCCESS } from '../actions/userlogoutactions'
 
 function leaveRecords(state = {isFetching: false,
   items: []}, action) {
@@ -19,8 +19,9 @@ function leaveRecords(state = {isFetching: false,
   }
 }
 
-function userLogin(state = {isFetching: false, isAuthenticated: false,
-  token: '', message: ''}, action) {
+function userAuth(state = {isFetching: false,
+  isAuthenticated: localStorage.getItem('token') ? true : false,
+  message: ''}, action) {
   switch (action.type) {
     case LOGIN_USER_REQUEST:
     return { ...state,
@@ -30,13 +31,17 @@ function userLogin(state = {isFetching: false, isAuthenticated: false,
     return { ...state,
       isFetching: false,
       isAuthenticated: true,
-      token: action.token,
       message: 'Login successful!'}
       case LOGIN_USER_FAILURE:
       return { ...state,
         isFetching: false,
         isAuthenticated: false,
         message: action.message}
+      case LOGOUT_USER_SUCCESS:
+      return { ...state,
+        isFetching: false,
+        isAuthenticated: false,
+        message: ''}
     default:
       return state
   }
@@ -44,7 +49,7 @@ function userLogin(state = {isFetching: false, isAuthenticated: false,
 
 const rootReducer = combineReducers({
   leaveRecords,
-  userLogin
+  userAuth
 })
 
 export default rootReducer
