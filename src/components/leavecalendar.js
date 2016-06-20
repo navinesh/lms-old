@@ -26,7 +26,7 @@ class RecordList extends Component {
       );
     });
     return (
-    <div className="col-sm-8">
+    <div className="RecordList">
       <table className="table table-bordered table-hover" style={{fontSize: '15px'}}>
         <thead className="thead-default">
           <tr>
