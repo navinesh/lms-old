@@ -19,7 +19,7 @@ class LeaveCalendarContainer extends Component {
     const { records, isFetching } = this.props
     return (
       <div className="LeaveCalendarContainer">
-      {(isFetching ? <div className="col-sm-8"><Loader color="#0275d8" size="15px" margin="4px" /></div> : <LeaveCalendar records={records} />)}
+      {(isFetching ? <div className="col-sm-offset-5"><Loader color="#0275d8" size="16px" margin="4px" /></div> : <LeaveCalendar records={records} />)}
       </div>
     )
   }
