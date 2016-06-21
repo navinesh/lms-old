@@ -90,6 +90,10 @@
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
+	var _userloginbox = __webpack_require__(601);
+
+	var _userloginbox2 = _interopRequireDefault(_userloginbox);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var store = (0, _configureStore2.default)();
@@ -105,7 +109,7 @@
 	      { path: '/', component: _header2.default },
 	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _main2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/leavecalendar', component: _leavecalendarcontainer2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _userlogincontainer2.default })
+	      _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _userloginbox2.default })
 	    )
 	  )
 	), document.getElementById('root'));
@@ -38789,6 +38793,89 @@
 	};
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
+
+/***/ },
+/* 601 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(466);
+
+	var _leavecalendarcontainer = __webpack_require__(588);
+
+	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
+
+	var _userlogincontainer = __webpack_require__(597);
+
+	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
+
+	var _header = __webpack_require__(600);
+
+	var _header2 = _interopRequireDefault(_header);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var MainUserLoginBox = function (_Component) {
+	  _inherits(MainUserLoginBox, _Component);
+
+	  function MainUserLoginBox() {
+	    _classCallCheck(this, MainUserLoginBox);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(MainUserLoginBox).apply(this, arguments));
+	  }
+
+	  _createClass(MainUserLoginBox, [{
+	    key: 'render',
+	    value: function render() {
+	      var isAuthenticated = this.props.isAuthenticated;
+
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'MainView' },
+	        !isAuthenticated && _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-sm-offset-4 col-sm-4' },
+	            _react2.default.createElement(_userlogincontainer2.default, null)
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return MainUserLoginBox;
+	}(_react.Component);
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  var userAuth = state.userAuth;
+	  var isAuthenticated = userAuth.isAuthenticated;
+
+	  return {
+	    isAuthenticated: isAuthenticated
+	  };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MainUserLoginBox);
 
 /***/ }
 /******/ ]);
