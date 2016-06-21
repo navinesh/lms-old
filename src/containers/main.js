@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import LeaveCalendarContainer from './leavecalendarcontainer'
 import UserLoginBox from './userlogincontainer'
+import Header from './header'
 
 class Main extends Component {
   render() {
@@ -19,13 +20,13 @@ class Main extends Component {
             </div>
           </div>
         }
-        <div className="row">
-          <div className="col-sm-12">
-            {isAuthenticated &&
+        {isAuthenticated &&
+          <div className="row">
+            <div className="col-sm-12">
               <LeaveCalendarContainer />
-            }
           </div>
         </div>
+        }
       </div>
     )
   }
