@@ -10,6 +10,7 @@ import Header from './containers/header'
 import Main from './containers/main'
 import LeaveCalendarContainer from './containers/leavecalendarcontainer'
 import UserLoginBox from './containers/userlogincontainer'
+import MainUserLoginBox from './containers/userloginbox'
 
 const store = configureStore()
 
@@ -19,7 +20,7 @@ render(
       <Route path="/" component={Header}>
         <IndexRoute component={Main} />
         <Route path="/leavecalendar" component={LeaveCalendarContainer} />
-        <Route path="/login" component={UserLoginBox} />
+        <Route path="/login" component={MainUserLoginBox} />
       </Route>
     </Router>
   </Provider>,
