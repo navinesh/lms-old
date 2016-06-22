@@ -37809,16 +37809,16 @@
 	                )
 	              ),
 	              isAuthenticated && _react2.default.createElement(
+	                _reactRouter.Link,
+	                { className: 'nav-item nav-link', to: '/leavecalendar' },
+	                'Leave calendar'
+	              ),
+	              isAuthenticated && _react2.default.createElement(
 	                'button',
 	                { className: 'btn btn-link pull-xs-right', onClick: function onClick() {
 	                    return dispatch((0, _userlogoutactions.logoutUser)());
 	                  } },
 	                'Sign out'
-	              ),
-	              isAuthenticated && _react2.default.createElement(
-	                _reactRouter.Link,
-	                { className: 'nav-item nav-link pull-xs-right', to: '/leavecalendar' },
-	                'Leave calendar'
 	              )
 	            )
 	          )
