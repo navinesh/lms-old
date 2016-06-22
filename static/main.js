@@ -37759,9 +37759,9 @@
 
 	var _userlogoutactions = __webpack_require__(580);
 
-	var _userlogout = __webpack_require__(594);
+	var _leavecalendarcontainer = __webpack_require__(583);
 
-	var _userlogout2 = _interopRequireDefault(_userlogout);
+	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37800,20 +37800,25 @@
 	              'div',
 	              { className: 'nav navbar-nav' },
 	              _react2.default.createElement(
-	                'a',
-	                { className: 'nav-item nav-link active', href: '/' },
+	                _reactRouter.Link,
+	                { className: 'nav-item nav-link active', to: '/' },
 	                _react2.default.createElement(
 	                  'h5',
 	                  null,
 	                  'Leave management system'
 	                )
 	              ),
-	              _react2.default.createElement(
-	                'a',
-	                { className: 'nav-item nav-link pull-xs-right' },
-	                isAuthenticated && _react2.default.createElement(_userlogout2.default, { onLogoutClick: function onLogoutClick() {
+	              isAuthenticated && _react2.default.createElement(
+	                'button',
+	                { className: 'btn btn-link pull-xs-right', onClick: function onClick() {
 	                    return dispatch((0, _userlogoutactions.logoutUser)());
-	                  } })
+	                  } },
+	                'Sign out'
+	              ),
+	              isAuthenticated && _react2.default.createElement(
+	                _reactRouter.Link,
+	                { className: 'nav-item nav-link pull-xs-right', to: '/leavecalendar' },
+	                'Leave calendar'
 	              )
 	            )
 	          )
@@ -37997,7 +38002,7 @@
 	        isFetching ? _react2.default.createElement(
 	          'div',
 	          { className: 'col-sm-offset-5' },
-	          _react2.default.createElement(Loader, { color: '#0275d8', size: '14px', margin: '4px' })
+	          _react2.default.createElement(Loader, { color: '#0275d8', size: '12px', margin: '4px' })
 	        ) : _react2.default.createElement(_leavecalendar2.default, { records: records })
 	      );
 	    }
