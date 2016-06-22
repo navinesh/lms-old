@@ -70,27 +70,27 @@
 
 	var _reactRouter = __webpack_require__(492);
 
-	var _configureStore = __webpack_require__(558);
+	var _configureStore = __webpack_require__(553);
 
 	var _configureStore2 = _interopRequireDefault(_configureStore);
 
-	var _header = __webpack_require__(600);
+	var _header = __webpack_require__(581);
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _main = __webpack_require__(587);
+	var _main = __webpack_require__(582);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _leavecalendarcontainer = __webpack_require__(588);
+	var _leavecalendarcontainer = __webpack_require__(583);
 
 	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
-	var _userlogincontainer = __webpack_require__(597);
+	var _userlogincontainer = __webpack_require__(592);
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
-	var _userloginbox = __webpack_require__(601);
+	var _userloginbox = __webpack_require__(595);
 
 	var _userloginbox2 = _interopRequireDefault(_userloginbox);
 
@@ -35548,12 +35548,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 553 */,
-/* 554 */,
-/* 555 */,
-/* 556 */,
-/* 557 */,
-/* 558 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35565,15 +35560,15 @@
 
 	var _redux = __webpack_require__(473);
 
-	var _reduxThunk = __webpack_require__(559);
+	var _reduxThunk = __webpack_require__(554);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reduxLogger = __webpack_require__(560);
+	var _reduxLogger = __webpack_require__(555);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-	var _reducers = __webpack_require__(561);
+	var _reducers = __webpack_require__(556);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -35594,7 +35589,7 @@
 	}
 
 /***/ },
-/* 559 */
+/* 554 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -35622,7 +35617,7 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 560 */
+/* 555 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -35855,7 +35850,7 @@
 	module.exports = createLogger;
 
 /***/ },
-/* 561 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35868,11 +35863,11 @@
 
 	var _redux = __webpack_require__(473);
 
-	var _leavecalendaractions = __webpack_require__(562);
+	var _leavecalendaractions = __webpack_require__(557);
 
-	var _userloginactions = __webpack_require__(565);
+	var _userloginactions = __webpack_require__(560);
 
-	var _userlogoutactions = __webpack_require__(585);
+	var _userlogoutactions = __webpack_require__(580);
 
 	function leaveRecords() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? { isFetching: false,
@@ -35932,7 +35927,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 562 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35945,7 +35940,7 @@
 	exports.receiveLeave = receiveLeave;
 	exports.fetchLeave = fetchLeave;
 
-	var _isomorphicFetch = __webpack_require__(563);
+	var _isomorphicFetch = __webpack_require__(558);
 
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
@@ -35980,19 +35975,19 @@
 	}
 
 /***/ },
-/* 563 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// the whatwg-fetch polyfill installs the fetch() function
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(564);
+	__webpack_require__(559);
 	module.exports = self.fetch.bind(self);
 
 
 /***/ },
-/* 564 */
+/* 559 */
 /***/ function(module, exports) {
 
 	(function(self) {
@@ -36431,7 +36426,7 @@
 
 
 /***/ },
-/* 565 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36445,7 +36440,7 @@
 	exports.loginUserError = loginUserError;
 	exports.fetchLogin = fetchLogin;
 
-	var _axios = __webpack_require__(566);
+	var _axios = __webpack_require__(561);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -36494,25 +36489,25 @@
 	}
 
 /***/ },
-/* 566 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(567);
+	module.exports = __webpack_require__(562);
 
 /***/ },
-/* 567 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(568);
-	var utils = __webpack_require__(569);
-	var dispatchRequest = __webpack_require__(571);
-	var InterceptorManager = __webpack_require__(580);
-	var isAbsoluteURL = __webpack_require__(581);
-	var combineURLs = __webpack_require__(582);
-	var bind = __webpack_require__(583);
-	var transformData = __webpack_require__(575);
+	var defaults = __webpack_require__(563);
+	var utils = __webpack_require__(564);
+	var dispatchRequest = __webpack_require__(566);
+	var InterceptorManager = __webpack_require__(575);
+	var isAbsoluteURL = __webpack_require__(576);
+	var combineURLs = __webpack_require__(577);
+	var bind = __webpack_require__(578);
+	var transformData = __webpack_require__(570);
 
 	function Axios(defaultConfig) {
 	  this.defaults = utils.merge({}, defaultConfig);
@@ -36601,7 +36596,7 @@
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(584);
+	axios.spread = __webpack_require__(579);
 
 	// Provide aliases for supported request methods
 	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
@@ -36629,13 +36624,13 @@
 
 
 /***/ },
-/* 568 */
+/* 563 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(569);
-	var normalizeHeaderName = __webpack_require__(570);
+	var utils = __webpack_require__(564);
+	var normalizeHeaderName = __webpack_require__(565);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -36707,7 +36702,7 @@
 
 
 /***/ },
-/* 569 */
+/* 564 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -36990,12 +36985,12 @@
 
 
 /***/ },
-/* 570 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(564);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -37008,7 +37003,7 @@
 
 
 /***/ },
-/* 571 */
+/* 566 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -37030,10 +37025,10 @@
 	        adapter = config.adapter;
 	      } else if (typeof XMLHttpRequest !== 'undefined') {
 	        // For browsers use XHR adapter
-	        adapter = __webpack_require__(572);
+	        adapter = __webpack_require__(567);
 	      } else if (typeof process !== 'undefined') {
 	        // For node use HTTP adapter
-	        adapter = __webpack_require__(572);
+	        adapter = __webpack_require__(567);
 	      }
 
 	      if (typeof adapter === 'function') {
@@ -37049,18 +37044,18 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(296)))
 
 /***/ },
-/* 572 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(569);
-	var buildURL = __webpack_require__(573);
-	var parseHeaders = __webpack_require__(574);
-	var transformData = __webpack_require__(575);
-	var isURLSameOrigin = __webpack_require__(576);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(577);
-	var settle = __webpack_require__(578);
+	var utils = __webpack_require__(564);
+	var buildURL = __webpack_require__(568);
+	var parseHeaders = __webpack_require__(569);
+	var transformData = __webpack_require__(570);
+	var isURLSameOrigin = __webpack_require__(571);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(572);
+	var settle = __webpack_require__(573);
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  var requestData = config.data;
@@ -37157,7 +37152,7 @@
 	  // This is only done if running in a standard browser environment.
 	  // Specifically not if we're in a web worker, or react-native.
 	  if (utils.isStandardBrowserEnv()) {
-	    var cookies = __webpack_require__(579);
+	    var cookies = __webpack_require__(574);
 
 	    // Add xsrf header
 	    var xsrfValue = config.withCredentials || isURLSameOrigin(config.url) ?
@@ -37218,12 +37213,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(296)))
 
 /***/ },
-/* 573 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(564);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -37292,12 +37287,12 @@
 
 
 /***/ },
-/* 574 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(564);
 
 	/**
 	 * Parse headers into an object
@@ -37335,12 +37330,12 @@
 
 
 /***/ },
-/* 575 */
+/* 570 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(564);
 
 	/**
 	 * Transform the data for a request or a response
@@ -37361,12 +37356,12 @@
 
 
 /***/ },
-/* 576 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(564);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -37435,7 +37430,7 @@
 
 
 /***/ },
-/* 577 */
+/* 572 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37477,7 +37472,7 @@
 
 
 /***/ },
-/* 578 */
+/* 573 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37501,12 +37496,12 @@
 
 
 /***/ },
-/* 579 */
+/* 574 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(564);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -37560,12 +37555,12 @@
 
 
 /***/ },
-/* 580 */
+/* 575 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(564);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -37618,7 +37613,7 @@
 
 
 /***/ },
-/* 581 */
+/* 576 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37638,7 +37633,7 @@
 
 
 /***/ },
-/* 582 */
+/* 577 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37656,7 +37651,7 @@
 
 
 /***/ },
-/* 583 */
+/* 578 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37673,7 +37668,7 @@
 
 
 /***/ },
-/* 584 */
+/* 579 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37706,7 +37701,7 @@
 
 
 /***/ },
-/* 585 */
+/* 580 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37743,8 +37738,7 @@
 	}
 
 /***/ },
-/* 586 */,
-/* 587 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37761,15 +37755,115 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _leavecalendarcontainer = __webpack_require__(588);
+	var _reactRouter = __webpack_require__(492);
+
+	var _userlogoutactions = __webpack_require__(580);
+
+	var _userlogout = __webpack_require__(594);
+
+	var _userlogout2 = _interopRequireDefault(_userlogout);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Header = function (_Component) {
+	  _inherits(Header, _Component);
+
+	  function Header() {
+	    _classCallCheck(this, Header);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).apply(this, arguments));
+	  }
+
+	  _createClass(Header, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var isAuthenticated = _props.isAuthenticated;
+	      var dispatch = _props.dispatch;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'Header' },
+	        _react2.default.createElement(
+	          'nav',
+	          { className: 'navbar navbar-fixed-top' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'container' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'nav navbar-nav' },
+	              _react2.default.createElement(
+	                'a',
+	                { className: 'nav-item nav-link active', href: '/' },
+	                _react2.default.createElement(
+	                  'h5',
+	                  null,
+	                  'Leave management system'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'a',
+	                { className: 'nav-item nav-link pull-xs-right' },
+	                isAuthenticated && _react2.default.createElement(_userlogout2.default, { onLogoutClick: function onLogoutClick() {
+	                    return dispatch((0, _userlogoutactions.logoutUser)());
+	                  } })
+	              )
+	            )
+	          )
+	        ),
+	        this.props.children
+	      );
+	    }
+	  }]);
+
+	  return Header;
+	}(_react.Component);
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  var userAuth = state.userAuth;
+	  var isAuthenticated = userAuth.isAuthenticated;
+
+	  return {
+	    isAuthenticated: isAuthenticated
+	  };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
+
+/***/ },
+/* 582 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(466);
+
+	var _leavecalendarcontainer = __webpack_require__(583);
 
 	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
-	var _userlogincontainer = __webpack_require__(597);
+	var _userlogincontainer = __webpack_require__(592);
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
-	var _header = __webpack_require__(600);
+	var _header = __webpack_require__(581);
 
 	var _header2 = _interopRequireDefault(_header);
 
@@ -37841,7 +37935,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Main);
 
 /***/ },
-/* 588 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37858,9 +37952,9 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _leavecalendaractions = __webpack_require__(562);
+	var _leavecalendaractions = __webpack_require__(557);
 
-	var _leavecalendar = __webpack_require__(589);
+	var _leavecalendar = __webpack_require__(584);
 
 	var _leavecalendar2 = _interopRequireDefault(_leavecalendar);
 
@@ -37872,7 +37966,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Loader = __webpack_require__(590);
+	var Loader = __webpack_require__(585);
 
 	var LeaveCalendarContainer = function (_Component) {
 	  _inherits(LeaveCalendarContainer, _Component);
@@ -37932,7 +38026,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeaveCalendarContainer);
 
 /***/ },
-/* 589 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38110,14 +38204,14 @@
 	exports.default = LeaveCalendar;
 
 /***/ },
-/* 590 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(300);
-	var assign = __webpack_require__(591);
-	var insertKeyframesRule = __webpack_require__(594);
+	var assign = __webpack_require__(586);
+	var insertKeyframesRule = __webpack_require__(589);
 
 	/**
 	 * @type {Object}
@@ -38231,12 +38325,12 @@
 	module.exports = Loader;
 
 /***/ },
-/* 591 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var getVendorPropertyName = __webpack_require__(592);
+	var getVendorPropertyName = __webpack_require__(587);
 
 	module.exports = function(target, sources) {
 	  var to = Object(target);
@@ -38267,12 +38361,12 @@
 
 
 /***/ },
-/* 592 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var builtinStyle = __webpack_require__(593);
+	var builtinStyle = __webpack_require__(588);
 	var prefixes = ['Moz', 'Webkit', 'O', 'ms'];
 	var domVendorPrefix;
 
@@ -38310,7 +38404,7 @@
 
 
 /***/ },
-/* 593 */
+/* 588 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38319,13 +38413,13 @@
 
 
 /***/ },
-/* 594 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var insertRule = __webpack_require__(595);
-	var vendorPrefix = __webpack_require__(596)();
+	var insertRule = __webpack_require__(590);
+	var vendorPrefix = __webpack_require__(591)();
 	var index = 0;
 
 	module.exports = function(keyframes) {
@@ -38355,7 +38449,7 @@
 
 
 /***/ },
-/* 595 */
+/* 590 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38380,7 +38474,7 @@
 
 
 /***/ },
-/* 596 */
+/* 591 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38399,7 +38493,7 @@
 
 
 /***/ },
-/* 597 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38416,15 +38510,15 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _userloginactions = __webpack_require__(565);
+	var _userloginactions = __webpack_require__(560);
 
-	var _userlogoutactions = __webpack_require__(585);
+	var _userlogoutactions = __webpack_require__(580);
 
-	var _userlogin = __webpack_require__(598);
+	var _userlogin = __webpack_require__(593);
 
 	var _userlogin2 = _interopRequireDefault(_userlogin);
 
-	var _userlogout = __webpack_require__(599);
+	var _userlogout = __webpack_require__(594);
 
 	var _userlogout2 = _interopRequireDefault(_userlogout);
 
@@ -38436,7 +38530,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Loader = __webpack_require__(590);
+	var Loader = __webpack_require__(585);
 
 	var UserLoginBox = function (_Component) {
 	  _inherits(UserLoginBox, _Component);
@@ -38491,7 +38585,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserLoginBox);
 
 /***/ },
-/* 598 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38625,7 +38719,7 @@
 	};
 
 /***/ },
-/* 599 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38663,15 +38757,11 @@
 	      var onLogoutClick = this.props.onLogoutClick;
 
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "Logout" },
-	        _react2.default.createElement(
-	          "button",
-	          { onClick: function onClick() {
-	              return onLogoutClick();
-	            }, className: "btn btn-primary-outline" },
-	          "Log out"
-	        )
+	        "button",
+	        { onClick: function onClick() {
+	            return onLogoutClick();
+	          }, className: "btn btn-primary-outline" },
+	        "Log out"
 	      );
 	    }
 	  }]);
@@ -38687,7 +38777,7 @@
 	};
 
 /***/ },
-/* 600 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38704,123 +38794,15 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _reactRouter = __webpack_require__(492);
-
-	var _userlogoutactions = __webpack_require__(585);
-
-	var _userlogout = __webpack_require__(599);
-
-	var _userlogout2 = _interopRequireDefault(_userlogout);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Header = function (_Component) {
-	  _inherits(Header, _Component);
-
-	  function Header() {
-	    _classCallCheck(this, Header);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).apply(this, arguments));
-	  }
-
-	  _createClass(Header, [{
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props;
-	      var isAuthenticated = _props.isAuthenticated;
-	      var dispatch = _props.dispatch;
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'Header' },
-	          _react2.default.createElement(
-	            'nav',
-	            { className: 'navbar navbar-fixed-top' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'container' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'nav navbar-nav' },
-	                _react2.default.createElement(
-	                  'a',
-	                  { className: 'nav-item nav-link active', href: '/' },
-	                  _react2.default.createElement(
-	                    'h5',
-	                    null,
-	                    'Leave management system'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'a',
-	                  { className: 'nav-item pull-xs-right' },
-	                  isAuthenticated && _react2.default.createElement(_userlogout2.default, { onLogoutClick: function onLogoutClick() {
-	                      return dispatch((0, _userlogoutactions.logoutUser)());
-	                    } })
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          this.props.children
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Header;
-	}(_react.Component);
-
-	var mapStateToProps = function mapStateToProps(state) {
-	  var userAuth = state.userAuth;
-	  var isAuthenticated = userAuth.isAuthenticated;
-
-	  return {
-	    isAuthenticated: isAuthenticated
-	  };
-	};
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
-
-/***/ },
-/* 601 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(300);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(466);
-
-	var _leavecalendarcontainer = __webpack_require__(588);
+	var _leavecalendarcontainer = __webpack_require__(583);
 
 	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
-	var _userlogincontainer = __webpack_require__(597);
+	var _userlogincontainer = __webpack_require__(592);
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
-	var _header = __webpack_require__(600);
+	var _header = __webpack_require__(581);
 
 	var _header2 = _interopRequireDefault(_header);
 
