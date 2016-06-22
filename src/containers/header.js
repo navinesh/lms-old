@@ -14,14 +14,14 @@ class Header extends Component {
             <div className="nav navbar-nav">
               <Link className="nav-item nav-link active" to="/"><h5>Leave management system</h5></Link>
               {isAuthenticated &&
+                <Link className="nav-item nav-link" to="/leavecalendar">
+                  Leave calendar
+                </Link>
+              }
+              {isAuthenticated &&
                 <button className="btn btn-link pull-xs-right" onClick={() => dispatch(logoutUser())}>
                   Sign out
                 </button>
-              }
-              {isAuthenticated &&
-                <Link className="nav-item nav-link pull-xs-right" to="/leavecalendar">
-                  Leave calendar
-                </Link>
               }
             </div>
           </div>
