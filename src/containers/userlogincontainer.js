@@ -3,17 +3,15 @@ import { connect } from 'react-redux'
 import { fetchLogin } from '../actions/userloginactions'
 import { logoutUser } from '../actions/userlogoutactions'
 import Login from '../components/userlogin'
-import Logout from '../components/userlogout'
-
-var Loader = require('halogen/PulseLoader');
 
 class UserLoginBox extends Component {
   render() {
-    const { dispatch, message, isAuthenticated } = this.props
+    const { dispatch, message, isAuthenticated, isFetching } = this.props
     return (
       <div className="UserLoginBox">
         {!isAuthenticated &&
           <Login
+          isFetching={isFetching}
           message={message}
           onLoginClick={ creds => dispatch(fetchLogin(creds)) } />
         }
@@ -26,11 +24,13 @@ const mapStateToProps = (state) => {
   const {userAuth} = state
   const {
     isAuthenticated,
-    message
+    message,
+    isFetching
   } = userAuth
   return {
     message,
-    isAuthenticated
+    isAuthenticated,
+    isFetching
   }
 }
 
