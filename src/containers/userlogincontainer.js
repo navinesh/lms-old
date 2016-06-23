@@ -8,13 +8,8 @@ import Logout from '../components/userlogout'
 var Loader = require('halogen/PulseLoader');
 
 class UserLoginBox extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { dispatch, message, isAuthenticated } = this.props
-
     return (
       <div className="UserLoginBox">
         {!isAuthenticated &&
@@ -25,12 +20,6 @@ class UserLoginBox extends Component {
       </div>
     )
   }
-}
-
-UserLoginBox.propTypes = {
-  message: PropTypes.string,
-  isAuthenticated: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {

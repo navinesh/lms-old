@@ -37894,7 +37894,6 @@
 	    value: function render() {
 	      var isAuthenticated = this.props.isAuthenticated;
 
-
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'MainView' },
@@ -38526,10 +38525,10 @@
 	var UserLoginBox = function (_Component) {
 	  _inherits(UserLoginBox, _Component);
 
-	  function UserLoginBox(props) {
+	  function UserLoginBox() {
 	    _classCallCheck(this, UserLoginBox);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserLoginBox).call(this, props));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserLoginBox).apply(this, arguments));
 	  }
 
 	  _createClass(UserLoginBox, [{
@@ -38539,7 +38538,6 @@
 	      var dispatch = _props.dispatch;
 	      var message = _props.message;
 	      var isAuthenticated = _props.isAuthenticated;
-
 
 	      return _react2.default.createElement(
 	        'div',
@@ -38555,12 +38553,6 @@
 
 	  return UserLoginBox;
 	}(_react.Component);
-
-	UserLoginBox.propTypes = {
-	  message: _react.PropTypes.string,
-	  isAuthenticated: _react.PropTypes.bool.isRequired,
-	  dispatch: _react.PropTypes.func.isRequired
-	};
 
 	var mapStateToProps = function mapStateToProps(state) {
 	  var userAuth = state.userAuth;
@@ -38818,7 +38810,6 @@
 	    key: 'render',
 	    value: function render() {
 	      var isAuthenticated = this.props.isAuthenticated;
-
 
 	      return _react2.default.createElement(
 	        'div',

@@ -7,7 +7,6 @@ import Header from './header'
 class Main extends Component {
   render() {
     const { isAuthenticated } = this.props
-
     return (
       <div className="MainView">
         {!isAuthenticated &&
