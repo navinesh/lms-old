@@ -38028,7 +38028,7 @@
 /* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -38058,13 +38058,13 @@
 	  }
 
 	  _createClass(Record, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "tr",
+	        'tr',
 	        null,
 	        _react2.default.createElement(
-	          "th",
+	          'th',
 	          null,
 	          this.props.children
 	        )
@@ -38085,86 +38085,82 @@
 	  }
 
 	  _createClass(RecordList, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      var itemNodes = this.props.records.map(function (record) {
 	        return _react2.default.createElement(
-	          "tr",
+	          'tr',
 	          { key: record.id },
 	          _react2.default.createElement(
-	            "td",
+	            'td',
 	            null,
 	            record.user.othernames,
-	            " ",
+	            ' ',
 	            record.user.surname
 	          ),
 	          _react2.default.createElement(
-	            "td",
+	            'td',
 	            null,
 	            record.leave_name
 	          ),
 	          _react2.default.createElement(
-	            "td",
+	            'td',
 	            null,
 	            record.start_date
 	          ),
 	          _react2.default.createElement(
-	            "td",
+	            'td',
 	            null,
 	            record.end_date
 	          ),
 	          _react2.default.createElement(
-	            "td",
+	            'td',
 	            null,
 	            record.leave_days,
-	            " day(s)"
+	            ' day(s)'
 	          )
 	        );
 	      });
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "RecordList" },
+	        'table',
+	        { className: 'table table-bordered table-hover', style: { fontSize: '15px' } },
 	        _react2.default.createElement(
-	          "table",
-	          { className: "table table-bordered table-hover", style: { fontSize: '15px' } },
+	          'thead',
+	          { className: 'thead-default' },
 	          _react2.default.createElement(
-	            "thead",
-	            { className: "thead-default" },
-	            _react2.default.createElement(
-	              "tr",
-	              null,
-	              _react2.default.createElement(
-	                "th",
-	                null,
-	                "Name"
-	              ),
-	              _react2.default.createElement(
-	                "th",
-	                null,
-	                "Leave type"
-	              ),
-	              _react2.default.createElement(
-	                "th",
-	                null,
-	                "Start date"
-	              ),
-	              _react2.default.createElement(
-	                "th",
-	                null,
-	                "End date"
-	              ),
-	              _react2.default.createElement(
-	                "th",
-	                null,
-	                "Duration"
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            "tbody",
+	            'tr',
 	            null,
-	            itemNodes
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Name'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Leave type'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Start date'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'End date'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Duration'
+	            )
 	          )
+	        ),
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          itemNodes
 	        )
 	      );
 	    }
@@ -38183,13 +38179,9 @@
 	  }
 
 	  _createClass(LeaveCalendar, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "leaveCalendar" },
-	        _react2.default.createElement(RecordList, { records: this.props.records })
-	      );
+	      return _react2.default.createElement(RecordList, { records: this.props.records });
 	    }
 	  }]);
 
