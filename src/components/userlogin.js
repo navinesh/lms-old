@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+var Loader = require('halogen/ClipLoader');
 
 export default class Login extends Component {
 
@@ -45,7 +46,13 @@ export default class Login extends Component {
               <button type="submit" className="btn btn-primary col-sm-12">Log in</button>
             </fieldset>
           </form>
-          <div className="text-danger">{this.props.message}</div>
+          <div className="text-danger">
+            {this.props.isFetching ?
+              <div className="col-sm-offset-6">
+                <Loader color="#0275d8" size="20px" />
+              </div>:
+              this.props.message}
+          </div>
         </div>
         <a href="/login" className="btn btn-primary-outline col-md-12">Forgot your password?</a>
       </div>
@@ -55,5 +62,6 @@ export default class Login extends Component {
 
 Login.propTypes = {
 onLoginClick: PropTypes.func.isRequired,
-message: PropTypes.string
+message: PropTypes.string,
+isFetching: PropTypes.bool.isRequired
 }
