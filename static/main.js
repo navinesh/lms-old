@@ -37976,10 +37976,10 @@
 	var LeaveCalendarContainer = function (_Component) {
 	  _inherits(LeaveCalendarContainer, _Component);
 
-	  function LeaveCalendarContainer(props) {
+	  function LeaveCalendarContainer() {
 	    _classCallCheck(this, LeaveCalendarContainer);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveCalendarContainer).call(this, props));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveCalendarContainer).apply(this, arguments));
 	  }
 
 	  _createClass(LeaveCalendarContainer, [{
@@ -38010,12 +38010,6 @@
 
 	  return LeaveCalendarContainer;
 	}(_react.Component);
-
-	LeaveCalendarContainer.propTypes = {
-	  records: _react.PropTypes.array.isRequired,
-	  isFetching: _react.PropTypes.bool.isRequired,
-	  dispatch: _react.PropTypes.func.isRequired
-	};
 
 	var mapStateToProps = function mapStateToProps(state) {
 	  var leaveRecords = state.leaveRecords;

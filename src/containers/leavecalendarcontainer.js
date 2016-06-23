@@ -6,9 +6,6 @@ import LeaveCalendar from '../components/leavecalendar'
 var Loader = require('halogen/PulseLoader');
 
 class LeaveCalendarContainer extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     const { dispatch } = this.props
@@ -23,12 +20,6 @@ class LeaveCalendarContainer extends Component {
       </div>
     )
   }
-}
-
-LeaveCalendarContainer.propTypes = {
-  records: PropTypes.array.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
