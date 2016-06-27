@@ -8,7 +8,7 @@ class Main extends Component {
   render() {
     const { isAuthenticated } = this.props
     return (
-      <div className="MainView">
+      <div className="Main">
         {!isAuthenticated &&
           <div className="row">
             <div className="col-sm-8">

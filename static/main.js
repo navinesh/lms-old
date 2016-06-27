@@ -37905,7 +37905,7 @@
 	        isFetching ? _react2.default.createElement(
 	          'div',
 	          { className: 'col-sm-offset-5' },
-	          _react2.default.createElement(Loader, { color: '#0275d8', size: '12px', margin: '4px' })
+	          _react2.default.createElement(Loader, { color: '#0275d8', size: '12px' })
 	        ) : _react2.default.createElement(_leavecalendar2.default, { records: records })
 	      );
 	    }
@@ -38440,7 +38440,7 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'MainView' },
+	        { className: 'Main' },
 	        !isAuthenticated && _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
@@ -38589,7 +38589,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Loader = __webpack_require__(596);
+	var Loader = __webpack_require__(594);
 
 	var Login = function (_Component) {
 	  _inherits(Login, _Component);
@@ -38707,90 +38707,7 @@
 	};
 
 /***/ },
-/* 594 */,
-/* 595 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(300);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(466);
-
-	var _leavecalendarcontainer = __webpack_require__(582);
-
-	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
-
-	var _userlogincontainer = __webpack_require__(592);
-
-	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
-
-	var _header = __webpack_require__(581);
-
-	var _header2 = _interopRequireDefault(_header);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var MainUserLoginBox = function (_Component) {
-	  _inherits(MainUserLoginBox, _Component);
-
-	  function MainUserLoginBox() {
-	    _classCallCheck(this, MainUserLoginBox);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(MainUserLoginBox).apply(this, arguments));
-	  }
-
-	  _createClass(MainUserLoginBox, [{
-	    key: 'render',
-	    value: function render() {
-	      var isAuthenticated = this.props.isAuthenticated;
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'MainView' },
-	        !isAuthenticated && _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-sm-offset-4 col-sm-4' },
-	            _react2.default.createElement(_userlogincontainer2.default, null)
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return MainUserLoginBox;
-	}(_react.Component);
-
-	var mapStateToProps = function mapStateToProps(state) {
-	  var userAuth = state.userAuth;
-	  var isAuthenticated = userAuth.isAuthenticated;
-
-	  return {
-	    isAuthenticated: isAuthenticated
-	  };
-	};
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MainUserLoginBox);
-
-/***/ },
-/* 596 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38904,6 +38821,88 @@
 	});
 
 	module.exports = Loader;
+
+/***/ },
+/* 595 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(466);
+
+	var _leavecalendarcontainer = __webpack_require__(582);
+
+	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
+
+	var _userlogincontainer = __webpack_require__(592);
+
+	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
+
+	var _header = __webpack_require__(581);
+
+	var _header2 = _interopRequireDefault(_header);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var MainUserLoginBox = function (_Component) {
+	  _inherits(MainUserLoginBox, _Component);
+
+	  function MainUserLoginBox() {
+	    _classCallCheck(this, MainUserLoginBox);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(MainUserLoginBox).apply(this, arguments));
+	  }
+
+	  _createClass(MainUserLoginBox, [{
+	    key: 'render',
+	    value: function render() {
+	      var isAuthenticated = this.props.isAuthenticated;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'MainView' },
+	        !isAuthenticated && _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-sm-offset-4 col-sm-4' },
+	            _react2.default.createElement(_userlogincontainer2.default, null)
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return MainUserLoginBox;
+	}(_react.Component);
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  var userAuth = state.userAuth;
+	  var isAuthenticated = userAuth.isAuthenticated;
+
+	  return {
+	    isAuthenticated: isAuthenticated
+	  };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MainUserLoginBox);
 
 /***/ }
 /******/ ]);
