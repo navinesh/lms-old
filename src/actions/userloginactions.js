@@ -14,7 +14,8 @@ export function requestUserLogin(creds){
 export function receiveUserLogin(data){
   return {
     type: LOGIN_USER_SUCCESS,
-    token: data.token
+    auth_token: data.auth_token,
+    user_id: data.user_id
   }
 }
 
@@ -37,7 +38,8 @@ export function fetchLogin(creds) {
           dispatch(loginUserError(response.data))
         }
         else {
-          localStorage.setItem('token', response.data.token)
+          localStorage.setItem('auth_token', response.data.auth_token)
+          localStorage.setItem('user_id', response.data.user_id)
           dispatch(receiveUserLogin(response.data))
         }
       })
