@@ -21,7 +21,8 @@ function receiveLogout() {
 export function logoutUser() {
   return dispatch => {
     dispatch(requestLogout())
-    localStorage.removeItem('token')
     dispatch(receiveLogout())
+    localStorage.removeItem('auth_token')
+    localStorage.removeItem('user_id')
   }
 }
