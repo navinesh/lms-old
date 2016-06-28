@@ -37818,7 +37818,7 @@
 	              ),
 	              isAuthenticated && _react2.default.createElement(
 	                'button',
-	                { className: 'btn btn-link pull-xs-right', onClick: function onClick() {
+	                { className: 'btn btn-primary-outline pull-xs-right', onClick: function onClick() {
 	                    return dispatch((0, _userlogoutactions.logoutUser)());
 	                  } },
 	                'Sign out'

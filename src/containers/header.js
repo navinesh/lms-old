@@ -19,7 +19,7 @@ class Header extends Component {
                 </Link>
               }
               {isAuthenticated &&
-                <button className="btn btn-link pull-xs-right" onClick={() => dispatch(logoutUser())}>
+                <button className="btn btn-primary-outline pull-xs-right" onClick={() => dispatch(logoutUser())}>
                   Sign out
                 </button>
               }
