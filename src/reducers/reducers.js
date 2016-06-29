@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
 
 import { REQUEST_LEAVE_CALENDAR, RECEIVE_LEAVE_CALENDAR } from '../actions/leavecalendaractions'
-import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE } from '../actions/userloginactions'
+import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE,
+        LOGIN_USER_REQUEST_FROM_TOKEN, LOGIN_USER_SUCCESS_FROM_TOKEN,
+        LOGIN_USER_FAILURE_FROM_TOKEN } from '../actions/userloginactions'
 import { LOGOUT_USER_SUCCESS } from '../actions/userlogoutactions'
 
 function leaveRecords(state = {isFetching: false,
@@ -33,16 +35,30 @@ function userAuth(state = {isFetching: false,
       isFetching: false,
       isAuthenticated: true,
       message: 'Login successful!'}
-      case LOGIN_USER_FAILURE:
-      return { ...state,
-        isFetching: false,
-        isAuthenticated: false,
-        message: action.message}
-      case LOGOUT_USER_SUCCESS:
-      return { ...state,
-        isFetching: false,
-        isAuthenticated: false,
-        message: ''}
+    case LOGIN_USER_FAILURE:
+    return { ...state,
+      isFetching: false,
+      isAuthenticated: false,
+      message: action.message}
+    case LOGOUT_USER_SUCCESS:
+    return { ...state,
+      isFetching: false,
+      isAuthenticated: false,
+      message: ''}
+    case LOGIN_USER_REQUEST_FROM_TOKEN:
+    return { ...state,
+      isFetching: true,
+      isAuthenticated: false}
+    case LOGIN_USER_SUCCESS_FROM_TOKEN:
+    return { ...state,
+      isFetching: false,
+      isAuthenticated: true,
+      message: 'Login successful!'}
+    case LOGIN_USER_FAILURE_FROM_TOKEN:
+    return { ...state,
+      isFetching: false,
+      isAuthenticated: false,
+      message: action.message}
     default:
       return state
   }
