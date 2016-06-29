@@ -35577,14 +35577,6 @@
 	function configureStore(preloadedState) {
 	  var store = (0, _redux.createStore)(_reducers2.default, preloadedState, (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger2.default)()));
 
-	  if (false) {
-	    // Enable Webpack hot module replacement for reducers
-	    module.hot.accept('../reducers', function () {
-	      var nextRootReducer = require('../reducers').default;
-	      store.replaceReducer(nextRootReducer);
-	    });
-	  }
-
 	  return store;
 	}
 
@@ -35914,6 +35906,20 @@
 	        isFetching: false,
 	        isAuthenticated: false,
 	        message: '' });
+	    case _userloginactions.LOGIN_USER_REQUEST_FROM_TOKEN:
+	      return _extends({}, state, {
+	        isFetching: true,
+	        isAuthenticated: false });
+	    case _userloginactions.LOGIN_USER_SUCCESS_FROM_TOKEN:
+	      return _extends({}, state, {
+	        isFetching: false,
+	        isAuthenticated: true,
+	        message: 'Login successful!' });
+	    case _userloginactions.LOGIN_USER_FAILURE_FROM_TOKEN:
+	      return _extends({}, state, {
+	        isFetching: false,
+	        isAuthenticated: false,
+	        message: action.message });
 	    default:
 	      return state;
 	  }
@@ -36434,11 +36440,15 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.LOGIN_USER_FAILURE = exports.LOGIN_USER_SUCCESS = exports.LOGIN_USER_REQUEST = undefined;
+	exports.LOGIN_USER_FAILURE_FROM_TOKEN = exports.LOGIN_USER_SUCCESS_FROM_TOKEN = exports.LOGIN_USER_REQUEST_FROM_TOKEN = exports.LOGIN_USER_FAILURE = exports.LOGIN_USER_SUCCESS = exports.LOGIN_USER_REQUEST = undefined;
 	exports.requestUserLogin = requestUserLogin;
 	exports.receiveUserLogin = receiveUserLogin;
 	exports.loginUserError = loginUserError;
+	exports.requestUserLoginFromToken = requestUserLoginFromToken;
+	exports.receiveUserLoginFromToken = receiveUserLoginFromToken;
+	exports.loginUserErrorFromToken = loginUserErrorFromToken;
 	exports.fetchLogin = fetchLogin;
+	exports.fetchLoginFromToken = fetchLoginFromToken;
 
 	var _axios = __webpack_require__(561);
 
@@ -36450,6 +36460,10 @@
 	var LOGIN_USER_SUCCESS = exports.LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 	var LOGIN_USER_FAILURE = exports.LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
 
+	var LOGIN_USER_REQUEST_FROM_TOKEN = exports.LOGIN_USER_REQUEST_FROM_TOKEN = 'LOGIN_USER_REQUEST_FROM_TOKEN';
+	var LOGIN_USER_SUCCESS_FROM_TOKEN = exports.LOGIN_USER_SUCCESS_FROM_TOKEN = 'LOGIN_USER_SUCCESS_FROM_TOKEN';
+	var LOGIN_USER_FAILURE_FROM_TOKEN = exports.LOGIN_USER_FAILURE_FROM_TOKEN = 'LOGIN_USER_FAILURE_FROM_TOKEN';
+
 	function requestUserLogin(creds) {
 	  return {
 	    type: LOGIN_USER_REQUEST,
@@ -36459,15 +36473,33 @@
 
 	function receiveUserLogin(data) {
 	  return {
-	    type: LOGIN_USER_SUCCESS,
-	    auth_token: data.auth_token,
-	    user_id: data.user_id
+	    type: LOGIN_USER_SUCCESS
 	  };
 	}
 
 	function loginUserError(data) {
 	  return {
 	    type: LOGIN_USER_FAILURE,
+	    message: data.message
+	  };
+	}
+
+	function requestUserLoginFromToken(auth_token) {
+	  return {
+	    type: LOGIN_USER_REQUEST_FROM_TOKEN,
+	    auth_token: auth_token
+	  };
+	}
+
+	function receiveUserLoginFromToken(data) {
+	  return {
+	    type: LOGIN_USER_SUCCESS_FROM_TOKEN
+	  };
+	}
+
+	function loginUserErrorFromToken(data) {
+	  return {
+	    type: LOGIN_USER_FAILURE_FROM_TOKEN,
 	    message: data.message
 	  };
 	}
@@ -36484,7 +36516,24 @@
 	      } else {
 	        localStorage.setItem('auth_token', response.data.auth_token);
 	        localStorage.setItem('user_id', response.data.user_id);
-	        dispatch(receiveUserLogin(response.data));
+	        dispatch(receiveUserLogin());
+	      }
+	    });
+	  };
+	}
+
+	function fetchLoginFromToken(auth_token) {
+	  return function (dispatch) {
+	    dispatch(requestUserLoginFromToken(auth_token));
+	    _axios2.default.post('usertoken', {
+	      auth_token: auth_token
+	    }).then(function (response) {
+	      if (response.status === 200) {
+	        dispatch(loginUserErrorFromToken(response.data));
+	        localStorage.removeItem('auth_token');
+	        localStorage.removeItem('user_id');
+	      } else {
+	        dispatch(receiveUserLoginFromToken());
 	      }
 	    });
 	  };
@@ -37760,6 +37809,8 @@
 
 	var _reactRouter = __webpack_require__(492);
 
+	var _userloginactions = __webpack_require__(560);
+
 	var _userlogoutactions = __webpack_require__(580);
 
 	var _leavecalendarcontainer = __webpack_require__(582);
@@ -37784,6 +37835,16 @@
 	  }
 
 	  _createClass(Header, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var dispatch = this.props.dispatch;
+
+	      var auth_token = localStorage.getItem('auth_token');
+	      {
+	        auth_token && dispatch((0, _userloginactions.fetchLoginFromToken)(auth_token));
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props;
@@ -37818,7 +37879,7 @@
 	              ),
 	              isAuthenticated && _react2.default.createElement(
 	                'button',
-	                { className: 'btn btn-primary-outline pull-xs-right', onClick: function onClick() {
+	                { className: 'btn btn-primary pull-xs-right', onClick: function onClick() {
 	                    return dispatch((0, _userlogoutactions.logoutUser)());
 	                  } },
 	                'Sign out'
@@ -38415,10 +38476,6 @@
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
-	var _header = __webpack_require__(581);
-
-	var _header2 = _interopRequireDefault(_header);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38464,7 +38521,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-sm-12' },
-	            _react2.default.createElement(_leavecalendarcontainer2.default, null)
+	            'LeaveCalendarContainer'
 	          )
 	        )
 	      );
