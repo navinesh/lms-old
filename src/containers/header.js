@@ -1,10 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
+import { fetchLoginFromToken } from '../actions/userloginactions'
 import { logoutUser } from '../actions/userlogoutactions'
 import LeaveCalendarContainer from './leavecalendarcontainer'
 
 class Header extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props
+    let auth_token = localStorage.getItem('auth_token')
+    {auth_token &&
+      dispatch(fetchLoginFromToken(auth_token))
+    }
+  }
+
   render(){
     const { isAuthenticated, dispatch } = this.props
     return (
@@ -19,7 +28,7 @@ class Header extends Component {
                 </Link>
               }
               {isAuthenticated &&
-                <button className="btn btn-primary-outline pull-xs-right" onClick={() => dispatch(logoutUser())}>
+                <button className="btn btn-primary pull-xs-right" onClick={() => dispatch(logoutUser())}>
                   Sign out
                 </button>
               }
