@@ -15,7 +15,7 @@ export function requestUserLogin(creds){
   }
 }
 
-export function receiveUserLogin(data){
+export function receiveUserLogin(){
   return {
     type: LOGIN_USER_SUCCESS
   }
@@ -37,7 +37,8 @@ export function requestUserLoginFromToken(auth_token){
 
 export function receiveUserLoginFromToken(data){
   return {
-    type: LOGIN_USER_SUCCESS_FROM_TOKEN
+    type: LOGIN_USER_SUCCESS_FROM_TOKEN,
+    auth_token: data.auth_token
   }
 }
 
@@ -76,12 +77,12 @@ export function fetchLoginFromToken(auth_token) {
       })
       .then((response) => {
         if (response.status === 200){
-          dispatch(loginUserErrorFromToken(response.data))
           localStorage.removeItem('auth_token')
           localStorage.removeItem('user_id')
+          dispatch(loginUserErrorFromToken(response.data))
         }
         else {
-          dispatch(receiveUserLoginFromToken())
+          dispatch(receiveUserLoginFromToken(response.data))
         }
       })
   }
