@@ -23,7 +23,7 @@ function leaveRecords(state = {isFetching: false,
 }
 
 function userAuth(state = {isFetching: false,
-  isAuthenticated: localStorage.getItem('token') ? true : false,
+  isAuthenticated: localStorage.getItem('auth_token') ? true : false,
   message: ''}, action) {
   switch (action.type) {
     case LOGIN_USER_REQUEST:
@@ -47,8 +47,7 @@ function userAuth(state = {isFetching: false,
       message: ''}
     case LOGIN_USER_REQUEST_FROM_TOKEN:
     return { ...state,
-      isFetching: true,
-      isAuthenticated: false}
+      isFetching: true}
     case LOGIN_USER_SUCCESS_FROM_TOKEN:
     return { ...state,
       isFetching: false,
