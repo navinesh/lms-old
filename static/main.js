@@ -35879,31 +35879,6 @@
 	      return state;
 	  }
 	}
-	/*
-	function loadToken() {
-	  let auth_token = localStorage.getItem('auth_token')
-	  if (!auth_token || auth_token === ''){
-	    return false
-	  }
-	 	else {
-	    axios.post('usertoken', {
-	        auth_token: auth_token
-	      })
-	      .then((response) => {
-	        if (response.status === 200){
-	          localStorage.removeItem('auth_token')
-	          localStorage.removeItem('user_id')
-	        }
-	      })
-	 	}
-	  let token = localStorage.getItem('auth_token')
-	  if (!token) {
-	    return false
-	  } else {
-	    return true
-	  }
-	}
-	*/
 
 	function userAuth() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? { isFetching: false,
@@ -37832,19 +37807,13 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _reactRouter = __webpack_require__(492);
-
-	var _userloginactions = __webpack_require__(560);
-
 	var _header = __webpack_require__(596);
 
 	var _header2 = _interopRequireDefault(_header);
 
+	var _userloginactions = __webpack_require__(560);
+
 	var _userlogoutactions = __webpack_require__(580);
-
-	var _leavecalendarcontainer = __webpack_require__(583);
-
-	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37864,13 +37833,8 @@
 	  }
 
 	  _createClass(Headercontainer, [{
-	    key: 'loadToken',
-
-	    //componentDidMount() {
-	    //this.loadToken()
-	    //}
-
-	    value: function loadToken() {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
 	      var dispatch = this.props.dispatch;
 
 	      var auth_token = localStorage.getItem('auth_token');
