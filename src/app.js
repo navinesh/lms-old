@@ -12,6 +12,8 @@ import LeaveCalendarContainer from './containers/leavecalendarcontainer'
 import UserLoginBox from './containers/userlogincontainer'
 import MainUserLoginBox from './containers/userloginbox'
 
+import UserError from './components/usererror'
+
 const store = configureStore()
 
 render(
@@ -22,6 +24,7 @@ render(
         <Route path="/leavecalendar" component={LeaveCalendarContainer} />
         <Route path="/login" component={MainUserLoginBox} />
       </Route>
+      <Route path="*" component={UserError}/>
     </Router>
   </Provider>,
   document.getElementById('root')
