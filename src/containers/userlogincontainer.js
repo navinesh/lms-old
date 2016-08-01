@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchLogin } from '../actions/userloginactions'
 import { logoutUser } from '../actions/userlogoutactions'
