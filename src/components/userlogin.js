@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
 var Loader = require('halogen/ClipLoader');
 
 export default class Login extends Component {
@@ -43,18 +44,18 @@ export default class Login extends Component {
               <small className="text-muted">Enter your leave management system password.</small>
             </fieldset>
             <fieldset className="form-group">
-              <button type="submit" className="btn btn-primary col-sm-12">Log in</button>
+              <button type="submit" className="btn btn-primary col-xs-12 col-sm-12">Log in</button>
             </fieldset>
           </form>
           <div className="text-danger">
             {this.props.isFetching ?
-              <div className="col-sm-offset-6">
+              <div className="offset-xs-6 offset-sm-6">
                 <Loader color="#0275d8" size="20px" />
               </div>:
               this.props.message}
           </div>
         </div>
-        <a href="/login" className="btn btn-primary-outline col-md-12">Forgot your password?</a>
+        <Link to="/login" className="btn col-xs-12 col-sm-12">Forgot your password?</Link>
       </div>
     );
   }
