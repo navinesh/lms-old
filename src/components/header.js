@@ -9,7 +9,9 @@ export default class Header extends Component {
         <nav className="navbar navbar-fixed-top">
           <div className="container">
             <div className="nav navbar-nav">
-              <Link className="nav-item nav-link active" to="/"><h5>Leave management system</h5></Link>
+              <Link className="nav-item nav-link" to="/">
+                Leave management system
+              </Link>
               {isAuthenticated &&
                 <Link className="nav-item nav-link" to="/leavecalendar">
                   Leave calendar
