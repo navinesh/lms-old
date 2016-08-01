@@ -26,6 +26,7 @@ class RecordList extends Component {
       );
     });
     return (
+      <div className="table-responsive">
       <table className="table table-bordered table-hover" style={{fontSize: '15px'}}>
         <thead className="thead-default">
           <tr>
@@ -40,7 +41,7 @@ class RecordList extends Component {
           {itemNodes}
         </tbody>
       </table>
-
+    </div>
     );
   }
 }
