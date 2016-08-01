@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LeaveCalendarContainer from './leavecalendarcontainer'
 import UserLoginBox from './userlogincontainer'
@@ -21,7 +21,7 @@ class Main extends Component {
         {isAuthenticated &&
           <div className="row">
             <div className="col-sm-12">
-              LeaveCalendarContainer
+              LeaveApplicationContainer
           </div>
         </div>
         }
