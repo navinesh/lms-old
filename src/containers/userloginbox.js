@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LeaveCalendarContainer from './leavecalendarcontainer'
 import UserLoginBox from './userlogincontainer'
@@ -10,7 +10,7 @@ class MainUserLoginBox extends Component {
       <div className="MainView">
         {!isAuthenticated &&
           <div className="row">
-            <div className="col-sm-offset-4 col-sm-4">
+            <div className="col-xs-12 col-sm-4 offset-sm-4">
               <UserLoginBox />
             </div>
           </div>
