@@ -78,19 +78,19 @@
 
 	var _headercontainer2 = _interopRequireDefault(_headercontainer);
 
-	var _main = __webpack_require__(582);
+	var _main = __webpack_require__(583);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _leavecalendarcontainer = __webpack_require__(583);
+	var _leavecalendarcontainer = __webpack_require__(584);
 
 	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
-	var _userlogincontainer = __webpack_require__(592);
+	var _userlogincontainer = __webpack_require__(593);
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
-	var _userloginbox = __webpack_require__(595);
+	var _userloginbox = __webpack_require__(596);
 
 	var _userloginbox2 = _interopRequireDefault(_userloginbox);
 
@@ -37807,7 +37807,7 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _header = __webpack_require__(596);
+	var _header = __webpack_require__(582);
 
 	var _header2 = _interopRequireDefault(_header);
 
@@ -37890,13 +37890,104 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(492);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Header = function (_Component) {
+	  _inherits(Header, _Component);
+
+	  function Header() {
+	    _classCallCheck(this, Header);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).apply(this, arguments));
+	  }
+
+	  _createClass(Header, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var isAuthenticated = _props.isAuthenticated;
+	      var onLogoutClick = _props.onLogoutClick;
+	      var children = _props.children;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'Header' },
+	        _react2.default.createElement(
+	          'nav',
+	          { className: 'navbar navbar-fixed-top' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'container' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'nav navbar-nav' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { className: 'nav-item nav-link', to: '/' },
+	                'Leave management system'
+	              ),
+	              isAuthenticated && _react2.default.createElement(
+	                _reactRouter.Link,
+	                { className: 'nav-item nav-link', to: '/leavecalendar' },
+	                'Leave calendar'
+	              ),
+	              isAuthenticated && _react2.default.createElement(
+	                'button',
+	                { onClick: function onClick() {
+	                    return onLogoutClick();
+	                  }, className: 'btn btn-primary pull-xs-right' },
+	                'Sign out'
+	              )
+	            )
+	          )
+	        ),
+	        children
+	      );
+	    }
+	  }]);
+
+	  return Header;
+	}(_react.Component);
+
+	exports.default = Header;
+
+
+	Header.propTypes = {
+	  onLogoutClick: _react.PropTypes.func.isRequired,
+	  isAuthenticated: _react.PropTypes.bool.isRequired
+	};
+
+/***/ },
+/* 583 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _reactRedux = __webpack_require__(466);
 
-	var _leavecalendarcontainer = __webpack_require__(583);
+	var _leavecalendarcontainer = __webpack_require__(584);
 
 	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
-	var _userlogincontainer = __webpack_require__(592);
+	var _userlogincontainer = __webpack_require__(593);
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
@@ -37945,7 +38036,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-sm-12' },
-	            'LeaveCalendarContainer'
+	            'LeaveApplicationContainer'
 	          )
 	        )
 	      );
@@ -37967,7 +38058,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Main);
 
 /***/ },
-/* 583 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37986,7 +38077,7 @@
 
 	var _leavecalendaractions = __webpack_require__(557);
 
-	var _leavecalendar = __webpack_require__(584);
+	var _leavecalendar = __webpack_require__(585);
 
 	var _leavecalendar2 = _interopRequireDefault(_leavecalendar);
 
@@ -37998,7 +38089,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Loader = __webpack_require__(585);
+	var Loader = __webpack_require__(586);
 
 	var LeaveCalendarContainer = function (_Component) {
 	  _inherits(LeaveCalendarContainer, _Component);
@@ -38028,7 +38119,7 @@
 	        { className: 'LeaveCalendarContainer' },
 	        isFetching ? _react2.default.createElement(
 	          'div',
-	          { className: 'col-sm-offset-5' },
+	          { className: 'offset-sm-5' },
 	          _react2.default.createElement(Loader, { color: '#0275d8', size: '12px' })
 	        ) : _react2.default.createElement(_leavecalendar2.default, { records: records })
 	      );
@@ -38052,10 +38143,10 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeaveCalendarContainer);
 
 /***/ },
-/* 584 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -38085,13 +38176,13 @@
 	  }
 
 	  _createClass(Record, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'tr',
+	        "tr",
 	        null,
 	        _react2.default.createElement(
-	          'th',
+	          "th",
 	          null,
 	          this.props.children
 	        )
@@ -38112,82 +38203,86 @@
 	  }
 
 	  _createClass(RecordList, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      var itemNodes = this.props.records.map(function (record) {
 	        return _react2.default.createElement(
-	          'tr',
+	          "tr",
 	          { key: record.id },
 	          _react2.default.createElement(
-	            'td',
+	            "td",
 	            null,
 	            record.user.othernames,
-	            ' ',
+	            " ",
 	            record.user.surname
 	          ),
 	          _react2.default.createElement(
-	            'td',
+	            "td",
 	            null,
 	            record.leave_name
 	          ),
 	          _react2.default.createElement(
-	            'td',
+	            "td",
 	            null,
 	            record.start_date
 	          ),
 	          _react2.default.createElement(
-	            'td',
+	            "td",
 	            null,
 	            record.end_date
 	          ),
 	          _react2.default.createElement(
-	            'td',
+	            "td",
 	            null,
 	            record.leave_days,
-	            ' day(s)'
+	            " day(s)"
 	          )
 	        );
 	      });
 	      return _react2.default.createElement(
-	        'table',
-	        { className: 'table table-bordered table-hover', style: { fontSize: '15px' } },
+	        "div",
+	        { className: "table-responsive" },
 	        _react2.default.createElement(
-	          'thead',
-	          { className: 'thead-default' },
+	          "table",
+	          { className: "table table-bordered table-hover", style: { fontSize: '15px' } },
 	          _react2.default.createElement(
-	            'tr',
-	            null,
+	            "thead",
+	            { className: "thead-default" },
 	            _react2.default.createElement(
-	              'th',
+	              "tr",
 	              null,
-	              'Name'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Leave type'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Start date'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'End date'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Duration'
+	              _react2.default.createElement(
+	                "th",
+	                null,
+	                "Name"
+	              ),
+	              _react2.default.createElement(
+	                "th",
+	                null,
+	                "Leave type"
+	              ),
+	              _react2.default.createElement(
+	                "th",
+	                null,
+	                "Start date"
+	              ),
+	              _react2.default.createElement(
+	                "th",
+	                null,
+	                "End date"
+	              ),
+	              _react2.default.createElement(
+	                "th",
+	                null,
+	                "Duration"
+	              )
 	            )
+	          ),
+	          _react2.default.createElement(
+	            "tbody",
+	            null,
+	            itemNodes
 	          )
-	        ),
-	        _react2.default.createElement(
-	          'tbody',
-	          null,
-	          itemNodes
 	        )
 	      );
 	    }
@@ -38206,7 +38301,7 @@
 	  }
 
 	  _createClass(LeaveCalendar, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(RecordList, { records: this.props.records });
 	    }
@@ -38222,14 +38317,14 @@
 	exports.default = LeaveCalendar;
 
 /***/ },
-/* 585 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(300);
-	var assign = __webpack_require__(586);
-	var insertKeyframesRule = __webpack_require__(589);
+	var assign = __webpack_require__(587);
+	var insertKeyframesRule = __webpack_require__(590);
 
 	/**
 	 * @type {Object}
@@ -38343,12 +38438,12 @@
 	module.exports = Loader;
 
 /***/ },
-/* 586 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var getVendorPropertyName = __webpack_require__(587);
+	var getVendorPropertyName = __webpack_require__(588);
 
 	module.exports = function(target, sources) {
 	  var to = Object(target);
@@ -38379,12 +38474,12 @@
 
 
 /***/ },
-/* 587 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var builtinStyle = __webpack_require__(588);
+	var builtinStyle = __webpack_require__(589);
 	var prefixes = ['Moz', 'Webkit', 'O', 'ms'];
 	var domVendorPrefix;
 
@@ -38422,7 +38517,7 @@
 
 
 /***/ },
-/* 588 */
+/* 589 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38431,13 +38526,13 @@
 
 
 /***/ },
-/* 589 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var insertRule = __webpack_require__(590);
-	var vendorPrefix = __webpack_require__(591)();
+	var insertRule = __webpack_require__(591);
+	var vendorPrefix = __webpack_require__(592)();
 	var index = 0;
 
 	module.exports = function(keyframes) {
@@ -38467,7 +38562,7 @@
 
 
 /***/ },
-/* 590 */
+/* 591 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38492,7 +38587,7 @@
 
 
 /***/ },
-/* 591 */
+/* 592 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38511,7 +38606,7 @@
 
 
 /***/ },
-/* 592 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38532,7 +38627,7 @@
 
 	var _userlogoutactions = __webpack_require__(580);
 
-	var _userlogin = __webpack_require__(593);
+	var _userlogin = __webpack_require__(594);
 
 	var _userlogin2 = _interopRequireDefault(_userlogin);
 
@@ -38594,7 +38689,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserLoginBox);
 
 /***/ },
-/* 593 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38609,6 +38704,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(492);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38617,7 +38714,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Loader = __webpack_require__(594);
+	var Loader = __webpack_require__(595);
 
 	var Login = function (_Component) {
 	  _inherits(Login, _Component);
@@ -38698,7 +38795,7 @@
 	              { className: 'form-group' },
 	              _react2.default.createElement(
 	                'button',
-	                { type: 'submit', className: 'btn btn-primary col-sm-12' },
+	                { type: 'submit', className: 'btn btn-primary col-xs-12 col-sm-12' },
 	                'Log in'
 	              )
 	            )
@@ -38708,14 +38805,14 @@
 	            { className: 'text-danger' },
 	            this.props.isFetching ? _react2.default.createElement(
 	              'div',
-	              { className: 'col-sm-offset-6' },
+	              { className: 'offset-xs-6 offset-sm-6' },
 	              _react2.default.createElement(Loader, { color: '#0275d8', size: '20px' })
 	            ) : this.props.message
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'a',
-	          { href: '/login', className: 'btn btn-primary-outline col-md-12' },
+	          _reactRouter.Link,
+	          { to: '/login', className: 'btn col-xs-12 col-sm-12' },
 	          'Forgot your password?'
 	        )
 	      );
@@ -38735,14 +38832,14 @@
 	};
 
 /***/ },
-/* 594 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(300);
-	var assign = __webpack_require__(586);
-	var insertKeyframesRule = __webpack_require__(589);
+	var assign = __webpack_require__(587);
+	var insertKeyframesRule = __webpack_require__(590);
 
 	/**
 	 * @type {Object}
@@ -38851,7 +38948,7 @@
 	module.exports = Loader;
 
 /***/ },
-/* 595 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38868,11 +38965,11 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _leavecalendarcontainer = __webpack_require__(583);
+	var _leavecalendarcontainer = __webpack_require__(584);
 
 	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
-	var _userlogincontainer = __webpack_require__(592);
+	var _userlogincontainer = __webpack_require__(593);
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
@@ -38906,7 +39003,7 @@
 	          { className: 'row' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-sm-offset-4 col-sm-4' },
+	            { className: 'col-xs-12 col-sm-4 offset-sm-4' },
 	            _react2.default.createElement(_userlogincontainer2.default, null)
 	          )
 	        )
@@ -38927,101 +39024,6 @@
 	};
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MainUserLoginBox);
-
-/***/ },
-/* 596 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(300);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(492);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Header = function (_Component) {
-	  _inherits(Header, _Component);
-
-	  function Header() {
-	    _classCallCheck(this, Header);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).apply(this, arguments));
-	  }
-
-	  _createClass(Header, [{
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props;
-	      var isAuthenticated = _props.isAuthenticated;
-	      var onLogoutClick = _props.onLogoutClick;
-	      var children = _props.children;
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'Header' },
-	        _react2.default.createElement(
-	          'nav',
-	          { className: 'navbar navbar-fixed-top' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'container' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'nav navbar-nav' },
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { className: 'nav-item nav-link active', to: '/' },
-	                _react2.default.createElement(
-	                  'h5',
-	                  null,
-	                  'Leave management system'
-	                )
-	              ),
-	              isAuthenticated && _react2.default.createElement(
-	                _reactRouter.Link,
-	                { className: 'nav-item nav-link', to: '/leavecalendar' },
-	                'Leave calendar'
-	              ),
-	              isAuthenticated && _react2.default.createElement(
-	                'button',
-	                { onClick: function onClick() {
-	                    return onLogoutClick();
-	                  }, className: 'btn btn-primary pull-xs-right' },
-	                'Sign out'
-	              )
-	            )
-	          )
-	        ),
-	        children
-	      );
-	    }
-	  }]);
-
-	  return Header;
-	}(_react.Component);
-
-	exports.default = Header;
-
-
-	Header.propTypes = {
-	  onLogoutClick: _react.PropTypes.func.isRequired,
-	  isAuthenticated: _react.PropTypes.bool.isRequired
-	};
 
 /***/ }
 /******/ ]);
