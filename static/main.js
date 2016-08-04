@@ -90,11 +90,11 @@
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
-	var _userloginbox = __webpack_require__(596);
+	var _userloginbox = __webpack_require__(599);
 
 	var _userloginbox2 = _interopRequireDefault(_userloginbox);
 
-	var _usererror = __webpack_require__(597);
+	var _usererror = __webpack_require__(600);
 
 	var _usererror2 = _interopRequireDefault(_usererror);
 
@@ -37931,7 +37931,16 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'container' },
-	            _react2.default.createElement(
+	            !isAuthenticated && _react2.default.createElement(
+	              'div',
+	              { className: 'nav navbar-nav' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { className: 'nav-item nav-link', to: '/' },
+	                'Leave management system'
+	              )
+	            ),
+	            isAuthenticated && _react2.default.createElement(
 	              'div',
 	              { className: 'nav navbar-nav' },
 	              _react2.default.createElement(
@@ -37939,12 +37948,12 @@
 	                { className: 'nav-item nav-link', to: '/' },
 	                'Leave management system'
 	              ),
-	              isAuthenticated && _react2.default.createElement(
+	              _react2.default.createElement(
 	                _reactRouter.Link,
 	                { className: 'nav-item nav-link', to: '/leavecalendar' },
 	                'Leave calendar'
 	              ),
-	              isAuthenticated && _react2.default.createElement(
+	              _react2.default.createElement(
 	                'button',
 	                { onClick: function onClick() {
 	                    return onLogoutClick();
@@ -37996,6 +38005,10 @@
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
+	var _leavedetailscontainer = __webpack_require__(596);
+
+	var _leavedetailscontainer2 = _interopRequireDefault(_leavedetailscontainer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38041,7 +38054,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-sm-12' },
-	            'LeaveApplicationContainer'
+	            _react2.default.createElement(_leavedetailscontainer2.default, null)
 	          )
 	        )
 	      );
@@ -38807,12 +38820,8 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'text-danger' },
-	            this.props.isFetching ? _react2.default.createElement(
-	              'div',
-	              { className: 'offset-xs-6 offset-sm-6' },
-	              _react2.default.createElement(Loader, { color: '#0275d8', size: '20px' })
-	            ) : this.props.message
+	            { className: 'text-danger text-xs-center' },
+	            this.props.isFetching ? _react2.default.createElement(Loader, { color: '#0275d8', size: '20px' }) : this.props.message
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -38970,6 +38979,271 @@
 
 	var _reactRedux = __webpack_require__(466);
 
+	var _leavedetailsactions = __webpack_require__(597);
+
+	var _leavedetails = __webpack_require__(598);
+
+	var _leavedetails2 = _interopRequireDefault(_leavedetails);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Loader = __webpack_require__(586);
+
+	var LeaveDetailsContainer = function (_Component) {
+	  _inherits(LeaveDetailsContainer, _Component);
+
+	  function LeaveDetailsContainer() {
+	    _classCallCheck(this, LeaveDetailsContainer);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveDetailsContainer).apply(this, arguments));
+	  }
+
+	  _createClass(LeaveDetailsContainer, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var dispatch = this.props.dispatch;
+
+	      dispatch((0, _leavedetailsactions.fetchLeave)());
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var records = _props.records;
+	      var isFetching = _props.isFetching;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'LeaveDetailsContainer' },
+	        isFetching ? _react2.default.createElement(
+	          'div',
+	          { className: 'offset-sm-5' },
+	          _react2.default.createElement(Loader, { color: '#0275d8', size: '12px' })
+	        ) : _react2.default.createElement(_leavedetails2.default, { records: records })
+	      );
+	    }
+	  }]);
+
+	  return LeaveDetailsContainer;
+	}(_react.Component);
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  var leaveDetails = state.leaveDetails;
+	  var isFetching = leaveDetails.isFetching;
+	  var records = leaveDetails.items;
+
+	  return {
+	    records: records,
+	    isFetching: isFetching
+	  };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeaveDetailsContainer);
+
+/***/ },
+/* 597 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+/***/ },
+/* 598 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var LeaveRecord = function (_Component) {
+	  _inherits(LeaveRecord, _Component);
+
+	  function LeaveRecord() {
+	    _classCallCheck(this, LeaveRecord);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveRecord).apply(this, arguments));
+	  }
+
+	  _createClass(LeaveRecord, [{
+	    key: "render",
+	    value: function render() {
+	      return React.createElement(
+	        "tr",
+	        null,
+	        React.createElement(
+	          "th",
+	          null,
+	          this.props.children
+	        )
+	      );
+	    }
+	  }]);
+
+	  return LeaveRecord;
+	}(_react.Component);
+
+	var LeaveRecordList = function (_Component2) {
+	  _inherits(LeaveRecordList, _Component2);
+
+	  function LeaveRecordList() {
+	    _classCallCheck(this, LeaveRecordList);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveRecordList).apply(this, arguments));
+	  }
+
+	  _createClass(LeaveRecordList, [{
+	    key: "render",
+	    value: function render() {
+	      var itemNodes = this.props.records.map(function (record) {
+	        return React.createElement(
+	          "tr",
+	          { key: record.id },
+	          React.createElement(
+	            "td",
+	            null,
+	            record.user.othernames,
+	            " ",
+	            record.user.surname
+	          ),
+	          React.createElement(
+	            "td",
+	            null,
+	            record.leave_name
+	          ),
+	          React.createElement(
+	            "td",
+	            null,
+	            record.start_date
+	          ),
+	          React.createElement(
+	            "td",
+	            null,
+	            record.end_date
+	          ),
+	          React.createElement(
+	            "td",
+	            null,
+	            record.leave_days,
+	            " day(s)"
+	          )
+	        );
+	      });
+	      return React.createElement(
+	        "div",
+	        { className: "table-responsive" },
+	        React.createElement(
+	          "table",
+	          { className: "table table-bordered table-hover" },
+	          React.createElement(
+	            "thead",
+	            { className: "thead-default" },
+	            React.createElement(
+	              "tr",
+	              null,
+	              React.createElement(
+	                "th",
+	                null,
+	                "Name"
+	              ),
+	              React.createElement(
+	                "th",
+	                null,
+	                "annual leave"
+	              ),
+	              React.createElement(
+	                "th",
+	                null,
+	                "sick leave"
+	              ),
+	              React.createElement(
+	                "th",
+	                null,
+	                "bereavement leave"
+	              ),
+	              React.createElement(
+	                "th",
+	                null,
+	                "christmas leave"
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "tbody",
+	            null,
+	            itemNodes
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return LeaveRecordList;
+	}(_react.Component);
+
+	var LeaveDetails = function (_Component3) {
+	  _inherits(LeaveDetails, _Component3);
+
+	  function LeaveDetails() {
+	    _classCallCheck(this, LeaveDetails);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveDetails).apply(this, arguments));
+	  }
+
+	  _createClass(LeaveDetails, [{
+	    key: "render",
+	    value: function render() {
+	      return React.createElement(LeaveRecordList, { records: this.props.records });
+	    }
+	  }]);
+
+	  return LeaveDetails;
+	}(_react.Component);
+
+	LeaveDetails.propTypes = {
+	  records: _react.PropTypes.array.isRequired
+	};
+
+	exports.default = LeaveDetails;
+
+/***/ },
+/* 599 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(466);
+
 	var _leavecalendarcontainer = __webpack_require__(584);
 
 	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
@@ -39031,7 +39305,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MainUserLoginBox);
 
 /***/ },
-/* 597 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
