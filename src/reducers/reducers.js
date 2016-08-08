@@ -65,7 +65,7 @@ function userAuth(state = {isFetching: false,
 }
 
 function userDetails(state = {isFetching: false,
-  userDetail: {}}, action) {
+  userDetail: {}, message: ''}, action) {
   switch (action.type) {
     case REQUEST_USER_DETAILS:
     return { ...state,
