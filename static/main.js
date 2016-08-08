@@ -74,19 +74,19 @@
 
 	var _configureStore2 = _interopRequireDefault(_configureStore);
 
-	var _headercontainer = __webpack_require__(581);
+	var _headercontainer = __webpack_require__(582);
 
 	var _headercontainer2 = _interopRequireDefault(_headercontainer);
 
-	var _main = __webpack_require__(583);
+	var _main = __webpack_require__(584);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _leavecalendarcontainer = __webpack_require__(584);
+	var _leavecalendarcontainer = __webpack_require__(585);
 
 	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
-	var _userlogincontainer = __webpack_require__(593);
+	var _userlogincontainer = __webpack_require__(594);
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
@@ -35866,6 +35866,8 @@
 
 	var _userlogoutactions = __webpack_require__(580);
 
+	var _userdetailsactions = __webpack_require__(601);
+
 	function leaveRecords() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? { isFetching: false,
 	    items: [] } : arguments[0];
@@ -35929,9 +35931,32 @@
 	  }
 	}
 
+	function userDetails() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? { isFetching: false,
+	    userDetail: {}, message: '' } : arguments[0];
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case _userdetailsactions.REQUEST_USER_DETAILS:
+	      return _extends({}, state, {
+	        isFetching: true });
+	    case _userdetailsactions.RECEIVE_USER_DETAILS:
+	      return _extends({}, state, {
+	        isFetching: false,
+	        userDetail: action.user_detail });
+	    case _userdetailsactions.USER_DETAILS_ERROR:
+	      return _extends({}, state, {
+	        isFetching: false,
+	        message: action.message });
+	    default:
+	      return state;
+	  }
+	}
+
 	var rootReducer = (0, _redux.combineReducers)({
 	  leaveRecords: leaveRecords,
-	  userAuth: userAuth
+	  userAuth: userAuth,
+	  userDetails: userDetails
 	});
 
 	exports.default = rootReducer;
@@ -37795,7 +37820,8 @@
 	}
 
 /***/ },
-/* 581 */
+/* 581 */,
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37812,7 +37838,7 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _header = __webpack_require__(582);
+	var _header = __webpack_require__(583);
 
 	var _header2 = _interopRequireDefault(_header);
 
@@ -37880,7 +37906,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Headercontainer);
 
 /***/ },
-/* 582 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37980,7 +38006,7 @@
 	};
 
 /***/ },
-/* 583 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37997,17 +38023,17 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _leavecalendarcontainer = __webpack_require__(584);
+	var _leavecalendarcontainer = __webpack_require__(585);
 
 	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
-	var _userlogincontainer = __webpack_require__(593);
+	var _userlogincontainer = __webpack_require__(594);
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
-	var _leavedetailscontainer = __webpack_require__(596);
+	var _userdetailscontainer = __webpack_require__(602);
 
-	var _leavedetailscontainer2 = _interopRequireDefault(_leavedetailscontainer);
+	var _userdetailscontainer2 = _interopRequireDefault(_userdetailscontainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38054,7 +38080,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-sm-12' },
-	            _react2.default.createElement(_leavedetailscontainer2.default, null)
+	            _react2.default.createElement(_userdetailscontainer2.default, null)
 	          )
 	        )
 	      );
@@ -38076,7 +38102,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Main);
 
 /***/ },
-/* 584 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38095,7 +38121,7 @@
 
 	var _leavecalendaractions = __webpack_require__(557);
 
-	var _leavecalendar = __webpack_require__(585);
+	var _leavecalendar = __webpack_require__(586);
 
 	var _leavecalendar2 = _interopRequireDefault(_leavecalendar);
 
@@ -38107,7 +38133,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Loader = __webpack_require__(586);
+	var Loader = __webpack_require__(587);
 
 	var LeaveCalendarContainer = function (_Component) {
 	  _inherits(LeaveCalendarContainer, _Component);
@@ -38161,7 +38187,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeaveCalendarContainer);
 
 /***/ },
-/* 585 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38335,14 +38361,14 @@
 	exports.default = LeaveCalendar;
 
 /***/ },
-/* 586 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(300);
-	var assign = __webpack_require__(587);
-	var insertKeyframesRule = __webpack_require__(590);
+	var assign = __webpack_require__(588);
+	var insertKeyframesRule = __webpack_require__(591);
 
 	/**
 	 * @type {Object}
@@ -38456,12 +38482,12 @@
 	module.exports = Loader;
 
 /***/ },
-/* 587 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var getVendorPropertyName = __webpack_require__(588);
+	var getVendorPropertyName = __webpack_require__(589);
 
 	module.exports = function(target, sources) {
 	  var to = Object(target);
@@ -38492,12 +38518,12 @@
 
 
 /***/ },
-/* 588 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var builtinStyle = __webpack_require__(589);
+	var builtinStyle = __webpack_require__(590);
 	var prefixes = ['Moz', 'Webkit', 'O', 'ms'];
 	var domVendorPrefix;
 
@@ -38535,7 +38561,7 @@
 
 
 /***/ },
-/* 589 */
+/* 590 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38544,13 +38570,13 @@
 
 
 /***/ },
-/* 590 */
+/* 591 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var insertRule = __webpack_require__(591);
-	var vendorPrefix = __webpack_require__(592)();
+	var insertRule = __webpack_require__(592);
+	var vendorPrefix = __webpack_require__(593)();
 	var index = 0;
 
 	module.exports = function(keyframes) {
@@ -38580,7 +38606,7 @@
 
 
 /***/ },
-/* 591 */
+/* 592 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38605,7 +38631,7 @@
 
 
 /***/ },
-/* 592 */
+/* 593 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38624,7 +38650,7 @@
 
 
 /***/ },
-/* 593 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38645,7 +38671,7 @@
 
 	var _userlogoutactions = __webpack_require__(580);
 
-	var _userlogin = __webpack_require__(594);
+	var _userlogin = __webpack_require__(595);
 
 	var _userlogin2 = _interopRequireDefault(_userlogin);
 
@@ -38707,7 +38733,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserLoginBox);
 
 /***/ },
-/* 594 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38732,7 +38758,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Loader = __webpack_require__(595);
+	var Loader = __webpack_require__(596);
 
 	var Login = function (_Component) {
 	  _inherits(Login, _Component);
@@ -38846,14 +38872,14 @@
 	};
 
 /***/ },
-/* 595 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(300);
-	var assign = __webpack_require__(587);
-	var insertKeyframesRule = __webpack_require__(590);
+	var assign = __webpack_require__(588);
+	var insertKeyframesRule = __webpack_require__(591);
 
 	/**
 	 * @type {Object}
@@ -38962,271 +38988,8 @@
 	module.exports = Loader;
 
 /***/ },
-/* 596 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(300);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(466);
-
-	var _leavedetailsactions = __webpack_require__(597);
-
-	var _leavedetails = __webpack_require__(598);
-
-	var _leavedetails2 = _interopRequireDefault(_leavedetails);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Loader = __webpack_require__(586);
-
-	var LeaveDetailsContainer = function (_Component) {
-	  _inherits(LeaveDetailsContainer, _Component);
-
-	  function LeaveDetailsContainer() {
-	    _classCallCheck(this, LeaveDetailsContainer);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveDetailsContainer).apply(this, arguments));
-	  }
-
-	  _createClass(LeaveDetailsContainer, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var dispatch = this.props.dispatch;
-
-	      dispatch((0, _leavedetailsactions.fetchLeave)());
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props;
-	      var records = _props.records;
-	      var isFetching = _props.isFetching;
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'LeaveDetailsContainer' },
-	        isFetching ? _react2.default.createElement(
-	          'div',
-	          { className: 'offset-sm-5' },
-	          _react2.default.createElement(Loader, { color: '#0275d8', size: '12px' })
-	        ) : _react2.default.createElement(_leavedetails2.default, { records: records })
-	      );
-	    }
-	  }]);
-
-	  return LeaveDetailsContainer;
-	}(_react.Component);
-
-	var mapStateToProps = function mapStateToProps(state) {
-	  var leaveDetails = state.leaveDetails;
-	  var isFetching = leaveDetails.isFetching;
-	  var records = leaveDetails.items;
-
-	  return {
-	    records: records,
-	    isFetching: isFetching
-	  };
-	};
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeaveDetailsContainer);
-
-/***/ },
-/* 597 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-/***/ },
-/* 598 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(300);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var LeaveRecord = function (_Component) {
-	  _inherits(LeaveRecord, _Component);
-
-	  function LeaveRecord() {
-	    _classCallCheck(this, LeaveRecord);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveRecord).apply(this, arguments));
-	  }
-
-	  _createClass(LeaveRecord, [{
-	    key: "render",
-	    value: function render() {
-	      return React.createElement(
-	        "tr",
-	        null,
-	        React.createElement(
-	          "th",
-	          null,
-	          this.props.children
-	        )
-	      );
-	    }
-	  }]);
-
-	  return LeaveRecord;
-	}(_react.Component);
-
-	var LeaveRecordList = function (_Component2) {
-	  _inherits(LeaveRecordList, _Component2);
-
-	  function LeaveRecordList() {
-	    _classCallCheck(this, LeaveRecordList);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveRecordList).apply(this, arguments));
-	  }
-
-	  _createClass(LeaveRecordList, [{
-	    key: "render",
-	    value: function render() {
-	      var itemNodes = this.props.records.map(function (record) {
-	        return React.createElement(
-	          "tr",
-	          { key: record.id },
-	          React.createElement(
-	            "td",
-	            null,
-	            record.user.othernames,
-	            " ",
-	            record.user.surname
-	          ),
-	          React.createElement(
-	            "td",
-	            null,
-	            record.leave_name
-	          ),
-	          React.createElement(
-	            "td",
-	            null,
-	            record.start_date
-	          ),
-	          React.createElement(
-	            "td",
-	            null,
-	            record.end_date
-	          ),
-	          React.createElement(
-	            "td",
-	            null,
-	            record.leave_days,
-	            " day(s)"
-	          )
-	        );
-	      });
-	      return React.createElement(
-	        "div",
-	        { className: "table-responsive" },
-	        React.createElement(
-	          "table",
-	          { className: "table table-bordered table-hover" },
-	          React.createElement(
-	            "thead",
-	            { className: "thead-default" },
-	            React.createElement(
-	              "tr",
-	              null,
-	              React.createElement(
-	                "th",
-	                null,
-	                "Name"
-	              ),
-	              React.createElement(
-	                "th",
-	                null,
-	                "annual leave"
-	              ),
-	              React.createElement(
-	                "th",
-	                null,
-	                "sick leave"
-	              ),
-	              React.createElement(
-	                "th",
-	                null,
-	                "bereavement leave"
-	              ),
-	              React.createElement(
-	                "th",
-	                null,
-	                "christmas leave"
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            "tbody",
-	            null,
-	            itemNodes
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return LeaveRecordList;
-	}(_react.Component);
-
-	var LeaveDetails = function (_Component3) {
-	  _inherits(LeaveDetails, _Component3);
-
-	  function LeaveDetails() {
-	    _classCallCheck(this, LeaveDetails);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LeaveDetails).apply(this, arguments));
-	  }
-
-	  _createClass(LeaveDetails, [{
-	    key: "render",
-	    value: function render() {
-	      return React.createElement(LeaveRecordList, { records: this.props.records });
-	    }
-	  }]);
-
-	  return LeaveDetails;
-	}(_react.Component);
-
-	LeaveDetails.propTypes = {
-	  records: _react.PropTypes.array.isRequired
-	};
-
-	exports.default = LeaveDetails;
-
-/***/ },
+/* 597 */,
+/* 598 */,
 /* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -39244,11 +39007,11 @@
 
 	var _reactRedux = __webpack_require__(466);
 
-	var _leavecalendarcontainer = __webpack_require__(584);
+	var _leavecalendarcontainer = __webpack_require__(585);
 
 	var _leavecalendarcontainer2 = _interopRequireDefault(_leavecalendarcontainer);
 
-	var _userlogincontainer = __webpack_require__(593);
+	var _userlogincontainer = __webpack_require__(594);
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
@@ -39347,18 +39110,14 @@
 	          "div",
 	          { className: "offset-sm-2 col-sm-8" },
 	          _react2.default.createElement(
-	            "h1",
+	            "h2",
 	            null,
 	            "404"
 	          ),
 	          _react2.default.createElement(
-	            "p",
+	            "h4",
 	            null,
-	            _react2.default.createElement(
-	              "h3",
-	              null,
-	              "That's an error."
-	            )
+	            "That's an error."
 	          ),
 	          _react2.default.createElement(
 	            "h5",
@@ -39374,6 +39133,342 @@
 	}(_react.Component);
 
 	exports.default = UserError;
+
+/***/ },
+/* 601 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.USER_DETAILS_ERROR = exports.RECEIVE_USER_DETAILS = exports.REQUEST_USER_DETAILS = undefined;
+	exports.requestUserDetails = requestUserDetails;
+	exports.userDetailsError = userDetailsError;
+	exports.receiveUserDetails = receiveUserDetails;
+	exports.fetchUserDetails = fetchUserDetails;
+
+	var _axios = __webpack_require__(561);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var REQUEST_USER_DETAILS = exports.REQUEST_USER_DETAILS = 'REQUEST_USER_DETAILS';
+	var RECEIVE_USER_DETAILS = exports.RECEIVE_USER_DETAILS = 'RECEIVE_USER_DETAILS';
+	var USER_DETAILS_ERROR = exports.USER_DETAILS_ERROR = 'USER_DETAILS_ERROR';
+
+	function requestUserDetails(user_id) {
+	  return {
+	    type: REQUEST_USER_DETAILS,
+	    user_id: user_id
+	  };
+	}
+
+	function userDetailsError(data) {
+	  return {
+	    type: USER_DETAILS_ERROR,
+	    message: data.message
+	  };
+	}
+
+	function receiveUserDetails(data) {
+	  return {
+	    type: RECEIVE_USER_DETAILS,
+	    user_detail: data.user_detail
+	  };
+	}
+
+	function fetchUserDetails(user_id) {
+	  return function (dispatch) {
+	    dispatch(requestUserDetails(user_id));
+	    _axios2.default.post('user-detail.api', {
+	      user_id: user_id
+	    }).then(function (response) {
+	      if (response.status === 200) {
+	        dispatch(userDetailsError(response.data));
+	      } else {
+	        dispatch(receiveUserDetails(response.data));
+	      }
+	    });
+	  };
+	}
+
+/***/ },
+/* 602 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(466);
+
+	var _userdetailsactions = __webpack_require__(601);
+
+	var _userdetails = __webpack_require__(603);
+
+	var _userdetails2 = _interopRequireDefault(_userdetails);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Loader = __webpack_require__(587);
+
+	var UserDetailsContainer = function (_Component) {
+	  _inherits(UserDetailsContainer, _Component);
+
+	  function UserDetailsContainer() {
+	    _classCallCheck(this, UserDetailsContainer);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserDetailsContainer).apply(this, arguments));
+	  }
+
+	  _createClass(UserDetailsContainer, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var dispatch = this.props.dispatch;
+
+
+	      var user_id = localStorage.getItem('user_id');
+	      if (!user_id || user_id === '') {
+	        return;
+	      }
+	      dispatch((0, _userdetailsactions.fetchUserDetails)(user_id));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var isFetching = _props.isFetching;
+	      var user_detail = _props.user_detail;
+	      var message = _props.message;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'UserDetailsContainer' },
+	        isFetching ? _react2.default.createElement(
+	          'div',
+	          { className: 'offset-sm-5' },
+	          _react2.default.createElement(Loader, { color: '#0275d8', size: '12px' })
+	        ) : _react2.default.createElement(_userdetails2.default, { user_detail: user_detail, message: message })
+	      );
+	    }
+	  }]);
+
+	  return UserDetailsContainer;
+	}(_react.Component);
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  var userDetails = state.userDetails;
+	  var isFetching = userDetails.isFetching;
+	  var user_detail = userDetails.userDetail;
+	  var message = userDetails.message;
+
+	  return {
+	    isFetching: isFetching,
+	    user_detail: user_detail,
+	    message: message
+	  };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserDetailsContainer);
+
+/***/ },
+/* 603 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _usererror = __webpack_require__(600);
+
+	var _usererror2 = _interopRequireDefault(_usererror);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var UserRecord = function (_Component) {
+	  _inherits(UserRecord, _Component);
+
+	  function UserRecord() {
+	    _classCallCheck(this, UserRecord);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserRecord).apply(this, arguments));
+	  }
+
+	  _createClass(UserRecord, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'th',
+	          null,
+	          this.props.children
+	        )
+	      );
+	    }
+	  }]);
+
+	  return UserRecord;
+	}(_react.Component);
+
+	var UserRecordList = function (_Component2) {
+	  _inherits(UserRecordList, _Component2);
+
+	  function UserRecordList() {
+	    _classCallCheck(this, UserRecordList);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserRecordList).apply(this, arguments));
+	  }
+
+	  _createClass(UserRecordList, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var user_detail = _props.user_detail;
+	      var message = _props.message;
+
+	      if (message) {
+	        return _react2.default.createElement(_usererror2.default, null);
+	      }
+	      return _react2.default.createElement(
+	        'table',
+	        { className: 'table table-bordered' },
+	        _react2.default.createElement(
+	          'thead',
+	          { className: 'thead-default' },
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Name'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Annual leave'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Sick leave'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Bereavement leave'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Christmas leave'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          _react2.default.createElement(
+	            'tr',
+	            { key: user_detail.id },
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              user_detail.othernames,
+	              ' ',
+	              user_detail.surname
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              user_detail.annual,
+	              ' day(s)'
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              user_detail.sick,
+	              ' day(s)'
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              user_detail.bereavement,
+	              ' day(s)'
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              user_detail.christmas,
+	              ' day(s)'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return UserRecordList;
+	}(_react.Component);
+
+	var UserDetails = function (_Component3) {
+	  _inherits(UserDetails, _Component3);
+
+	  function UserDetails() {
+	    _classCallCheck(this, UserDetails);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserDetails).apply(this, arguments));
+	  }
+
+	  _createClass(UserDetails, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(UserRecordList, { user_detail: this.props.user_detail, message: this.props.message });
+	    }
+	  }]);
+
+	  return UserDetails;
+	}(_react.Component);
+
+	UserDetails.propTypes = {
+	  user_detail: _react.PropTypes.object.isRequired,
+	  message: _react.PropTypes.string
+	};
+
+	exports.default = UserDetails;
 
 /***/ }
 /******/ ]);
