@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LeaveCalendarContainer from './leavecalendarcontainer'
 import UserLoginBox from './userlogincontainer'
-import LeaveDetailsContainer from './leavedetailscontainer'
+import UserDetailsContainer from './userdetailscontainer'
 
 class Main extends Component {
   render() {
@@ -22,7 +22,7 @@ class Main extends Component {
         {isAuthenticated &&
           <div className="row">
             <div className="col-sm-12">
-              <LeaveDetailsContainer />
+              <UserDetailsContainer />
           </div>
         </div>
         }
