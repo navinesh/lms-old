@@ -1,17 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 
-class Record extends Component {
-  render() {
-    return (
-      <tr>
-        <th>
-          {this.props.children}
-        </th>
-      </tr>
-    );
-  }
-}
-
 class RecordList extends Component {
   render() {
     var itemNodes = this.props.records.map((record) => {
