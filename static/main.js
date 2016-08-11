@@ -39443,7 +39443,7 @@
 	            { className: 'col-sm-12' },
 	            _react2.default.createElement(
 	              'h5',
-	              null,
+	              { className: 'text-muted' },
 	              'Pending leave schedule'
 	            ),
 	            _react2.default.createElement(PendingRecordList, { user_detail: this.props.user_detail })
@@ -39453,7 +39453,7 @@
 	            { className: 'col-sm-12' },
 	            _react2.default.createElement(
 	              'h5',
-	              null,
+	              { className: 'text-muted' },
 	              'Approved leave schedule'
 	            ),
 	            _react2.default.createElement(ApprovedRecordList, { user_detail: this.props.user_detail })

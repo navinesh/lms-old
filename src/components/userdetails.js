@@ -109,11 +109,11 @@ class UserDetails extends Component {
         </div>
         <div className="col-sm-8">
           <div className="col-sm-12">
-            <h5>Pending leave schedule</h5>
+            <h5 className="text-muted">Pending leave schedule</h5>
             <PendingRecordList user_detail={this.props.user_detail} />
           </div>
           <div className="col-sm-12">
-            <h5>Approved leave schedule</h5>
+            <h5 className="text-muted">Approved leave schedule</h5>
             <ApprovedRecordList user_detail={this.props.user_detail} />
           </div>
         </div>
