@@ -16,20 +16,27 @@ class PendingRecordList extends Component {
         }
       });
     }
+    if (userItems.length > 0){
+      return (
+        <table className="table table-bordered table-hover">
+          <thead className="thead-default">
+            <tr>
+              <th>Leave type</th>
+              <th>Leave days</th>
+              <th>Start date</th>
+              <th>End date</th>
+            </tr>
+          </thead>
+          <tbody>
+          {userItems}
+          </tbody>
+        </table>
+      );
+    }
     return (
-      <table className="table table-bordered table-hover">
-        <thead className="thead-default">
-          <tr>
-            <th>Leave type</th>
-            <th>Leave days</th>
-            <th>Start date</th>
-            <th>End date</th>
-          </tr>
-        </thead>
-        <tbody>
-        {userItems}
-        </tbody>
-      </table>
+      <div>
+      <p>None.</p>
+      </div>
     );
   }
 }
@@ -50,20 +57,27 @@ class ApprovedRecordList extends Component {
         }
       });
     }
+    if (userItems.length > 0){
+      return (
+        <table className="table table-bordered table-hover">
+          <thead className="thead-default">
+            <tr>
+              <th>Leave type</th>
+              <th>Leave days</th>
+              <th>Start date</th>
+              <th>End date</th>
+            </tr>
+          </thead>
+          <tbody>
+          {userItems}
+          </tbody>
+        </table>
+      );
+    }
     return (
-      <table className="table table-bordered table-hover">
-        <thead className="thead-default">
-          <tr>
-            <th>Leave type</th>
-            <th>Leave days</th>
-            <th>Start date</th>
-            <th>End date</th>
-          </tr>
-        </thead>
-        <tbody>
-        {userItems}
-        </tbody>
-      </table>
+      <div>
+      <p>None.</p>
+      </div>
     );
   }
 }
@@ -109,11 +123,11 @@ class UserDetails extends Component {
         </div>
         <div className="col-sm-8">
           <div className="col-sm-12">
-            <h5 className="text-muted">Pending leave schedule</h5>
+            <h6 className="text-muted">PENDING LEAVE SCHEDULE</h6>
             <PendingRecordList user_detail={this.props.user_detail} />
           </div>
           <div className="col-sm-12">
-            <h5 className="text-muted">Approved leave schedule</h5>
+            <h6 className="text-muted">APPROVED LEAVE SCHEDULE</h6>
             <ApprovedRecordList user_detail={this.props.user_detail} />
           </div>
         </div>

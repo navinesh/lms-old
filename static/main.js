@@ -39179,41 +39179,52 @@
 	          }
 	        });
 	      }
-	      return _react2.default.createElement(
-	        'table',
-	        { className: 'table table-bordered table-hover' },
-	        _react2.default.createElement(
-	          'thead',
-	          { className: 'thead-default' },
+	      if (userItems.length > 0) {
+	        return _react2.default.createElement(
+	          'table',
+	          { className: 'table table-bordered table-hover' },
 	          _react2.default.createElement(
-	            'tr',
-	            null,
+	            'thead',
+	            { className: 'thead-default' },
 	            _react2.default.createElement(
-	              'th',
+	              'tr',
 	              null,
-	              'Leave type'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Leave days'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Start date'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'End date'
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Leave type'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Leave days'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Start date'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'End date'
+	              )
 	            )
+	          ),
+	          _react2.default.createElement(
+	            'tbody',
+	            null,
+	            userItems
 	          )
-	        ),
+	        );
+	      }
+	      return _react2.default.createElement(
+	        'div',
+	        null,
 	        _react2.default.createElement(
-	          'tbody',
+	          'p',
 	          null,
-	          userItems
+	          'None.'
 	        )
 	      );
 	    }
@@ -39268,41 +39279,52 @@
 	          }
 	        });
 	      }
-	      return _react2.default.createElement(
-	        'table',
-	        { className: 'table table-bordered table-hover' },
-	        _react2.default.createElement(
-	          'thead',
-	          { className: 'thead-default' },
+	      if (userItems.length > 0) {
+	        return _react2.default.createElement(
+	          'table',
+	          { className: 'table table-bordered table-hover' },
 	          _react2.default.createElement(
-	            'tr',
-	            null,
+	            'thead',
+	            { className: 'thead-default' },
 	            _react2.default.createElement(
-	              'th',
+	              'tr',
 	              null,
-	              'Leave type'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Leave days'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Start date'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'End date'
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Leave type'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Leave days'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Start date'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'End date'
+	              )
 	            )
+	          ),
+	          _react2.default.createElement(
+	            'tbody',
+	            null,
+	            userItems
 	          )
-	        ),
+	        );
+	      }
+	      return _react2.default.createElement(
+	        'div',
+	        null,
 	        _react2.default.createElement(
-	          'tbody',
+	          'p',
 	          null,
-	          userItems
+	          'None.'
 	        )
 	      );
 	    }
@@ -39442,9 +39464,9 @@
 	            'div',
 	            { className: 'col-sm-12' },
 	            _react2.default.createElement(
-	              'h5',
+	              'h6',
 	              { className: 'text-muted' },
-	              'Pending leave schedule'
+	              'PENDING LEAVE SCHEDULE'
 	            ),
 	            _react2.default.createElement(PendingRecordList, { user_detail: this.props.user_detail })
 	          ),
@@ -39452,9 +39474,9 @@
 	            'div',
 	            { className: 'col-sm-12' },
 	            _react2.default.createElement(
-	              'h5',
+	              'h6',
 	              { className: 'text-muted' },
-	              'Approved leave schedule'
+	              'APPROVED LEAVE SCHEDULE'
 	            ),
 	            _react2.default.createElement(ApprovedRecordList, { user_detail: this.props.user_detail })
 	          )
