@@ -80,32 +80,22 @@ class UserRecord extends Component {
         </div>
       );
     }
+
     const userItem = user_detail.map((user) => {
       return (
-        <tr key={user.id}>
-          <td>{user.othernames} {user.surname}</td>
-          <td>{user.annual} day(s)</td>
-          <td>{user.sick} day(s)</td>
-          <td>{user.bereavement} day(s)</td>
-          <td>{user.christmas} day(s)</td>
-        </tr>
+        <div key={user.id}>
+          <h4 className="card-title">{user.othernames} {user.surname}</h4>
+           <p className="text-primary"><span className="text-muted">Annual</span> {user.annual} day(s)</p>
+           <p className="text-primary"><span className="text-muted">Sick</span> {user.sick} day(s)</p>
+           <p className="text-primary"><span className="text-muted">Bereavement</span> {user.bereavement} day(s)</p>
+           <p className="text-primary"><span className="text-muted">Christmas</span> {user.christmas} day(s)</p>
+        </div>
       );
     });
     return (
-      <table className="table table-bordered">
-        <thead className="thead-default">
-          <tr>
-            <th>Name</th>
-            <th>Annual</th>
-            <th>Sick</th>
-            <th>Bereavement</th>
-            <th>Christmas</th>
-          </tr>
-        </thead>
-        <tbody>
-        {userItem}
-        </tbody>
-      </table>
+      <div className="card card-block">
+      {userItem}
+      </div>
     );
   }
 }
@@ -114,17 +104,18 @@ class UserDetails extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-sm-12">
-          <h6>Leave record</h6>
+        <div className="col-sm-4">
           <UserRecord user_detail={this.props.user_detail} message={this.props.message} />
         </div>
-        <div className="col-sm-12">
-          <h6>Pending leave schedule</h6>
-          <PendingRecordList user_detail={this.props.user_detail} />
-        </div>
-        <div className="col-sm-12">
-          <h6>Approved leave schedule</h6>
-          <ApprovedRecordList user_detail={this.props.user_detail} />
+        <div className="col-sm-8">
+          <div className="col-sm-12">
+            <h5>Pending leave schedule</h5>
+            <PendingRecordList user_detail={this.props.user_detail} />
+          </div>
+          <div className="col-sm-12">
+            <h5>Approved leave schedule</h5>
+            <ApprovedRecordList user_detail={this.props.user_detail} />
+          </div>
         </div>
       </div>
     );

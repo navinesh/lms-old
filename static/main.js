@@ -39342,84 +39342,72 @@
 	          )
 	        );
 	      }
+
 	      var userItem = user_detail.map(function (user) {
 	        return _react2.default.createElement(
-	          'tr',
+	          'div',
 	          { key: user.id },
 	          _react2.default.createElement(
-	            'td',
-	            null,
+	            'h4',
+	            { className: 'card-title' },
 	            user.othernames,
 	            ' ',
 	            user.surname
 	          ),
 	          _react2.default.createElement(
-	            'td',
-	            null,
+	            'p',
+	            { className: 'text-primary' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'text-muted' },
+	              'Annual'
+	            ),
+	            ' ',
 	            user.annual,
 	            ' day(s)'
 	          ),
 	          _react2.default.createElement(
-	            'td',
-	            null,
+	            'p',
+	            { className: 'text-primary' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'text-muted' },
+	              'Sick'
+	            ),
+	            ' ',
 	            user.sick,
 	            ' day(s)'
 	          ),
 	          _react2.default.createElement(
-	            'td',
-	            null,
+	            'p',
+	            { className: 'text-primary' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'text-muted' },
+	              'Bereavement'
+	            ),
+	            ' ',
 	            user.bereavement,
 	            ' day(s)'
 	          ),
 	          _react2.default.createElement(
-	            'td',
-	            null,
+	            'p',
+	            { className: 'text-primary' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'text-muted' },
+	              'Christmas'
+	            ),
+	            ' ',
 	            user.christmas,
 	            ' day(s)'
 	          )
 	        );
 	      });
 	      return _react2.default.createElement(
-	        'table',
-	        { className: 'table table-bordered' },
-	        _react2.default.createElement(
-	          'thead',
-	          { className: 'thead-default' },
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Name'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Annual'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Sick'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Bereavement'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Christmas'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'tbody',
-	          null,
-	          userItem
-	        )
+	        'div',
+	        { className: 'card card-block' },
+	        userItem
 	      );
 	    }
 	  }]);
@@ -39444,33 +39432,32 @@
 	        { className: 'row' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-sm-12' },
-	          _react2.default.createElement(
-	            'h6',
-	            null,
-	            'Leave record'
-	          ),
+	          { className: 'col-sm-4' },
 	          _react2.default.createElement(UserRecord, { user_detail: this.props.user_detail, message: this.props.message })
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-sm-12' },
+	          { className: 'col-sm-8' },
 	          _react2.default.createElement(
-	            'h6',
-	            null,
-	            'Pending leave schedule'
+	            'div',
+	            { className: 'col-sm-12' },
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              'Pending leave schedule'
+	            ),
+	            _react2.default.createElement(PendingRecordList, { user_detail: this.props.user_detail })
 	          ),
-	          _react2.default.createElement(PendingRecordList, { user_detail: this.props.user_detail })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-sm-12' },
 	          _react2.default.createElement(
-	            'h6',
-	            null,
-	            'Approved leave schedule'
-	          ),
-	          _react2.default.createElement(ApprovedRecordList, { user_detail: this.props.user_detail })
+	            'div',
+	            { className: 'col-sm-12' },
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              'Approved leave schedule'
+	            ),
+	            _react2.default.createElement(ApprovedRecordList, { user_detail: this.props.user_detail })
+	          )
 	        )
 	      );
 	    }
