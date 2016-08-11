@@ -35866,7 +35866,7 @@
 
 	var _userlogoutactions = __webpack_require__(580);
 
-	var _userdetailsactions = __webpack_require__(601);
+	var _userdetailsactions = __webpack_require__(581);
 
 	function leaveRecords() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? { isFetching: false,
@@ -35933,7 +35933,7 @@
 
 	function userDetails() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? { isFetching: false,
-	    userDetail: {}, message: '' } : arguments[0];
+	    userDetail: [], message: '' } : arguments[0];
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -37820,7 +37820,67 @@
 	}
 
 /***/ },
-/* 581 */,
+/* 581 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.USER_DETAILS_ERROR = exports.RECEIVE_USER_DETAILS = exports.REQUEST_USER_DETAILS = undefined;
+	exports.requestUserDetails = requestUserDetails;
+	exports.userDetailsError = userDetailsError;
+	exports.receiveUserDetails = receiveUserDetails;
+	exports.fetchUserDetails = fetchUserDetails;
+
+	var _axios = __webpack_require__(561);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var REQUEST_USER_DETAILS = exports.REQUEST_USER_DETAILS = 'REQUEST_USER_DETAILS';
+	var RECEIVE_USER_DETAILS = exports.RECEIVE_USER_DETAILS = 'RECEIVE_USER_DETAILS';
+	var USER_DETAILS_ERROR = exports.USER_DETAILS_ERROR = 'USER_DETAILS_ERROR';
+
+	function requestUserDetails(user_id) {
+	  return {
+	    type: REQUEST_USER_DETAILS,
+	    user_id: user_id
+	  };
+	}
+
+	function userDetailsError(data) {
+	  return {
+	    type: USER_DETAILS_ERROR,
+	    message: data.message
+	  };
+	}
+
+	function receiveUserDetails(data) {
+	  return {
+	    type: RECEIVE_USER_DETAILS,
+	    user_detail: data.user_detail
+	  };
+	}
+
+	function fetchUserDetails(user_id) {
+	  return function (dispatch) {
+	    dispatch(requestUserDetails(user_id));
+	    _axios2.default.post('user-record.api', {
+	      user_id: user_id
+	    }).then(function (response) {
+	      if (response.status === 200) {
+	        dispatch(userDetailsError(response.data));
+	      } else {
+	        dispatch(receiveUserDetails(response.data));
+	      }
+	    });
+	  };
+	}
+
+/***/ },
 /* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -38031,7 +38091,7 @@
 
 	var _userlogincontainer2 = _interopRequireDefault(_userlogincontainer);
 
-	var _userdetailscontainer = __webpack_require__(602);
+	var _userdetailscontainer = __webpack_require__(597);
 
 	var _userdetailscontainer2 = _interopRequireDefault(_userdetailscontainer);
 
@@ -38210,35 +38270,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Record = function (_Component) {
-	  _inherits(Record, _Component);
-
-	  function Record() {
-	    _classCallCheck(this, Record);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Record).apply(this, arguments));
-	  }
-
-	  _createClass(Record, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "tr",
-	        null,
-	        _react2.default.createElement(
-	          "th",
-	          null,
-	          this.props.children
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Record;
-	}(_react.Component);
-
-	var RecordList = function (_Component2) {
-	  _inherits(RecordList, _Component2);
+	var RecordList = function (_Component) {
+	  _inherits(RecordList, _Component);
 
 	  function RecordList() {
 	    _classCallCheck(this, RecordList);
@@ -38335,8 +38368,8 @@
 	  return RecordList;
 	}(_react.Component);
 
-	var LeaveCalendar = function (_Component3) {
-	  _inherits(LeaveCalendar, _Component3);
+	var LeaveCalendar = function (_Component2) {
+	  _inherits(LeaveCalendar, _Component2);
 
 	  function LeaveCalendar() {
 	    _classCallCheck(this, LeaveCalendar);
@@ -38988,8 +39021,472 @@
 	module.exports = Loader;
 
 /***/ },
-/* 597 */,
-/* 598 */,
+/* 597 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(466);
+
+	var _userdetailsactions = __webpack_require__(581);
+
+	var _userdetails = __webpack_require__(598);
+
+	var _userdetails2 = _interopRequireDefault(_userdetails);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Loader = __webpack_require__(587);
+
+	var UserDetailsContainer = function (_Component) {
+	  _inherits(UserDetailsContainer, _Component);
+
+	  function UserDetailsContainer() {
+	    _classCallCheck(this, UserDetailsContainer);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserDetailsContainer).apply(this, arguments));
+	  }
+
+	  _createClass(UserDetailsContainer, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var dispatch = this.props.dispatch;
+
+	      var user_id = localStorage.getItem('user_id');
+	      dispatch((0, _userdetailsactions.fetchUserDetails)(user_id));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var isFetching = _props.isFetching;
+	      var user_detail = _props.user_detail;
+	      var message = _props.message;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'UserDetailsContainer' },
+	        isFetching ? _react2.default.createElement(
+	          'div',
+	          { className: 'offset-sm-5' },
+	          _react2.default.createElement(Loader, { color: '#0275d8', size: '12px' })
+	        ) : _react2.default.createElement(_userdetails2.default, { user_detail: user_detail, message: message })
+	      );
+	    }
+	  }]);
+
+	  return UserDetailsContainer;
+	}(_react.Component);
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  var userDetails = state.userDetails;
+	  var isFetching = userDetails.isFetching;
+	  var user_detail = userDetails.userDetail;
+	  var message = userDetails.message;
+
+	  return {
+	    isFetching: isFetching,
+	    user_detail: user_detail,
+	    message: message
+	  };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserDetailsContainer);
+
+/***/ },
+/* 598 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var PendingRecordList = function (_Component) {
+	  _inherits(PendingRecordList, _Component);
+
+	  function PendingRecordList() {
+	    _classCallCheck(this, PendingRecordList);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(PendingRecordList).apply(this, arguments));
+	  }
+
+	  _createClass(PendingRecordList, [{
+	    key: 'render',
+	    value: function render() {
+	      var user_detail = this.props.user_detail;
+
+	      var userItems = [];
+	      for (var x in user_detail) {
+	        var uItems = user_detail[x].leaverecord.map(function (detail) {
+	          if (detail.leave_status === 'pending') {
+	            userItems.push(_react2.default.createElement(
+	              'tr',
+	              { key: detail.id },
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                detail.leave_name
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                detail.leave_days,
+	                ' day(s)'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                detail.start_date
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                detail.end_date
+	              )
+	            ));
+	          }
+	        });
+	      }
+	      return _react2.default.createElement(
+	        'table',
+	        { className: 'table table-bordered table-hover' },
+	        _react2.default.createElement(
+	          'thead',
+	          { className: 'thead-default' },
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Leave type'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Leave days'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Start date'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'End date'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          userItems
+	        )
+	      );
+	    }
+	  }]);
+
+	  return PendingRecordList;
+	}(_react.Component);
+
+	var ApprovedRecordList = function (_Component2) {
+	  _inherits(ApprovedRecordList, _Component2);
+
+	  function ApprovedRecordList() {
+	    _classCallCheck(this, ApprovedRecordList);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ApprovedRecordList).apply(this, arguments));
+	  }
+
+	  _createClass(ApprovedRecordList, [{
+	    key: 'render',
+	    value: function render() {
+	      var user_detail = this.props.user_detail;
+
+	      var userItems = [];
+	      for (var x in user_detail) {
+	        var uItems = user_detail[x].leaverecord.map(function (detail) {
+	          if (detail.leave_status === 'approved') {
+	            userItems.push(_react2.default.createElement(
+	              'tr',
+	              { key: detail.id },
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                detail.leave_name
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                detail.leave_days,
+	                ' day(s)'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                detail.start_date
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                detail.end_date
+	              )
+	            ));
+	          }
+	        });
+	      }
+	      return _react2.default.createElement(
+	        'table',
+	        { className: 'table table-bordered table-hover' },
+	        _react2.default.createElement(
+	          'thead',
+	          { className: 'thead-default' },
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Leave type'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Leave days'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Start date'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'End date'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          userItems
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ApprovedRecordList;
+	}(_react.Component);
+
+	var UserRecord = function (_Component3) {
+	  _inherits(UserRecord, _Component3);
+
+	  function UserRecord() {
+	    _classCallCheck(this, UserRecord);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserRecord).apply(this, arguments));
+	  }
+
+	  _createClass(UserRecord, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var user_detail = _props.user_detail;
+	      var message = _props.message;
+
+	      if (message) {
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'container text-xs-center', style: { paddingTop: '100px' } },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'offset-sm-2 col-sm-8' },
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              'The site configured at this address does not contain the requested resource.'
+	            )
+	          )
+	        );
+	      }
+	      var userItem = user_detail.map(function (user) {
+	        return _react2.default.createElement(
+	          'tr',
+	          { key: user.id },
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            user.othernames,
+	            ' ',
+	            user.surname
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            user.annual,
+	            ' day(s)'
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            user.sick,
+	            ' day(s)'
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            user.bereavement,
+	            ' day(s)'
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            user.christmas,
+	            ' day(s)'
+	          )
+	        );
+	      });
+	      return _react2.default.createElement(
+	        'table',
+	        { className: 'table table-bordered' },
+	        _react2.default.createElement(
+	          'thead',
+	          { className: 'thead-default' },
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Name'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Annual'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Sick'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Bereavement'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Christmas'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          userItem
+	        )
+	      );
+	    }
+	  }]);
+
+	  return UserRecord;
+	}(_react.Component);
+
+	var UserDetails = function (_Component4) {
+	  _inherits(UserDetails, _Component4);
+
+	  function UserDetails() {
+	    _classCallCheck(this, UserDetails);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserDetails).apply(this, arguments));
+	  }
+
+	  _createClass(UserDetails, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'row' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-sm-12' },
+	          _react2.default.createElement(
+	            'h6',
+	            null,
+	            'Leave record'
+	          ),
+	          _react2.default.createElement(UserRecord, { user_detail: this.props.user_detail, message: this.props.message })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-sm-12' },
+	          _react2.default.createElement(
+	            'h6',
+	            null,
+	            'Pending leave schedule'
+	          ),
+	          _react2.default.createElement(PendingRecordList, { user_detail: this.props.user_detail })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-sm-12' },
+	          _react2.default.createElement(
+	            'h6',
+	            null,
+	            'Approved leave schedule'
+	          ),
+	          _react2.default.createElement(ApprovedRecordList, { user_detail: this.props.user_detail })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return UserDetails;
+	}(_react.Component);
+
+	UserDetails.propTypes = {
+	  user_detail: _react.PropTypes.array.isRequired,
+	  message: _react.PropTypes.string
+	};
+
+	exports.default = UserDetails;
+
+/***/ },
 /* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -39133,342 +39630,6 @@
 	}(_react.Component);
 
 	exports.default = UserError;
-
-/***/ },
-/* 601 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.USER_DETAILS_ERROR = exports.RECEIVE_USER_DETAILS = exports.REQUEST_USER_DETAILS = undefined;
-	exports.requestUserDetails = requestUserDetails;
-	exports.userDetailsError = userDetailsError;
-	exports.receiveUserDetails = receiveUserDetails;
-	exports.fetchUserDetails = fetchUserDetails;
-
-	var _axios = __webpack_require__(561);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var REQUEST_USER_DETAILS = exports.REQUEST_USER_DETAILS = 'REQUEST_USER_DETAILS';
-	var RECEIVE_USER_DETAILS = exports.RECEIVE_USER_DETAILS = 'RECEIVE_USER_DETAILS';
-	var USER_DETAILS_ERROR = exports.USER_DETAILS_ERROR = 'USER_DETAILS_ERROR';
-
-	function requestUserDetails(user_id) {
-	  return {
-	    type: REQUEST_USER_DETAILS,
-	    user_id: user_id
-	  };
-	}
-
-	function userDetailsError(data) {
-	  return {
-	    type: USER_DETAILS_ERROR,
-	    message: data.message
-	  };
-	}
-
-	function receiveUserDetails(data) {
-	  return {
-	    type: RECEIVE_USER_DETAILS,
-	    user_detail: data.user_detail
-	  };
-	}
-
-	function fetchUserDetails(user_id) {
-	  return function (dispatch) {
-	    dispatch(requestUserDetails(user_id));
-	    _axios2.default.post('user-detail.api', {
-	      user_id: user_id
-	    }).then(function (response) {
-	      if (response.status === 200) {
-	        dispatch(userDetailsError(response.data));
-	      } else {
-	        dispatch(receiveUserDetails(response.data));
-	      }
-	    });
-	  };
-	}
-
-/***/ },
-/* 602 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(300);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(466);
-
-	var _userdetailsactions = __webpack_require__(601);
-
-	var _userdetails = __webpack_require__(603);
-
-	var _userdetails2 = _interopRequireDefault(_userdetails);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Loader = __webpack_require__(587);
-
-	var UserDetailsContainer = function (_Component) {
-	  _inherits(UserDetailsContainer, _Component);
-
-	  function UserDetailsContainer() {
-	    _classCallCheck(this, UserDetailsContainer);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserDetailsContainer).apply(this, arguments));
-	  }
-
-	  _createClass(UserDetailsContainer, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var dispatch = this.props.dispatch;
-
-
-	      var user_id = localStorage.getItem('user_id');
-	      if (!user_id || user_id === '') {
-	        return;
-	      }
-	      dispatch((0, _userdetailsactions.fetchUserDetails)(user_id));
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props;
-	      var isFetching = _props.isFetching;
-	      var user_detail = _props.user_detail;
-	      var message = _props.message;
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'UserDetailsContainer' },
-	        isFetching ? _react2.default.createElement(
-	          'div',
-	          { className: 'offset-sm-5' },
-	          _react2.default.createElement(Loader, { color: '#0275d8', size: '12px' })
-	        ) : _react2.default.createElement(_userdetails2.default, { user_detail: user_detail, message: message })
-	      );
-	    }
-	  }]);
-
-	  return UserDetailsContainer;
-	}(_react.Component);
-
-	var mapStateToProps = function mapStateToProps(state) {
-	  var userDetails = state.userDetails;
-	  var isFetching = userDetails.isFetching;
-	  var user_detail = userDetails.userDetail;
-	  var message = userDetails.message;
-
-	  return {
-	    isFetching: isFetching,
-	    user_detail: user_detail,
-	    message: message
-	  };
-	};
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserDetailsContainer);
-
-/***/ },
-/* 603 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(300);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _usererror = __webpack_require__(600);
-
-	var _usererror2 = _interopRequireDefault(_usererror);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var UserRecord = function (_Component) {
-	  _inherits(UserRecord, _Component);
-
-	  function UserRecord() {
-	    _classCallCheck(this, UserRecord);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserRecord).apply(this, arguments));
-	  }
-
-	  _createClass(UserRecord, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'tr',
-	        null,
-	        _react2.default.createElement(
-	          'th',
-	          null,
-	          this.props.children
-	        )
-	      );
-	    }
-	  }]);
-
-	  return UserRecord;
-	}(_react.Component);
-
-	var UserRecordList = function (_Component2) {
-	  _inherits(UserRecordList, _Component2);
-
-	  function UserRecordList() {
-	    _classCallCheck(this, UserRecordList);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserRecordList).apply(this, arguments));
-	  }
-
-	  _createClass(UserRecordList, [{
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props;
-	      var user_detail = _props.user_detail;
-	      var message = _props.message;
-
-	      if (message) {
-	        return _react2.default.createElement(_usererror2.default, null);
-	      }
-	      return _react2.default.createElement(
-	        'table',
-	        { className: 'table table-bordered' },
-	        _react2.default.createElement(
-	          'thead',
-	          { className: 'thead-default' },
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Name'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Annual leave'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Sick leave'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Bereavement leave'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Christmas leave'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'tbody',
-	          null,
-	          _react2.default.createElement(
-	            'tr',
-	            { key: user_detail.id },
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              user_detail.othernames,
-	              ' ',
-	              user_detail.surname
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              user_detail.annual,
-	              ' day(s)'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              user_detail.sick,
-	              ' day(s)'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              user_detail.bereavement,
-	              ' day(s)'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              user_detail.christmas,
-	              ' day(s)'
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return UserRecordList;
-	}(_react.Component);
-
-	var UserDetails = function (_Component3) {
-	  _inherits(UserDetails, _Component3);
-
-	  function UserDetails() {
-	    _classCallCheck(this, UserDetails);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserDetails).apply(this, arguments));
-	  }
-
-	  _createClass(UserDetails, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(UserRecordList, { user_detail: this.props.user_detail, message: this.props.message });
-	    }
-	  }]);
-
-	  return UserDetails;
-	}(_react.Component);
-
-	UserDetails.propTypes = {
-	  user_detail: _react.PropTypes.object.isRequired,
-	  message: _react.PropTypes.string
-	};
-
-	exports.default = UserDetails;
 
 /***/ }
 /******/ ]);
