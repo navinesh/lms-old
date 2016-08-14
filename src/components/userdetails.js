@@ -122,12 +122,13 @@ class UserDetails extends Component {
           <UserRecord user_detail={this.props.user_detail} message={this.props.message} />
         </div>
         <div className="col-sm-8">
+          <h4 className="col-sm-12">Leave schedule</h4>
           <div className="col-sm-12">
-            <h6 className="text-muted">PENDING LEAVE SCHEDULE</h6>
+            <h5 className="text-muted">Pending</h5>
             <PendingRecordList user_detail={this.props.user_detail} />
           </div>
           <div className="col-sm-12">
-            <h6 className="text-muted">APPROVED LEAVE SCHEDULE</h6>
+            <h5 className="text-muted">Approved</h5>
             <ApprovedRecordList user_detail={this.props.user_detail} />
           </div>
         </div>

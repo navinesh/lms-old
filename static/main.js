@@ -39119,12 +39119,17 @@
 	          'div',
 	          { className: 'col-sm-8' },
 	          _react2.default.createElement(
+	            'h4',
+	            { className: 'col-sm-12' },
+	            'Leave schedule'
+	          ),
+	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-sm-12' },
 	            _react2.default.createElement(
-	              'h6',
+	              'h5',
 	              { className: 'text-muted' },
-	              'PENDING LEAVE SCHEDULE'
+	              'Pending'
 	            ),
 	            _react2.default.createElement(PendingRecordList, { user_detail: this.props.user_detail })
 	          ),
@@ -39132,9 +39137,9 @@
 	            'div',
 	            { className: 'col-sm-12' },
 	            _react2.default.createElement(
-	              'h6',
+	              'h5',
 	              { className: 'text-muted' },
-	              'APPROVED LEAVE SCHEDULE'
+	              'Approved'
 	            ),
 	            _react2.default.createElement(ApprovedRecordList, { user_detail: this.props.user_detail })
 	          )
