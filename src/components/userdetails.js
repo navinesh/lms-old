@@ -33,11 +33,13 @@ class PendingRecordList extends Component {
         </table>
       );
     }
-    return (
-      <div>
-      <p>None.</p>
-      </div>
-    );
+    else {
+      return (
+        <div>
+        <p>None.</p>
+        </div>
+      );      
+    }
   }
 }
 
@@ -74,11 +76,13 @@ class ApprovedRecordList extends Component {
         </table>
       );
     }
-    return (
-      <div>
-      <p>None.</p>
-      </div>
-    );
+    else {
+      return (
+        <div>
+        <p>None.</p>
+        </div>
+      );
+    }
   }
 }
 

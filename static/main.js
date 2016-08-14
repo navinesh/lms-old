@@ -38875,16 +38875,17 @@
 	            userItems
 	          )
 	        );
-	      }
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'p',
+	      } else {
+	        return _react2.default.createElement(
+	          'div',
 	          null,
-	          'None.'
-	        )
-	      );
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'None.'
+	          )
+	        );
+	      }
 	    }
 	  }]);
 
@@ -38975,16 +38976,17 @@
 	            userItems
 	          )
 	        );
-	      }
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'p',
+	      } else {
+	        return _react2.default.createElement(
+	          'div',
 	          null,
-	          'None.'
-	        )
-	      );
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'None.'
+	          )
+	        );
+	      }
 	    }
 	  }]);
 
