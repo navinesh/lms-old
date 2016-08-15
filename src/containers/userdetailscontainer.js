@@ -9,7 +9,7 @@ class UserDetailsContainer extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props
-    let user_id = localStorage.getItem('user_id')
+    const user_id = localStorage.getItem('user_id')
     dispatch(fetchUserDetails(user_id))
   }
 

@@ -7,7 +7,7 @@ import { logoutUser } from '../actions/userlogoutactions'
 class Headercontainer extends Component {
   componentDidMount() {
     const { dispatch } = this.props
-    let auth_token = localStorage.getItem('auth_token')
+    const auth_token = localStorage.getItem('auth_token')
     if(!auth_token || auth_token === '') {
       return;
     }
