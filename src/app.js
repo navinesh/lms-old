@@ -6,12 +6,10 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 
 import configureStore from './stores/configureStore'
 
-import Headercontainer from './containers/headercontainer'
+import Header from './containers/header'
 import Main from './containers/main'
-import LeaveCalendarContainer from './containers/leavecalendarcontainer'
-import UserLoginBox from './containers/userlogincontainer'
-import MainUserLoginBox from './containers/userloginbox'
-
+import LeaveCalendar from './containers/leavecalendar'
+import ResetPassword from './containers/resetpassword'
 import UserError from './components/usererror'
 
 const store = configureStore()
@@ -19,10 +17,10 @@ const store = configureStore()
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={Headercontainer}>
+      <Route path="/" component={Header}>
         <IndexRoute component={Main} />
-        <Route path="/leavecalendar" component={LeaveCalendarContainer} />
-        <Route path="/login" component={MainUserLoginBox} />
+        <Route path="/leavecalendar" component={LeaveCalendar} />
+        <Route path="/reset" component={ResetPassword} />
       </Route>
       <Route path="*" component={UserError}/>
     </Router>
