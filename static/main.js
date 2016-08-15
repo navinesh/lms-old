@@ -39026,65 +39026,139 @@
 	      }
 
 	      var userItem = user_detail.map(function (user) {
-	        return _react2.default.createElement(
-	          'div',
-	          { key: user.id },
-	          _react2.default.createElement(
-	            'h4',
-	            { className: 'card-title' },
-	            user.othernames,
-	            ' ',
-	            user.surname
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'text-primary' },
+	        if (user.maternity) {
+	          return _react2.default.createElement(
+	            'div',
+	            { key: user.id },
 	            _react2.default.createElement(
-	              'span',
-	              { className: 'text-muted' },
-	              'Annual'
+	              'h4',
+	              { className: 'card-title' },
+	              user.othernames,
+	              ' ',
+	              user.surname
 	            ),
-	            ' ',
-	            user.annual,
-	            ' day(s)'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'text-primary' },
 	            _react2.default.createElement(
-	              'span',
-	              { className: 'text-muted' },
-	              'Sick'
+	              'p',
+	              { className: 'text-primary' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'text-muted' },
+	                'Annual'
+	              ),
+	              ' ',
+	              user.annual,
+	              ' day(s)'
 	            ),
-	            ' ',
-	            user.sick,
-	            ' day(s)'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'text-primary' },
 	            _react2.default.createElement(
-	              'span',
-	              { className: 'text-muted' },
-	              'Bereavement'
+	              'p',
+	              { className: 'text-primary' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'text-muted' },
+	                'Sick'
+	              ),
+	              ' ',
+	              user.sick,
+	              ' day(s)'
 	            ),
-	            ' ',
-	            user.bereavement,
-	            ' day(s)'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'text-primary' },
 	            _react2.default.createElement(
-	              'span',
-	              { className: 'text-muted' },
-	              'Christmas'
+	              'p',
+	              { className: 'text-primary' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'text-muted' },
+	                'Bereavement'
+	              ),
+	              ' ',
+	              user.bereavement,
+	              ' day(s)'
 	            ),
-	            ' ',
-	            user.christmas,
-	            ' day(s)'
-	          )
-	        );
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'text-primary' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'text-muted' },
+	                'Christmas'
+	              ),
+	              ' ',
+	              user.christmas,
+	              ' day(s)'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'text-primary' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'text-muted' },
+	                'Maternity'
+	              ),
+	              ' ',
+	              user.maternity,
+	              ' day(s)'
+	            )
+	          );
+	        } else {
+	          return _react2.default.createElement(
+	            'div',
+	            { key: user.id },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'card-title' },
+	              user.othernames,
+	              ' ',
+	              user.surname
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'text-primary' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'text-muted' },
+	                'Annual'
+	              ),
+	              ' ',
+	              user.annual,
+	              ' day(s)'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'text-primary' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'text-muted' },
+	                'Sick'
+	              ),
+	              ' ',
+	              user.sick,
+	              ' day(s)'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'text-primary' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'text-muted' },
+	                'Bereavement'
+	              ),
+	              ' ',
+	              user.bereavement,
+	              ' day(s)'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'text-primary' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'text-muted' },
+	                'Christmas'
+	              ),
+	              ' ',
+	              user.christmas,
+	              ' day(s)'
+	            )
+	          );
+	        }
 	      });
 	      return _react2.default.createElement(
 	        'div',

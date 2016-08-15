@@ -38,7 +38,7 @@ class PendingRecordList extends Component {
         <div>
         <p>None.</p>
         </div>
-      );      
+      );
     }
   }
 }
@@ -100,15 +100,29 @@ class UserRecord extends Component {
     }
 
     const userItem = user_detail.map((user) => {
-      return (
-        <div key={user.id}>
-          <h4 className="card-title">{user.othernames} {user.surname}</h4>
-           <p className="text-primary"><span className="text-muted">Annual</span> {user.annual} day(s)</p>
-           <p className="text-primary"><span className="text-muted">Sick</span> {user.sick} day(s)</p>
-           <p className="text-primary"><span className="text-muted">Bereavement</span> {user.bereavement} day(s)</p>
-           <p className="text-primary"><span className="text-muted">Christmas</span> {user.christmas} day(s)</p>
-        </div>
-      );
+      if(user.maternity) {
+        return (
+          <div key={user.id}>
+            <h4 className="card-title">{user.othernames} {user.surname}</h4>
+             <p className="text-primary"><span className="text-muted">Annual</span> {user.annual} day(s)</p>
+             <p className="text-primary"><span className="text-muted">Sick</span> {user.sick} day(s)</p>
+             <p className="text-primary"><span className="text-muted">Bereavement</span> {user.bereavement} day(s)</p>
+             <p className="text-primary"><span className="text-muted">Christmas</span> {user.christmas} day(s)</p>
+             <p className="text-primary"><span className="text-muted">Maternity</span> {user.maternity} day(s)</p>
+          </div>
+        );
+      }
+      else {
+        return (
+          <div key={user.id}>
+            <h4 className="card-title">{user.othernames} {user.surname}</h4>
+             <p className="text-primary"><span className="text-muted">Annual</span> {user.annual} day(s)</p>
+             <p className="text-primary"><span className="text-muted">Sick</span> {user.sick} day(s)</p>
+             <p className="text-primary"><span className="text-muted">Bereavement</span> {user.bereavement} day(s)</p>
+             <p className="text-primary"><span className="text-muted">Christmas</span> {user.christmas} day(s)</p>
+          </div>
+        );
+      }
     });
     return (
       <div className="card card-block">
