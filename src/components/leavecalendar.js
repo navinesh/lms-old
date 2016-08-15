@@ -34,7 +34,7 @@ class RecordList extends Component {
   }
 }
 
-class LeaveCalendar extends Component {
+class Leaves extends Component {
   render() {
     return (
         <RecordList records={this.props.records} />
@@ -42,8 +42,8 @@ class LeaveCalendar extends Component {
   }
 }
 
-LeaveCalendar.propTypes = {
+Leaves.propTypes = {
   records: PropTypes.array.isRequired
 }
 
-export default LeaveCalendar;
+export default Leaves;

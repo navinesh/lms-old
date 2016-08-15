@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
-export default class Header extends Component {
+export default class Navs extends Component {
   render(){
     const { isAuthenticated, onLogoutClick, children } = this.props
     return (
-      <div className="Header">
+      <div className="Navs">
         <nav className="navbar navbar-fixed-top">
           <div className="container">
             {!isAuthenticated &&
@@ -36,7 +36,7 @@ export default class Header extends Component {
   }
 }
 
-Header.propTypes = {
+Navs.propTypes = {
   onLogoutClick: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired
 }

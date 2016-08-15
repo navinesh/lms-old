@@ -53,7 +53,7 @@ export default class Login extends Component {
               this.props.message}
           </div>
         </div>
-        <Link to="/login" className="btn col-xs-12 col-sm-12">Forgot your password?</Link>
+        <Link to="/reset" className="btn col-xs-12 col-sm-12">Forgot your password?</Link>
       </div>
     );
   }
