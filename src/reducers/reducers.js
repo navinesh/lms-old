@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 
-import { REQUEST_LEAVE_CALENDAR, RECEIVE_LEAVE_CALENDAR } from '../actions/leavecalendaractions'
+import { REQUEST_LEAVE_CALENDAR, RECEIVE_LEAVE_CALENDAR } from '../actions/leavecalendar'
 import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE,
         LOGIN_USER_REQUEST_FROM_TOKEN, LOGIN_USER_SUCCESS_FROM_TOKEN,
-        LOGIN_USER_FAILURE_FROM_TOKEN } from '../actions/userloginactions'
-import { LOGOUT_USER_SUCCESS } from '../actions/userlogoutactions'
-import { REQUEST_USER_DETAILS, RECEIVE_USER_DETAILS, USER_DETAILS_ERROR } from '../actions/userdetailsactions'
+        LOGIN_USER_FAILURE_FROM_TOKEN } from '../actions/userlogin'
+import { LOGOUT_USER_SUCCESS } from '../actions/userlogout'
+import { REQUEST_USER_DETAILS, RECEIVE_USER_DETAILS, USER_DETAILS_ERROR } from '../actions/userdetails'
 
 function leaveRecords(state = {isFetching: false,
   items: []}, action) {
