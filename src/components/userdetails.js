@@ -3,9 +3,9 @@ import React, { Component, PropTypes } from 'react'
 class PendingRecordList extends Component {
   render() {
     const { user_detail } = this.props
-    let userItems = []
-    for (let x in user_detail) {
-      let uItems = user_detail[x].leaverecord.map((detail) => {
+    const userItems = []
+    for (const x in user_detail) {
+      const uItems = user_detail[x].leaverecord.map((detail) => {
         if (detail.leave_status === 'pending') {
           userItems.push(<tr key={detail.id}>
                       <td>{detail.leave_name}</td>
@@ -46,9 +46,9 @@ class PendingRecordList extends Component {
 class ApprovedRecordList extends Component {
   render() {
     const { user_detail } = this.props
-    let userItems = []
-    for (let x in user_detail) {
-      let uItems = user_detail[x].leaverecord.map((detail) => {
+    const userItems = []
+    for (const x in user_detail) {
+      const uItems = user_detail[x].leaverecord.map((detail) => {
         if (detail.leave_status === 'approved') {
           userItems.push(<tr key={detail.id}>
                       <td>{detail.leave_name}</td>
