@@ -38807,7 +38807,7 @@
 
 	      var userItems = [];
 	      for (var x in user_detail) {
-	        var uItems = user_detail[x].leaverecord.map(function (detail) {
+	        user_detail[x].leaverecord.map(function (detail) {
 	          if (detail.leave_status === 'pending') {
 	            userItems.push(_react2.default.createElement(
 	              'tr',
@@ -38908,7 +38908,7 @@
 
 	      var userItems = [];
 	      for (var x in user_detail) {
-	        var uItems = user_detail[x].leaverecord.map(function (detail) {
+	        user_detail[x].leaverecord.map(function (detail) {
 	          if (detail.leave_status === 'approved') {
 	            userItems.push(_react2.default.createElement(
 	              'tr',
