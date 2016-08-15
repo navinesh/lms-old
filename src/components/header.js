@@ -37,6 +37,6 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
-onLogoutClick: PropTypes.func.isRequired,
-isAuthenticated: PropTypes.bool.isRequired
+  onLogoutClick: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 }

@@ -60,7 +60,7 @@ export default class Login extends Component {
 }
 
 Login.propTypes = {
-onLoginClick: PropTypes.func.isRequired,
-message: PropTypes.string,
-isFetching: PropTypes.bool.isRequired
+  onLoginClick: PropTypes.func.isRequired,
+  message: PropTypes.string,
+  isFetching: PropTypes.bool.isRequired
 }
