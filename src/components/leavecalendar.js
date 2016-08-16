@@ -15,7 +15,7 @@ class RecordList extends Component {
     });
     return (
       <div className="table-responsive">
-      <table className="table table-bordered table-hover" style={{fontSize: '15px'}}>
+      <table className="table table-bordered table-hover">
         <thead className="thead-default">
           <tr>
             <th>Name</th>
