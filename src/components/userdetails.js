@@ -12,6 +12,7 @@ class PendingRecordList extends Component {
                       <td>{detail.leave_days} day(s)</td>
                       <td>{detail.start_date}</td>
                       <td>{detail.end_date}</td>
+                      <td>{detail.leave_reason}</td>
                     </tr>)
         }
       });
@@ -25,6 +26,7 @@ class PendingRecordList extends Component {
               <th>Leave days</th>
               <th>Start date</th>
               <th>End date</th>
+              <th>Reason</th>
             </tr>
           </thead>
           <tbody>
@@ -55,6 +57,7 @@ class ApprovedRecordList extends Component {
                       <td>{detail.leave_days} day(s)</td>
                       <td>{detail.start_date}</td>
                       <td>{detail.end_date}</td>
+                      <td>{detail.leave_reason}</td>
                     </tr>)
         }
       });
@@ -68,6 +71,7 @@ class ApprovedRecordList extends Component {
               <th>Leave days</th>
               <th>Start date</th>
               <th>End date</th>
+              <th>Reason</th>
             </tr>
           </thead>
           <tbody>
@@ -104,11 +108,11 @@ class UserRecord extends Component {
         return (
           <div key={user.id}>
             <h4 className="card-title">{user.othernames} {user.surname}</h4>
-             <p className="text-primary"><span className="text-muted">Annual</span> {user.annual} day(s)</p>
-             <p className="text-primary"><span className="text-muted">Sick</span> {user.sick} day(s)</p>
-             <p className="text-primary"><span className="text-muted">Bereavement</span> {user.bereavement} day(s)</p>
-             <p className="text-primary"><span className="text-muted">Christmas</span> {user.christmas} day(s)</p>
-             <p className="text-primary"><span className="text-muted">Maternity</span> {user.maternity} day(s)</p>
+              <div className="col-sm-2"><h5 className="text-primary">{user.annual} day(s)</h5><span className="text-muted">Annual</span></div>
+              <div className="col-sm-2"><h5 className="text-primary">{user.sick} day(s)</h5><span className="text-muted">Sick</span></div>
+              <div className="col-sm-2"><h5 className="text-primary">{user.bereavement} day(s)</h5><span className="text-muted">Bereavement</span></div>
+              <div className="col-sm-2"><h5 className="text-primary">{user.christmas} day(s)</h5><span className="text-muted">Christmas</span></div>
+              <div className="col-sm-2"><h5 className="text-primary">{user.maternity} day(s)</h5><span className="text-muted">Maternity</span></div>
           </div>
         );
       }
@@ -116,10 +120,10 @@ class UserRecord extends Component {
         return (
           <div key={user.id}>
             <h4 className="card-title">{user.othernames} {user.surname}</h4>
-             <p className="text-primary"><span className="text-muted">Annual</span> {user.annual} day(s)</p>
-             <p className="text-primary"><span className="text-muted">Sick</span> {user.sick} day(s)</p>
-             <p className="text-primary"><span className="text-muted">Bereavement</span> {user.bereavement} day(s)</p>
-             <p className="text-primary"><span className="text-muted">Christmas</span> {user.christmas} day(s)</p>
+              <div className="col-sm-3"><h5 className="text-primary">{user.annual} day(s)</h5><span className="text-muted">Annual</span></div>
+              <div className="col-sm-3"><h5 className="text-primary">{user.sick} day(s)</h5><span className="text-muted">Sick</span></div>
+              <div className="col-sm-3"><h5 className="text-primary">{user.bereavement} day(s)</h5><span className="text-muted">Bereavement</span></div>
+              <div className="col-sm-3"><h5 className="text-primary">{user.christmas} day(s)</h5><span className="text-muted">Christmas</span></div>
           </div>
         );
       }
@@ -135,11 +139,9 @@ class UserRecord extends Component {
 class UserDetails extends Component {
   render() {
     return (
-      <div className="row">
-        <div className="col-sm-4">
-          <UserRecord user_detail={this.props.user_detail} message={this.props.message} />
-        </div>
-        <div className="col-sm-8">
+      <div className="UserDetails">
+        <UserRecord user_detail={this.props.user_detail} message={this.props.message} />
+        <div className="row">
           <h4 className="col-sm-12">Leave schedule</h4>
           <div className="col-sm-12">
             <h5 className="text-muted">Pending</h5>
