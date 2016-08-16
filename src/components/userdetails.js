@@ -20,7 +20,7 @@ class PendingRecordList extends Component {
     if (userItems.length > 0){
       return (
         <div>
-        <h5 className="text-muted">Pending leave schedule</h5>
+        <h6>PENDING LEAVE SCHEDULE</h6>
         <table className="table table-bordered table-hover">
           <thead className="thead-default">
             <tr>
@@ -67,7 +67,7 @@ class ApprovedRecordList extends Component {
     if (userItems.length > 0){
       return (
         <div>
-        <h5 className="text-muted">Approved leave schedule</h5>
+        <h6>APPROVED LEAVE SCHEDULE</h6>
         <table className="table table-bordered table-hover">
           <thead className="thead-default">
             <tr>
@@ -145,14 +145,14 @@ class UserDetails extends Component {
     return (
       <div className="UserDetails">
         <UserRecord user_detail={this.props.user_detail} message={this.props.message} />
-        <div className="row">
+        {/*<div className="row">*/}
           <div className="col-sm-12">
             <PendingRecordList user_detail={this.props.user_detail} />
           </div>
           <div className="col-sm-12">
             <ApprovedRecordList user_detail={this.props.user_detail} />
           </div>
-        </div>
+        {/*</div>*/}
       </div>
     );
   }
