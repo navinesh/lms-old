@@ -111,23 +111,23 @@ class UserRecord extends Component {
       if(user.maternity) {
         return (
           <div key={user.id}>
-            <h4 className="card-title col-sm-12">{user.othernames} {user.surname}</h4>
-              <div className="col-sm-2"><h5 className="text-primary">{user.annual} day(s)</h5><span className="text-muted">Annual</span></div>
-              <div className="col-sm-2"><h5 className="text-primary">{user.sick} day(s)</h5><span className="text-muted">Sick</span></div>
-              <div className="col-sm-2"><h5 className="text-primary">{user.bereavement} day(s)</h5><span className="text-muted">Bereavement</span></div>
-              <div className="col-sm-2"><h5 className="text-primary">{user.christmas} day(s)</h5><span className="text-muted">Christmas</span></div>
-              <div className="col-sm-2"><h5 className="text-primary">{user.maternity} day(s)</h5><span className="text-muted">Maternity</span></div>
+            <h5 className="card-title col-sm-12">{user.othernames} {user.surname}</h5>
+              <div className="col-sm-2"><h6 className="text-primary">{user.annual} day(s)</h6><span className="text-muted">Annual</span></div>
+              <div className="col-sm-2"><h6 className="text-primary">{user.sick} day(s)</h6><span className="text-muted">Sick</span></div>
+              <div className="col-sm-2"><h6 className="text-primary">{user.bereavement} day(s)</h6><span className="text-muted">Bereavement</span></div>
+              <div className="col-sm-2"><h6 className="text-primary">{user.christmas} day(s)</h6><span className="text-muted">Christmas</span></div>
+              <div className="col-sm-2"><h6 className="text-primary">{user.maternity} day(s)</h6><span className="text-muted">Maternity</span></div>
           </div>
         );
       }
       else {
         return (
           <div key={user.id}>
-            <h4 className="card-title col-sm-12">{user.othernames} {user.surname}</h4>
-              <div className="col-sm-3"><h5 className="text-primary">{user.annual} day(s)</h5><span className="text-muted">Annual</span></div>
-              <div className="col-sm-3"><h5 className="text-primary">{user.sick} day(s)</h5><span className="text-muted">Sick</span></div>
-              <div className="col-sm-3"><h5 className="text-primary">{user.bereavement} day(s)</h5><span className="text-muted">Bereavement</span></div>
-              <div className="col-sm-3"><h5 className="text-primary">{user.christmas} day(s)</h5><span className="text-muted">Christmas</span></div>
+            <h5 className="card-title col-sm-12">{user.othernames} {user.surname}</h5>
+              <div className="col-sm-3"><h6 className="text-primary">{user.annual} day(s)</h6><span className="text-muted">Annual</span></div>
+              <div className="col-sm-3"><h6 className="text-primary">{user.sick} day(s)</h6><span className="text-muted">Sick</span></div>
+              <div className="col-sm-3"><h6 className="text-primary">{user.bereavement} day(s)</h6><span className="text-muted">Bereavement</span></div>
+              <div className="col-sm-3"><h6 className="text-primary">{user.christmas} day(s)</h6><span className="text-muted">Christmas</span></div>
           </div>
         );
       }
