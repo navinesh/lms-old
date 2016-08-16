@@ -19,6 +19,8 @@ class PendingRecordList extends Component {
     }
     if (userItems.length > 0){
       return (
+        <div>
+        <h5 className="text-muted">Pending leave schedule</h5>
         <table className="table table-bordered table-hover">
           <thead className="thead-default">
             <tr>
@@ -33,12 +35,12 @@ class PendingRecordList extends Component {
           {userItems}
           </tbody>
         </table>
+      </div>
       );
     }
     else {
       return (
         <div>
-        <p>None.</p>
         </div>
       );
     }
@@ -64,6 +66,8 @@ class ApprovedRecordList extends Component {
     }
     if (userItems.length > 0){
       return (
+        <div>
+        <h5 className="text-muted">Approved leave schedule</h5>
         <table className="table table-bordered table-hover">
           <thead className="thead-default">
             <tr>
@@ -78,12 +82,12 @@ class ApprovedRecordList extends Component {
           {userItems}
           </tbody>
         </table>
+      </div>
       );
     }
     else {
       return (
         <div>
-        <p>None.</p>
         </div>
       );
     }
@@ -107,7 +111,7 @@ class UserRecord extends Component {
       if(user.maternity) {
         return (
           <div key={user.id}>
-            <h4 className="card-title">{user.othernames} {user.surname}</h4>
+            <h4 className="card-title col-sm-12">{user.othernames} {user.surname}</h4>
               <div className="col-sm-2"><h5 className="text-primary">{user.annual} day(s)</h5><span className="text-muted">Annual</span></div>
               <div className="col-sm-2"><h5 className="text-primary">{user.sick} day(s)</h5><span className="text-muted">Sick</span></div>
               <div className="col-sm-2"><h5 className="text-primary">{user.bereavement} day(s)</h5><span className="text-muted">Bereavement</span></div>
@@ -119,7 +123,7 @@ class UserRecord extends Component {
       else {
         return (
           <div key={user.id}>
-            <h4 className="card-title">{user.othernames} {user.surname}</h4>
+            <h4 className="card-title col-sm-12">{user.othernames} {user.surname}</h4>
               <div className="col-sm-3"><h5 className="text-primary">{user.annual} day(s)</h5><span className="text-muted">Annual</span></div>
               <div className="col-sm-3"><h5 className="text-primary">{user.sick} day(s)</h5><span className="text-muted">Sick</span></div>
               <div className="col-sm-3"><h5 className="text-primary">{user.bereavement} day(s)</h5><span className="text-muted">Bereavement</span></div>
@@ -142,13 +146,10 @@ class UserDetails extends Component {
       <div className="UserDetails">
         <UserRecord user_detail={this.props.user_detail} message={this.props.message} />
         <div className="row">
-          <h4 className="col-sm-12">Leave schedule</h4>
           <div className="col-sm-12">
-            <h5 className="text-muted">Pending</h5>
             <PendingRecordList user_detail={this.props.user_detail} />
           </div>
           <div className="col-sm-12">
-            <h5 className="text-muted">Approved</h5>
             <ApprovedRecordList user_detail={this.props.user_detail} />
           </div>
         </div>
