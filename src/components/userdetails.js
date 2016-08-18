@@ -4,7 +4,7 @@ class PendingRecordList extends Component {
   render() {
     const { user_detail } = this.props
     const userItems = []
-    for (const x in user_detail) {
+    for (let x = 0; x < user_detail.length; x++) {
       user_detail[x].leaverecord.map((detail) => {
         if (detail.leave_status === 'pending') {
           userItems.push(<tr key={detail.id}>
@@ -51,7 +51,7 @@ class ApprovedRecordList extends Component {
   render() {
     const { user_detail } = this.props
     const userItems = []
-    for (const x in user_detail) {
+    for (let x = 0; x < user_detail.length; x++) {
       user_detail[x].leaverecord.map((detail) => {
         if (detail.leave_status === 'approved') {
           userItems.push(<tr key={detail.id}>
