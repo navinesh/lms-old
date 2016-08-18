@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchLogin } from '../actions/userlogin'
-import { logoutUser } from '../actions/userlogout'
 import Login from '../components/userlogin'
 
 class UserLogin extends Component {
