@@ -40,10 +40,7 @@ class PendingRecordList extends Component {
       );
     }
     else {
-      return (
-        <div>
-        </div>
-      );
+      return (<div />);
     }
   }
 }
@@ -88,10 +85,7 @@ class ApprovedRecordList extends Component {
       );
     }
     else {
-      return (
-        <div>
-        </div>
-      );
+      return (<div />);
     }
   }
 }
@@ -113,29 +107,78 @@ class UserRecord extends Component {
       if(user.maternity) {
         return (
           <div key={user.id}>
-            <h5 className="card-title col-sm-12">{user.othernames} {user.surname}</h5>
-              <div className="col-sm-2"><h6 className="text-primary">{user.annual} day(s)</h6><span className="text-muted">Annual</span></div>
-              <div className="col-sm-2"><h6 className="text-primary">{user.sick} day(s)</h6><span className="text-muted">Sick</span></div>
-              <div className="col-sm-2"><h6 className="text-primary">{user.bereavement} day(s)</h6><span className="text-muted">Bereavement</span></div>
-              <div className="col-sm-2"><h6 className="text-primary">{user.christmas} day(s)</h6><span className="text-muted">Christmas</span></div>
-              <div className="col-sm-2"><h6 className="text-primary">{user.maternity} day(s)</h6><span className="text-muted">Maternity</span></div>
+            <div className="row">
+              <h5 className="card-title col-sm-12">{user.othernames} {user.surname}</h5>
+              <div className="col-sm-2">
+                <div className="card card-block text-xs-center">
+                  <h3 className="card-title">{user.annual}</h3>
+                  <p className="card-text">Annual</p>
+                </div>
+              </div>
+              <div className="col-sm-2">
+                <div className="card card-block text-xs-center">
+                  <h3 className="card-title">{user.sick}</h3>
+                  <p className="card-text">Sick</p>
+                </div>
+              </div>
+              <div className="col-sm-2">
+                <div className="card card-block text-xs-center">
+                  <h3 className="card-title">{user.bereavement}</h3>
+                  <p className="card-text">Bereavement</p>
+                </div>
+              </div>
+              <div className="col-sm-2">
+                <div className="card card-block text-xs-center">
+                  <h3 className="card-title">{user.christmas}</h3>
+                  <p className="card-text">Christmas</p>
+                </div>
+              </div>
+              <div className="col-sm-2">
+                <div className="card card-block text-xs-center">
+                  <h3 className="card-title">{user.maternity}</h3>
+                  <p className="card-text">Maternity</p>
+                </div>
+              </div>
+            </div>
           </div>
         );
       }
       else {
         return (
           <div key={user.id}>
-            <h5 className="card-title col-sm-12">{user.othernames} {user.surname}</h5>
-              <div className="col-sm-3"><h6 className="text-primary">{user.annual} day(s)</h6><span className="text-muted">Annual</span></div>
-              <div className="col-sm-3"><h6 className="text-primary">{user.sick} day(s)</h6><span className="text-muted">Sick</span></div>
-              <div className="col-sm-3"><h6 className="text-primary">{user.bereavement} day(s)</h6><span className="text-muted">Bereavement</span></div>
-              <div className="col-sm-3"><h6 className="text-primary">{user.christmas} day(s)</h6><span className="text-muted">Christmas</span></div>
+            <div className="row">
+              <h5 className="card-title col-sm-12">{user.othernames} {user.surname}</h5>
+              <div className="col-sm-3">
+                <div className="card card-block text-xs-center">
+                  <h3 className="card-title">{user.annual}</h3>
+                  <p className="card-text">Annual</p>
+                </div>
+              </div>
+              <div className="col-sm-3">
+                <div className="card card-block text-xs-center">
+                  <h3 className="card-title">{user.sick}</h3>
+                  <p className="card-text">Sick</p>
+                </div>
+              </div>
+              <div className="col-sm-3">
+                <div className="card card-block text-xs-center">
+                  <h3 className="card-title">{user.bereavement}</h3>
+                  <p className="card-text">Bereavement</p>
+                </div>
+              </div>
+              <div className="col-sm-3">
+                <div className="card card-block text-xs-center">
+                  <h3 className="card-title">{user.christmas}</h3>
+                  <p className="card-text">Christmas</p>
+                </div>
+              </div>
+            </div>
           </div>
         );
       }
     });
     return (
-      <div className="card card-block">
+      <div>
       {userItem}
       </div>
     );
