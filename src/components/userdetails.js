@@ -15,6 +15,7 @@ class PendingRecordList extends Component {
                       <td>{detail.leave_reason}</td>
                     </tr>)
         }
+        return (userItems)
       });
     }
     if (userItems.length > 0){
@@ -62,6 +63,7 @@ class ApprovedRecordList extends Component {
                       <td>{detail.leave_reason}</td>
                     </tr>)
         }
+        return (userItems)
       });
     }
     if (userItems.length > 0){
