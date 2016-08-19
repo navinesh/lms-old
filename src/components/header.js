@@ -20,7 +20,7 @@ export default class Navs extends Component {
                 <Link className="nav-item nav-link" to="/">
                   Leave management system
                 </Link>
-                <Link className="nav-item nav-link" to="/applyforleave">
+                <Link className="nav-item nav-link" to="/leaveapplication">
                   Leave application
                 </Link>
                 <Link className="nav-item nav-link" to="/leavecalendar">
