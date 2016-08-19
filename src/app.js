@@ -11,6 +11,7 @@ import Main from './containers/main'
 import LeaveCalendar from './containers/leavecalendar'
 import ResetPassword from './containers/resetpassword'
 import UserError from './components/usererror'
+import LeaveApplication from './containers/leaveapplication'
 
 const store = configureStore()
 
@@ -20,6 +21,7 @@ render(
       <Route path="/" component={Header}>
         <IndexRoute component={Main} />
         <Route path="/leavecalendar" component={LeaveCalendar} />
+        <Route path="/leaveapplication" component={LeaveApplication} />
         <Route path="/reset" component={ResetPassword} />
       </Route>
       <Route path="*" component={UserError}/>
