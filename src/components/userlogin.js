@@ -21,7 +21,7 @@ export default class Login extends Component {
       return;
     }
 
-    const creds = { email:email, password: password }
+    const creds = { email: email, password: password }
     this.props.onLoginClick(creds)
   }
 
