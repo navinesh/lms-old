@@ -109,7 +109,7 @@ class UserRecord extends Component {
           <div key={user.id}>
             <div className="row">
               <h5 className="card-title col-sm-12">{user.othernames} {user.surname}</h5>
-              <div className="col-sm-2">
+              <div className="col-sm-3">
                 <div className="card card-block text-xs-center">
                   <h3 className="card-title">{user.annual}</h3>
                   <p className="card-text">Annual</p>
@@ -133,7 +133,7 @@ class UserRecord extends Component {
                   <p className="card-text">Christmas</p>
                 </div>
               </div>
-              <div className="col-sm-2">
+              <div className="col-sm-3">
                 <div className="card card-block text-xs-center">
                   <h3 className="card-title">{user.maternity}</h3>
                   <p className="card-text">Maternity</p>
