@@ -97,7 +97,7 @@ class UserRecord extends Component {
       return (
         <div className="container text-xs-center" style={{paddingTop: '100px'}}>
           <div className="offset-sm-2 col-sm-8">
-            <p>The site configured at this address does not contain the requested resource.</p>
+            <h1 className="display-4">The site configured at this address does not contain the requested resource.</h1>
           </div>
         </div>
       );
