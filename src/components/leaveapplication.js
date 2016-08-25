@@ -96,13 +96,13 @@ export default class LeaveApplications extends Component {
               </select>
             </fieldset>
             <fieldset className="form-group">
-  						<label for="dateFrom">From</label>
+              <label for="dateFrom">From</label>
               <input type="date" className="form-control"
                 placeholder="month/day/year" id="dateFrom"
                 onChange={this.handleDateFromChange} />
             </fieldset>
             <fieldset className="form-group">
-  						<label for="dateTo">To</label>
+              <label for="dateTo">To</label>
               <input type="date" className="form-control"
                 placeholder="month/day/year" id="dateTo"
                 onChange={this.handleDateToChange} />
