@@ -11,10 +11,9 @@ export function requestLeaveApplication(applicationDetails) {
   }
 }
 
-export function receiveLeaveApplication(data) {
+export function receiveLeaveApplication() {
   return {
-    type: LEAVE_APPLICATION_SUCCESS,
-    message: data.message,
+    type: LEAVE_APPLICATION_SUCCESS
   }
 }
 
@@ -36,14 +35,14 @@ export function fetchLeaveApplication(applicationDetails) {
       dateTo: applicationDetails.dateTo,
       supervisorEmail: applicationDetails.supervisorEmail,
       secretaryEmail: applicationDetails.secretaryEmail,
-      reason: applicationDetails.reason,      
+      reason: applicationDetails.reason,
       })
       .then((response) => {
         if (response.status === 200){
           dispatch(leaveApplicationFailure(response.data))
         }
         else {
-          dispatch(receiveLeaveApplication(response.data))
+          dispatch(receiveLeaveApplication())
         }
       })
   }
