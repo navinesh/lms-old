@@ -102,8 +102,7 @@ function leaveApplication (state = {isFetching: false,
       message: ''}
     case LEAVE_APPLICATION_SUCCESS:
     return { ...state,
-      isFetching: false,
-      message: action.message}
+      isFetching: false}
     case LEAVE_APPLICATION_FAILURE:
     return { ...state,
       isFetching: false,
