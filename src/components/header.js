@@ -20,15 +20,17 @@ export default class Navs extends Component {
                 <Link className="nav-item nav-link" to="/">
                   Leave management system
                 </Link>
-                <Link className="nav-item nav-link" to="/leaveapplication">
-                  Leave application
-                </Link>
-                <Link className="nav-item nav-link" to="/leavecalendar">
-                  Leave calendar
-                </Link>
-                <button onClick={() => onLogoutClick()} className="btn btn-primary pull-xs-right">
-                  Sign out
-                </button>
+                <div className="pull-xs-right">
+                  <Link className="nav-item nav-link" to="/leaveapplication">
+                    Leave application
+                  </Link>
+                  <Link className="nav-item nav-link" to="/leavecalendar">
+                    Leave calendar
+                  </Link>
+                  <button onClick={() => onLogoutClick()} className="btn btn-primary btn-right">
+                    Sign out
+                  </button>
+                </div>
               </div>
             }
           </div>
