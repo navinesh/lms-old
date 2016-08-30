@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory} from 'react-router'
 import { connect } from 'react-redux'
 import { fetchLeaveApplication } from '../actions/leaveapplication'
 import LeaveApplications from '../components/leaveapplication'
@@ -15,11 +16,7 @@ class LeaveApplication extends Component {
           onLeaveApplicationClick={ applicationDetails => dispatch(fetchLeaveApplication(applicationDetails)) } />
         }
         {!isAuthenticated &&
-          <div className="container text-xs-center" style={{paddingTop: '100px'}}>
-            <div className="col-sm-12">
-              <h1 className="display-4">The site configured at this address does not contain the requested resource.</h1>
-            </div>
-          </div>
+          browserHistory.push('/')
         }
       </div>
     )
