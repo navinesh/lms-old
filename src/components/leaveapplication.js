@@ -1,14 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 var Loader = require('halogen/ClipLoader');
+var DatePicker = require('react-datepicker');
 
 export default class LeaveApplications extends Component {
   constructor() {
     super()
-    this.state = { errorMessage: '', successMessage: '' };
+    this.state = {
+      errorMessage: '',
+      successMessage: ''
+    };
     this.handleLeaveChange = this.handleLeaveChange.bind(this);
     this.handleLeaveTypeChange = this.handleLeaveTypeChange.bind(this);
-    this.handleDateFromChange = this.handleDateFromChange.bind(this);
-    this.handleDateToChange = this.handleDateToChange.bind(this);
+    this.handleStartDateChange = this.handleStartDateChange.bind(this);
+    this.handleEndDateChange = this.handleEndDateChange.bind(this);
     this.handleSupervisorEmailChange = this.handleSupervisorEmailChange.bind(this);
     this.handleSecretaryEmailChange = this.handleSecretaryEmailChange.bind(this);
     this.handleReasonChange = this.handleReasonChange.bind(this);
@@ -23,13 +27,13 @@ export default class LeaveApplications extends Component {
     this.setState({leaveType: e.target.value});
   }
 
-  handleDateFromChange (e) {
-    this.setState({dateFrom: e.target.value});
-  }
+  handleStartDateChange (e) {
+     this.setState({startDate: e});
+   }
 
-  handleDateToChange (e) {
-    this.setState({dateTo: e.target.value});
-  }
+   handleEndDateChange (e) {
+     this.setState({endDate: e});
+   }
 
   handleSupervisorEmailChange (e) {
     this.setState({supervisorEmail: e.target.value});
@@ -48,13 +52,13 @@ export default class LeaveApplications extends Component {
     const user_id = localStorage.getItem('user_id');
     const leave = this.state.leave;
     const leaveType = this.state.leaveType;
-    const dateFrom = this.state.dateFrom ? this.state.dateFrom.trim() : null;
-    const dateTo = this.state.dateTo ? this.state.dateTo.trim() : null;
+    const startDate = this.state.startDate ? this.state.startDate.trim() : null;
+    const endDate = this.state.endDate ? this.state.endDate.trim() : null;
     const supervisorEmail = this.state.supervisorEmail ? this.state.supervisorEmail.trim() : null;
     const secretaryEmail = this.state.secretaryEmail ? this.state.secretaryEmail.trim() : null;
     const reason = this.state.reason ? this.state.reason.trim() : null;
 
-    if (!user_id || !leave || !leaveType || !dateFrom || !dateTo || !supervisorEmail || !reason) {
+    if (!user_id || !leave || !leaveType || !startDate || !endDate || !supervisorEmail || !reason) {
       this.setState({errorMessage: 'One or more required fields are missing!'});
       return;
     }
@@ -63,7 +67,7 @@ export default class LeaveApplications extends Component {
     this.setState({successMessage: 'Your application has been submitted.'});
 
     const applicationDetails = { user_id: user_id, leave: leave, leaveType: leaveType,
-      dateFrom: dateFrom, dateTo: dateTo, supervisorEmail: supervisorEmail,
+      startDate: startDate, endDate: endDate, supervisorEmail: supervisorEmail,
       secretaryEmail: secretaryEmail, reason: reason }
     this.props.onLeaveApplicationClick(applicationDetails)
   }
@@ -109,18 +113,30 @@ export default class LeaveApplications extends Component {
                   <option>half day pm</option>
                 </select>
               </fieldset>
-              <fieldset className="form-group">
-                <label for="dateFrom">From</label>
-                <input type="date" className="form-control"
-                  placeholder="month/day/year" id="dateFrom"
-                  onChange={this.handleDateFromChange} />
-              </fieldset>
-              <fieldset className="form-group">
-                <label for="dateTo">To</label>
-                <input type="date" className="form-control"
-                  placeholder="month/day/year" id="dateTo"
-                  onChange={this.handleDateToChange} />
-              </fieldset>
+              <div className="row">
+                <div className="col-sm-6">
+                  <div className="form-group">
+                    <label for="startDate">Start date</label>
+                    <DatePicker className="form-control"
+                      selected={this.state.startDate}
+                      startDate={this.state.startDate}
+                      endDate={this.state.endDate}
+                      filterDate={this.isweekdays}
+                      onChange={this.handleStartDateChange} />
+              	   </div>
+                </div>
+                <div className="col-sm-6">
+                  <div className="form-group">
+                    <label for="endDate">End date</label>
+                    <DatePicker className="form-control"
+                      selected={this.state.endDate}
+                      startDate={this.state.startDate}
+                      endDate={this.state.endDate}
+                      filterDate={this.isweekdaysMin}
+                      onChange={this.handleEndDateChange} />
+                  </div>
+                </div>
+              </div>
               <fieldset className="form-group">
                 <label for="supervisorEmail">Supervisor email</label>
                 <input type="email" className="form-control"
@@ -142,7 +158,7 @@ export default class LeaveApplications extends Component {
               <fieldset className="form-group">
                 <label for="sicksheet">Sick sheet</label>
                 <input type="file" className="form-control-file" id="sicksheet" />
-                <small className="text-muted">A medical certificate is required for absence of two consecutive days or more and after four single day absences.</small>
+                <small className="form-text text-muted">A medical certificate is required for absence of two consecutive days or more and after four single day absences.</small>
               </fieldset>
               <fieldset className="form-group">
                 <button type="submit" className="btn btn-primary col-xs-12 col-sm-12">Submit</button>
