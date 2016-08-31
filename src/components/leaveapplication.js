@@ -52,8 +52,8 @@ export default class LeaveApplications extends Component {
     const user_id = localStorage.getItem('user_id');
     const leave = this.state.leave;
     const leaveType = this.state.leaveType;
-    const startDate = this.state.startDate ? this.state.startDate.trim() : null;
-    const endDate = this.state.endDate ? this.state.endDate.trim() : null;
+    const startDate = this.state.startDate ? this.state.startDate : null;
+    const endDate = this.state.endDate ? this.state.endDate : null;
     const supervisorEmail = this.state.supervisorEmail ? this.state.supervisorEmail.trim() : null;
     const secretaryEmail = this.state.secretaryEmail ? this.state.secretaryEmail.trim() : null;
     const reason = this.state.reason ? this.state.reason.trim() : null;
