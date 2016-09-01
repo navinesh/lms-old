@@ -121,7 +121,6 @@ export default class LeaveApplications extends Component {
                       selected={this.state.startDate}
                       startDate={this.state.startDate}
                       endDate={this.state.endDate}
-                      filterDate={this.isweekdays}
                       onChange={this.handleStartDateChange} />
               	   </div>
                 </div>
@@ -132,7 +131,6 @@ export default class LeaveApplications extends Component {
                       selected={this.state.endDate}
                       startDate={this.state.startDate}
                       endDate={this.state.endDate}
-                      filterDate={this.isweekdaysMin}
                       onChange={this.handleEndDateChange} />
                   </div>
                 </div>
