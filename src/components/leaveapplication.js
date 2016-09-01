@@ -90,7 +90,7 @@ export default class LeaveApplications extends Component {
         <div className="col-xs-12 col-sm-6 offset-sm-3">
           <div className="card card-block">
             <form onSubmit={this.handleSubmit}>
-              <fieldset className="form-group">
+              <div className="form-group">
                 <label for="leave">Leave</label>
                 <select className="form-control" id="leave" onChange={this.handleLeaveChange}>
                   <option></option>
@@ -103,8 +103,8 @@ export default class LeaveApplications extends Component {
                   <option>lwop</option>
                   <option>other</option>
                 </select>
-              </fieldset>
-              <fieldset className="form-group">
+              </div>
+              <div className="form-group">
                 <label for="leaveType">Leave type</label>
                 <select className="form-control" id="leaveType" onChange={this.handleLeaveTypeChange}>
                   <option></option>
@@ -112,7 +112,7 @@ export default class LeaveApplications extends Component {
                   <option>half day am</option>
                   <option>half day pm</option>
                 </select>
-              </fieldset>
+              </div>
               <div className="row">
                 <div className="col-sm-6">
                   <div className="form-group">
@@ -135,32 +135,32 @@ export default class LeaveApplications extends Component {
                   </div>
                 </div>
               </div>
-              <fieldset className="form-group">
+              <div className="form-group">
                 <label for="supervisorEmail">Supervisor email</label>
                 <input type="email" className="form-control"
                   placeholder="Supervisor email" id="supervisorEmail"
                   onChange={this.handleSupervisorEmailChange} />
-              </fieldset>
-              <fieldset className="form-group">
+              </div>
+              <div className="form-group">
                 <label for="secretaryEmail">Second supervisor / secretary email</label>
                 <input type="email" className="form-control"
                   placeholder="Second supervisor / secretary email" id="secretaryEmail"
                   onChange={this.handleSecretaryEmailChange} />
-              </fieldset>
-              <fieldset className="form-group">
+              </div>
+              <div className="form-group">
                 <label for="reason">Reason</label>
                 <input type="text" className="form-control"
                   placeholder="Reason for leave" id="reason"
                   onChange={this.handleReasonChange} />
-              </fieldset>
-              <fieldset className="form-group">
+              </div>
+              <div className="form-group">
                 <label for="sicksheet">Sick sheet</label>
                 <input type="file" className="form-control-file" id="sicksheet" />
                 <small className="form-text text-muted">A medical certificate is required for absence of two consecutive days or more and after four single day absences.</small>
-              </fieldset>
-              <fieldset className="form-group">
+              </div>
+              <div className="form-group">
                 <button type="submit" className="btn btn-primary col-xs-12 col-sm-12">Submit</button>
-              </fieldset>
+              </div>
             </form>
             <div className="text-danger text-xs-center">
               {isFetching ?
