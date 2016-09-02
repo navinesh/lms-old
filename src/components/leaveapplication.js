@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 var Loader = require('halogen/ClipLoader');
 var DatePicker = require('react-datepicker');
+require('moment-range');
 
 export default class LeaveApplications extends Component {
   constructor() {
@@ -62,6 +63,13 @@ export default class LeaveApplications extends Component {
       this.setState({errorMessage: 'One or more required fields are missing!'});
       return;
     }
+
+    const leaveDays = (endDate.diff(startDate, 'days') + 1)
+
+  	if (leaveDays <= 0) {
+  		this.setState({ errorMessage: 'The dates you selected are invalid!'});
+  		return;
+  	}
 
     this.setState({errorMessage: ''});
     this.setState({successMessage: 'Your application has been submitted.'});
