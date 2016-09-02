@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 var Loader = require('halogen/ClipLoader');
 var DatePicker = require('react-datepicker');
+var moment = require('moment');
 require('moment-range');
 
 export default class LeaveApplications extends Component {
@@ -64,12 +65,24 @@ export default class LeaveApplications extends Component {
       return;
     }
 
-    const leaveDays = (endDate.diff(startDate, 'days') + 1)
+    const leaveRangeDays = (endDate.diff(startDate, 'days') + 1)
 
-  	if (leaveDays <= 0) {
+  	if (leaveRangeDays <= 0) {
   		this.setState({ errorMessage: 'The dates you selected are invalid!'});
   		return;
   	}
+
+    const range = moment.range(startDate, endDate);
+
+  	const weekend = [];
+  	range.by('days', function(moment) {
+  	  if (moment.isoWeekday() === 6 || moment.isoWeekday() === 7) {
+  		  weekend.push(moment);
+  	  }
+  	});
+
+  	const totalWeekends = weekend.length;
+  	const leaveDay = leaveRangeDays - totalWeekends;
 
     this.setState({errorMessage: ''});
     this.setState({successMessage: 'Your application has been submitted.'});
