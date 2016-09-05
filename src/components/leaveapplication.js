@@ -74,15 +74,32 @@ export default class LeaveApplications extends Component {
 
     const range = moment.range(startDate, endDate);
 
-  	const weekend = [];
-  	range.by('days', function(moment) {
-  	  if (moment.isoWeekday() === 6 || moment.isoWeekday() === 7) {
-  		  weekend.push(moment);
-  	  }
-  	});
+    const dateRange = [];
+    range.by('days', function(moment) {
+      dateRange.push(moment.format("DD, MM, YYYY"));
+    });
 
-  	const totalWeekends = weekend.length;
-  	const leaveDay = leaveRangeDays - totalWeekends;
+    const weekend = [];
+    range.by('days', function(moment) {
+      if (moment.isoWeekday() === 6 || moment.isoWeekday() === 7) {
+        weekend.push(moment.format("DD, MM, YYYY"));
+      }
+    });
+
+    // exclude weekends
+    const dateRangeSet = new Set(dateRange);
+    const weekendSet = new Set(weekend);
+    const daysExcludingWeekendSet = new Set([...dateRangeSet].filter(x => !weekendSet.has(x)));
+
+    // exclude public holidays
+    // get public holiday dates from db
+    const publicHolidays = ["07, 09, 2016", "08, 09, 2016"];
+    const publicHolidaysSet = new Set(publicHolidays);
+    const daysExcludingHolidaysSet = new Set([...daysExcludingWeekendSet].filter(x => !publicHolidaysSet.has(x)));
+    const leaveDays = daysExcludingHolidaysSet.size;
+
+    // to-do
+    // calculate total leave days
 
     this.setState({errorMessage: ''});
     this.setState({successMessage: 'Your application has been submitted.'});
