@@ -8,46 +8,34 @@ export const LOGIN_USER_REQUEST_FROM_TOKEN = 'LOGIN_USER_REQUEST_FROM_TOKEN'
 export const LOGIN_USER_SUCCESS_FROM_TOKEN = 'LOGIN_USER_SUCCESS_FROM_TOKEN'
 export const LOGIN_USER_FAILURE_FROM_TOKEN = 'LOGIN_USER_FAILURE_FROM_TOKEN'
 
-export function requestUserLogin(creds){
-  return {
-    type: LOGIN_USER_REQUEST,
-    creds
-  }
-}
+export const requestUserLogin = (creds) => ({
+  type: LOGIN_USER_REQUEST,
+  creds
+});
 
-export function receiveUserLogin(){
-  return {
-    type: LOGIN_USER_SUCCESS
-  }
-}
+export const receiveUserLogin = () => ({
+  type: LOGIN_USER_SUCCESS
+});
 
-export function loginUserError(data){
-  return {
-    type: LOGIN_USER_FAILURE,
-    message: data.message
-  }
-}
+export const loginUserError = (data) => ({
+  type: LOGIN_USER_FAILURE,
+  message: data.message
+});
 
-export function requestUserLoginFromToken(auth_token){
-  return {
-    type: LOGIN_USER_REQUEST_FROM_TOKEN,
-    auth_token
-  }
-}
+export const requestUserLoginFromToken = (auth_token) => ({
+  type: LOGIN_USER_REQUEST_FROM_TOKEN,
+  auth_token
+});
 
-export function receiveUserLoginFromToken(data){
-  return {
-    type: LOGIN_USER_SUCCESS_FROM_TOKEN,
-    auth_token: data.auth_token
-  }
-}
+export const receiveUserLoginFromToken = (data) => ({
+  type: LOGIN_USER_SUCCESS_FROM_TOKEN,
+  auth_token: data.auth_token
+});
 
-export function loginUserErrorFromToken(data){
-  return {
-    type: LOGIN_USER_FAILURE_FROM_TOKEN,
-    message: data.message
-  }
-}
+export const loginUserErrorFromToken = (data) => ({
+  type: LOGIN_USER_FAILURE_FROM_TOKEN,
+  message: data.message
+});
 
 export function fetchLogin(creds) {
   return dispatch => {
