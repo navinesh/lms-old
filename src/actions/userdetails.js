@@ -4,26 +4,20 @@ export const REQUEST_USER_DETAILS = 'REQUEST_USER_DETAILS'
 export const RECEIVE_USER_DETAILS = 'RECEIVE_USER_DETAILS'
 export const USER_DETAILS_ERROR = 'USER_DETAILS_ERROR'
 
-export function requestUserDetails(user_id) {
-  return {
-    type: REQUEST_USER_DETAILS,
-    user_id
-  }
-}
+export const requestUserDetails = (user_id) => ({
+  type: REQUEST_USER_DETAILS,
+  user_id
+});
 
-export function userDetailsError(data){
-  return {
-    type: USER_DETAILS_ERROR,
-    message: data.message
-  }
-}
+export const userDetailsError = (data) => ({
+  type: USER_DETAILS_ERROR,
+  message: data.message
+});
 
-export function receiveUserDetails(data) {
-  return {
-    type: RECEIVE_USER_DETAILS,
-    user_detail: data.user_detail,
-  }
-}
+export const receiveUserDetails = (data) => ({
+  type: RECEIVE_USER_DETAILS,
+  user_detail: data.user_detail
+});
 
 export function fetchUserDetails(user_id) {
   return dispatch => {
