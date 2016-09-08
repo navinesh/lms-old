@@ -11,6 +11,9 @@ import { LOGOUT_USER_SUCCESS } from '../actions/userlogout'
 import { REQUEST_USER_RECORD, RECEIVE_USER_RECORD,
         USER_RECORD_ERROR } from '../actions/userrecord'
 
+import { REQUEST_USER_DETAILS, RECEIVE_USER_DETAILS,
+        USER_DETAILS_ERROR } from '../actions/userdetails'
+
 import { LEAVE_APPLICATION_REQUEST, LEAVE_APPLICATION_SUCCESS,
         LEAVE_APPLICATION_FAILURE } from '../actions/leaveapplication'
 
@@ -93,6 +96,25 @@ const userRecords = (state = {isFetching: false,
   }
 };
 
+const userDetails = (state = {isFetching: false,
+  userDetail: {}, message: ''}, action) => {
+  switch (action.type) {
+    case REQUEST_USER_DETAILS:
+    return { ...state,
+      isFetching: true}
+    case RECEIVE_USER_DETAILS:
+    return { ...state,
+      isFetching: false,
+      userDetail: action.user_detail}
+    case USER_DETAILS_ERROR:
+    return { ...state,
+      isFetching: false,
+      message: action.message}
+    default:
+      return state
+  }
+};
+
 const leaveApplication = (state = {isFetching: false,
   message: ''}, action) => {
   switch (action.type) {
@@ -135,6 +157,7 @@ const rootReducer = combineReducers({
   leaveRecords,
   userAuth,
   userRecords,
+  userDetails,
   leaveApplication,
   resetPassword
 });
