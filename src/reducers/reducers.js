@@ -17,8 +17,8 @@ import { LEAVE_APPLICATION_REQUEST, LEAVE_APPLICATION_SUCCESS,
 import { REQUEST_PASSWORD_RESET, PASSWORD_RESET_SUCCESS,
         PASSWORD_RESET_ERROR } from '../actions/resetpassword'
 
-function leaveRecords(state = {isFetching: false,
-  items: []}, action) {
+const leaveRecords = (state = {isFetching: false,
+  items: []}, action) => {
   switch (action.type) {
     case REQUEST_LEAVE_CALENDAR:
     return { ...state,
@@ -31,11 +31,11 @@ function leaveRecords(state = {isFetching: false,
     default:
       return state
   }
-}
+};
 
-function userAuth(state = {isFetching: false,
+const userAuth = (state = {isFetching: false,
   isAuthenticated: localStorage.getItem('auth_token') ? true : false,
-  message: ''}, action) {
+  message: ''}, action) => {
   switch (action.type) {
     case LOGIN_USER_REQUEST:
     return { ...state,
@@ -72,10 +72,10 @@ function userAuth(state = {isFetching: false,
     default:
       return state
   }
-}
+};
 
-function userDetails(state = {isFetching: false,
-  userDetail: [], message: ''}, action) {
+const userDetails = (state = {isFetching: false,
+  userDetail: [], message: ''}, action) => {
   switch (action.type) {
     case REQUEST_USER_DETAILS:
     return { ...state,
@@ -91,10 +91,10 @@ function userDetails(state = {isFetching: false,
     default:
       return state
   }
-}
+};
 
-function leaveApplication (state = {isFetching: false,
-  message: ''}, action) {
+const leaveApplication = (state = {isFetching: false,
+  message: ''}, action) => {
   switch (action.type) {
     case LEAVE_APPLICATION_REQUEST:
     return { ...state,
@@ -110,10 +110,10 @@ function leaveApplication (state = {isFetching: false,
     default:
     return state
   }
-}
+};
 
-function resetPassword(state = {isFetching: false,
-  message: ''}, action) {
+const resetPassword = (state = {isFetching: false,
+  message: ''}, action) => {
   switch (action.type) {
     case REQUEST_PASSWORD_RESET:
     return { ...state,
@@ -129,7 +129,7 @@ function resetPassword(state = {isFetching: false,
     default:
       return state
   }
-}
+};
 
 const rootReducer = combineReducers({
   leaveRecords,
@@ -137,6 +137,6 @@ const rootReducer = combineReducers({
   userDetails,
   leaveApplication,
   resetPassword
-})
+});
 
 export default rootReducer
