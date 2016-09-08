@@ -13,11 +13,11 @@ export const receiveLeave = (json) => ({
   receivedAt: Date.now()
 });
 
-export function fetchLeave() {
+export const fetchLeave = () => {
   return dispatch => {
     dispatch(requestLeave())
     return fetch(`leave.api`)
       .then(response => response.json())
       .then(json => dispatch(receiveLeave(json)))
   }
-}
+};
