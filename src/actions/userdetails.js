@@ -19,7 +19,7 @@ export const receiveUserDetails = (data) => ({
   user_detail: data.user_detail
 });
 
-export function fetchUserDetails(user_id) {
+export const fetchUserDetails = (user_id) => {
   return dispatch => {
     dispatch(requestUserDetails(user_id))
     axios.post('user-record.api', {
@@ -34,4 +34,4 @@ export function fetchUserDetails(user_id) {
         }
       })
   }
-}
+};

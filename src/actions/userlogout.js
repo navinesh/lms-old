@@ -13,11 +13,11 @@ export const receiveLogout = () => ({
   isAuthenticated: false
 });
 
-export function logoutUser() {
+export const logoutUser = () => {
   return dispatch => {
     dispatch(requestLogout())
     dispatch(receiveLogout())
     localStorage.removeItem('auth_token')
     localStorage.removeItem('user_id')
   }
-}
+};

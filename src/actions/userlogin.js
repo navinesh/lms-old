@@ -37,7 +37,7 @@ export const loginUserErrorFromToken = (data) => ({
   message: data.message
 });
 
-export function fetchLogin(creds) {
+export const fetchLogin = (creds) => {
   return dispatch => {
     dispatch(requestUserLogin(creds))
     axios.post('userlogin', {
@@ -55,9 +55,9 @@ export function fetchLogin(creds) {
         }
       })
   }
-}
+};
 
-export function fetchLoginFromToken(auth_token) {
+export const fetchLoginFromToken = (auth_token) => {
   return dispatch => {
     dispatch(requestUserLoginFromToken(auth_token))
     axios.post('usertoken', {
@@ -74,4 +74,4 @@ export function fetchLoginFromToken(auth_token) {
         }
       })
   }
-}
+};
