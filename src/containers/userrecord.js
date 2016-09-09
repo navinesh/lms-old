@@ -9,8 +9,10 @@ class UserRecords extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props
-    const user_id = localStorage.getItem('user_id')
-    dispatch(fetchUserRecord(user_id))
+    const auth_token = localStorage.getItem('auth_token');
+    const user_id = localStorage.getItem('user_id');
+    const userData = { auth_token: auth_token, user_id: user_id }
+    dispatch(fetchUserRecord(userData))
   }
 
   render() {
