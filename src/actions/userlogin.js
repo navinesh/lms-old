@@ -13,8 +13,10 @@ export const requestUserLogin = (creds) => ({
   creds
 });
 
-export const receiveUserLogin = () => ({
-  type: LOGIN_USER_SUCCESS
+export const receiveUserLogin = (data) => ({
+  type: LOGIN_USER_SUCCESS,
+  auth_info: data
+
 });
 
 export const loginUserError = (data) => ({
@@ -29,7 +31,7 @@ export const requestUserLoginFromToken = (auth_token) => ({
 
 export const receiveUserLoginFromToken = (data) => ({
   type: LOGIN_USER_SUCCESS_FROM_TOKEN,
-  auth_token: data.auth_token
+  auth_info: data
 });
 
 export const loginUserErrorFromToken = (data) => ({
@@ -51,7 +53,7 @@ export const fetchLogin = (creds) => {
         else {
           localStorage.setItem('auth_token', response.data.auth_token)
           localStorage.setItem('user_id', response.data.user_id)
-          dispatch(receiveUserLogin())
+          dispatch(receiveUserLogin(response.data))
         }
       })
   }
