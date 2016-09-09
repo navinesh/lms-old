@@ -38,7 +38,7 @@ const leaveRecords = (state = {isFetching: false,
 
 const userAuth = (state = {isFetching: false,
   isAuthenticated: localStorage.getItem('auth_token') ? true : false,
-  message: ''}, action) => {
+  message: '', auth_info: {}}, action) => {
   switch (action.type) {
     case LOGIN_USER_REQUEST:
     return { ...state,
@@ -48,6 +48,7 @@ const userAuth = (state = {isFetching: false,
     return { ...state,
       isFetching: false,
       isAuthenticated: true,
+      auth_info: action.auth_info,
       message: 'Login successful!'}
     case LOGIN_USER_FAILURE:
     return { ...state,
@@ -66,6 +67,7 @@ const userAuth = (state = {isFetching: false,
     return { ...state,
       isFetching: false,
       isAuthenticated: true,
+      auth_info: action.auth_info,
       message: 'Login successful!'}
     case LOGIN_USER_FAILURE_FROM_TOKEN:
     return { ...state,
