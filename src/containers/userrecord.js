@@ -8,9 +8,9 @@ var Loader = require('halogen/PulseLoader');
 class UserRecords extends Component {
 
   componentDidMount() {
-    const { dispatch } = this.props
-    const auth_token = localStorage.getItem('auth_token');
-    const user_id = localStorage.getItem('user_id');
+    const { dispatch, auth_info } = this.props
+    const auth_token = auth_info.auth_token;
+    const user_id = auth_info.user_id;
     const userData = { auth_token: auth_token, user_id: user_id }
     dispatch(fetchUserRecord(userData))
   }
@@ -28,7 +28,8 @@ class UserRecords extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {userRecords} = state
+  const {userRecords, userAuth} = state
+  const { auth_info} = userAuth
   const {
     isFetching,
     userRecord: user_record,
@@ -37,7 +38,8 @@ const mapStateToProps = (state) => {
   return {
     isFetching,
     user_record,
-    message
+    message,
+    auth_info,
   }
 }
 
