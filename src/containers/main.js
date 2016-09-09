@@ -3,8 +3,18 @@ import { connect } from 'react-redux'
 import LeaveCalendar from './leavecalendar'
 import UserLogin from './userlogin'
 import UserRecord from './userrecord'
+import { fetchLoginFromToken } from '../actions/userlogin'
 
 class Main extends Component {
+
+  componentDidMount() {
+    const { dispatch, auth_info } = this.props
+    const auth_token = auth_info.auth_token;
+    if (auth_token) {
+      dispatch(fetchLoginFromToken(auth_token))
+    }
+  }
+
   render() {
     const { isAuthenticated } = this.props
     return (
@@ -35,9 +45,11 @@ const mapStateToProps = (state) => {
   const {userAuth} = state
   const {
     isAuthenticated,
+    auth_info
   } = userAuth
   return {
-    isAuthenticated
+    isAuthenticated,
+    auth_info
   }
 }
 
