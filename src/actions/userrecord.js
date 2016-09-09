@@ -4,9 +4,9 @@ export const REQUEST_USER_RECORD = 'REQUEST_USER_RECORD'
 export const RECEIVE_USER_RECORD = 'RECEIVE_USER_RECORD'
 export const USER_RECORD_ERROR = 'USER_RECORD_ERROR'
 
-export const requestUserRecord = (user_id) => ({
+export const requestUserRecord = (userData) => ({
   type: REQUEST_USER_RECORD,
-  user_id
+  userData
 });
 
 export const userRecordError = (data) => ({
@@ -19,11 +19,14 @@ export const receiveUserRecord = (data) => ({
   user_record: data.user_record
 });
 
-export const fetchUserRecord = (user_id) => {
+export const fetchUserRecord = (userData) => {
   return dispatch => {
-    dispatch(requestUserRecord(user_id))
-    axios.post('user-record.api', {
-        user_id: user_id
+    dispatch(requestUserRecord(userData))
+    axios({
+      method: 'post',
+      url: 'user-record.api',
+      auth: { username: userData.auth_token },
+      data: { user_id: userData.user_id }
       })
       .then((response) => {
         if (response.status === 200){
