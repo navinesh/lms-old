@@ -4,9 +4,9 @@ export const REQUEST_USER_DETAILS = 'REQUEST_USER_DETAILS'
 export const RECEIVE_USER_DETAILS = 'RECEIVE_USER_DETAILS'
 export const USER_DETAILS_ERROR = 'USER_DETAILS_ERROR'
 
-export const requestUserDetails = (user_id) => ({
+export const requestUserDetails = (userData) => ({
   type: REQUEST_USER_DETAILS,
-  user_id
+  userData
 });
 
 export const userDetailsError = (data) => ({
@@ -19,11 +19,14 @@ export const receiveUserDetails = (data) => ({
   user_detail: data.user_detail
 });
 
-export const fetchUserDetails = (user_id) => {
+export const fetchUserDetails = (userData) => {
   return dispatch => {
-    dispatch(requestUserDetails(user_id))
-    axios.post('user-detail.api', {
-        user_id: user_id
+    dispatch(requestUserDetails(userData))
+    axios({
+      method: 'post',
+      url: 'user-detail.api',
+      auth: { username: userData.auth_token },
+      data: { user_id: userData.user_id }
       })
       .then((response) => {
         if (response.status === 200){
