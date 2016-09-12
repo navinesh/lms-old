@@ -36,5 +36,8 @@ export const fetchUserRecord = (userData) => {
           dispatch(receiveUserRecord(response.data))
         }
       })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 };
