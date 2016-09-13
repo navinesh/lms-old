@@ -37,7 +37,9 @@ export const fetchUserRecord = (userData) => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        localStorage.removeItem('auth_token')
+        localStorage.removeItem('user_id')
+        dispatch({ type: 'LOGIN_FAILURE_FROM_TOKEN' })
       })
   }
 };
