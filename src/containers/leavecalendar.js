@@ -6,7 +6,6 @@ import Leaves from '../components/leavecalendar'
 var Loader = require('halogen/PulseLoader');
 
 class LeaveCalendar extends Component {
-
   componentDidMount() {
     const { dispatch } = this.props
     dispatch(fetchLeave())
