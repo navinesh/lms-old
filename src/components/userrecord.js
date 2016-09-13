@@ -16,7 +16,7 @@ const PendingRecordList = ({ user_record }) => {
       return (userItems)
     })
   }
-  if (userItems.length > 0){
+  if(userItems.length > 0) {
     return (
       <div>
       <h6>PENDING LEAVE SCHEDULE</h6>
@@ -58,7 +58,7 @@ const ApprovedRecordList = ({ user_record }) => {
       return (userItems)
     })
   }
-  if (userItems.length > 0){
+  if(userItems.length > 0) {
     return (
       <div>
       <h6>APPROVED LEAVE SCHEDULE</h6>
