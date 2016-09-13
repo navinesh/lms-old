@@ -4,8 +4,9 @@ import { REQUEST_LEAVE_CALENDAR, RECEIVE_LEAVE_CALENDAR } from '../actions/leave
 
 import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE,
         LOGIN_USER_REQUEST_FROM_TOKEN, LOGIN_USER_SUCCESS_FROM_TOKEN,
-        LOGIN_USER_FAILURE_FROM_TOKEN } from '../actions/userlogin'
+        LOGIN_USER_FAILURE_FROM_TOKEN, LOGIN_FAILURE_FROM_TOKEN } from '../actions/userlogin'
 
+import { LOGOUT_USER_REQUEST } from '../actions/userlogout'
 import { LOGOUT_USER_SUCCESS } from '../actions/userlogout'
 
 import { REQUEST_USER_RECORD, RECEIVE_USER_RECORD,
@@ -55,11 +56,16 @@ const userAuth = (state = {isFetching: false,
       isFetching: false,
       isAuthenticated: false,
       message: action.message}
+    case LOGOUT_USER_REQUEST:
+    return { ...state,
+      isFetching: true,
+      isAuthenticated: true}
     case LOGOUT_USER_SUCCESS:
     return { ...state,
       isFetching: false,
       isAuthenticated: false,
-      message: ''}
+      message: '',
+      auth_info: ''}
     case LOGIN_USER_REQUEST_FROM_TOKEN:
     return { ...state,
       isFetching: true}
@@ -74,6 +80,13 @@ const userAuth = (state = {isFetching: false,
       isFetching: false,
       isAuthenticated: false,
       message: action.message}
+    case LOGIN_FAILURE_FROM_TOKEN:
+    return { ...state,
+      isFetching: false,
+      isAuthenticated: false,
+      message: 'Your session has expired!',
+      auth_info: ''
+      }
     default:
       return state
   }
