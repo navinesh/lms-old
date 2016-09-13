@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class UserError extends Component {
-  render(){
+const UserError = () => {
     return(
       <div className="container text-xs-center">
         <div className="offset-sm-2 col-sm-8">
@@ -10,6 +9,7 @@ export default class UserError extends Component {
           <h5>The site configured at this address does not contain the requested file.</h5>
         </div>
       </div>
-    );
-  }
+    )
 }
+
+export default UserError;
