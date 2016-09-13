@@ -45,11 +45,12 @@ const mapStateToProps = (state) => {
     userRecord: user_record,
     message
   } = userRecords
+
   return {
     isFetching,
     user_record,
     message,
-    auth_info,
+    auth_info
   }
 }
 

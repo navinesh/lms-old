@@ -1,22 +1,19 @@
-import React, { Component } from 'react'
+import React  from 'react'
 import { connect } from 'react-redux'
 import { fetchLogin } from '../actions/userlogin'
 import Login from '../components/userlogin'
 
-class UserLogin extends Component {
-  render() {
-    const { dispatch, message, isAuthenticated, isFetching } = this.props
-    return (
-      <div className="UserLoginBox">
-        {!isAuthenticated &&
-          <Login
-          isFetching={isFetching}
-          message={message}
-          onLoginClick={ creds => dispatch(fetchLogin(creds)) } />
-        }
-      </div>
-    )
-  }
+const UserLogin = ({ dispatch, message, isAuthenticated, isFetching }) => {
+  return (
+    <div className="UserLoginBox">
+      {!isAuthenticated &&
+        <Login
+        isFetching={isFetching}
+        message={message}
+        onLoginClick={ creds => dispatch(fetchLogin(creds)) } />
+      }
+    </div>
+  )
 }
 
 const mapStateToProps = (state) => {
@@ -26,6 +23,7 @@ const mapStateToProps = (state) => {
     message,
     isFetching
   } = userAuth
+
   return {
     message,
     isAuthenticated,

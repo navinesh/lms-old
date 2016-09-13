@@ -28,6 +28,7 @@ const mapStateToProps = (state) => {
     isFetching,
     items: records
   } = leaveRecords
+
   return {
     records,
     isFetching

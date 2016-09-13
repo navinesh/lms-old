@@ -35,8 +35,8 @@ const Navs = ({ isAuthenticated, onLogoutClick, children }) => {
       </nav>
       {children}
     </div>
-  );
-};
+  )
+}
 
 Navs.propTypes = {
   onLogoutClick: PropTypes.func.isRequired,

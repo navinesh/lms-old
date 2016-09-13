@@ -12,4 +12,4 @@ const UserError = () => {
     )
 }
 
-export default UserError;
+export default UserError
