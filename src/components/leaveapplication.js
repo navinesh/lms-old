@@ -75,10 +75,10 @@ export default class LeaveApplications extends Component {
 
     const leaveRangeDays = (endDate.diff(startDate, 'days') + 1);
 
-  	if (leaveRangeDays <= 0) {
-  		this.setState({ errorMessage: 'The dates you selected are invalid!'});
-  		return;
-  	}
+    if (leaveRangeDays <= 0) {
+      this.setState({ errorMessage: 'The dates you selected are invalid!'});
+      return;
+    }
 
     const range = moment.range(startDate, endDate);
 
