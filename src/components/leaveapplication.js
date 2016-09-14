@@ -51,7 +51,15 @@ export default class LeaveApplications extends Component {
 
   handleSubmit (e) {
     e.preventDefault();
-    const user_id = localStorage.getItem('user_id');
+    const { user_detail } = this.props
+    const user_id = user_detail.id;
+    const annualDays = user_detail.annual;
+    const sickDays = user_detail.sick;
+    const bereavmentDays = user_detail.bereavement;
+    const christmasDays = user_detail.christmas;
+    const dateOfBirth = user_detail.date_if_birth;
+    const maternityDays = user_detail.maternity ? user_detail.maternity : null;
+
     const leave = this.state.leave;
     const leaveType = this.state.leaveType;
     const startDate = this.state.startDate ? this.state.startDate : null;
@@ -65,7 +73,7 @@ export default class LeaveApplications extends Component {
       return;
     }
 
-    const leaveRangeDays = (endDate.diff(startDate, 'days') + 1)
+    const leaveRangeDays = (endDate.diff(startDate, 'days') + 1);
 
   	if (leaveRangeDays <= 0) {
   		this.setState({ errorMessage: 'The dates you selected are invalid!'});
@@ -75,12 +83,12 @@ export default class LeaveApplications extends Component {
     const range = moment.range(startDate, endDate);
 
     const dateRange = [];
-    range.by('days', function(moment) {
+    range.by('days', moment => {
       dateRange.push(moment.format("DD, MM, YYYY"));
     });
 
     const weekend = [];
-    range.by('days', function(moment) {
+    range.by('days', moment => {
       if (moment.isoWeekday() === 6 || moment.isoWeekday() === 7) {
         weekend.push(moment.format("DD, MM, YYYY"));
       }
@@ -98,8 +106,37 @@ export default class LeaveApplications extends Component {
     const daysExcludingHolidaysSet = new Set([...daysExcludingWeekendSet].filter(x => !publicHolidaysSet.has(x)));
     const leaveDays = daysExcludingHolidaysSet.size;
 
-    // to-do
     // calculate total leave days
+    let applicationDays = '';
+    if (leave === 'annual') {
+      applicationDays = annualDays - leaveDays;
+    }
+    else if (leave === 'sick') {
+      applicationDays = sickDays - leaveDays;
+    }
+    else if (leave === 'bereavement') {
+      applicationDays = bereavmentDays - leaveDays;
+    }
+    else if (leave === 'christmas') {
+      applicationDays = christmasDays - leaveDays;
+    }
+    else if (leave === 'maternity') {
+      applicationDays = maternityDays - leaveDays;
+    }
+    else if (leave === 'other') {
+      applicationDays = leaveDays;
+    }
+    else if (leave === 'lwop') {
+      applicationDays = leaveDays;
+    }
+    else if (leave === 'birthday') {
+      if(dateOfBirth === startDate) {
+        applicationDays = leaveDays;
+      }
+    }
+    console.log(leaveDays);
+    console.log(applicationDays);
+    return;
 
     this.setState({errorMessage: ''});
     this.setState({successMessage: 'Your application has been submitted.'});
@@ -121,7 +158,7 @@ export default class LeaveApplications extends Component {
             <a className="btn btn-outline-primary btn-lg" href="/leaveapplication">apply for leave</a>
           </div>
         </div>
-      );
+      )
     }
     else {
       return(
@@ -212,7 +249,7 @@ export default class LeaveApplications extends Component {
             </div>
           </div>
         </div>
-      );
+      )
     }
   }
 }
@@ -220,5 +257,6 @@ export default class LeaveApplications extends Component {
 LeaveApplications.propTypes = {
   onLeaveApplicationClick: PropTypes.func.isRequired,
   message: PropTypes.string,
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool.isRequired,
+  user_detail: PropTypes.array.isRequired
 }
