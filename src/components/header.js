@@ -25,7 +25,7 @@ const Navs = ({ isAuthenticated, onLogoutClick, children }) => {
                 <Link className="nav-item nav-link" to="/leavecalendar">
                   Leave calendar
                 </Link>
-                <button onClick={() => onLogoutClick()} className="btn btn-primary btn-right">
+                <button onClick={() => onLogoutClick()} className="btn btn-primary m-l-1">
                   Sign out
                 </button>
               </div>
