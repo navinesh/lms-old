@@ -166,7 +166,7 @@ export default class LeaveApplications extends Component {
   }
 
   render(){
-    const { isFetching, message } = this.props
+    const { isFetching, message, user_detail } = this.props
     if (this.state.successMessage) {
       return(
         <div className="container text-xs-center" style={{paddingTop: '100px'}}>
@@ -180,90 +180,119 @@ export default class LeaveApplications extends Component {
     }
     else {
       return(
-        <div className="col-xs-12 col-sm-6 offset-sm-3">
-          <div className="card card-block">
-            <form onSubmit={this.handleSubmit}>
-              <div className="form-group">
-                <label for="leave">Leave</label>
-                <select className="form-control" id="leave" onChange={this.handleLeaveChange}>
-                  <option></option>
-                  <option>annual</option>
-                  <option>sick</option>
-                  <option>bereavement</option>
-                  <option>christmas</option>
-                  <option>birthday</option>
-                  <option>maternity</option>
-                  <option>lwop</option>
-                  <option>other</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label for="leaveType">Leave type</label>
-                <select className="form-control" id="leaveType" onChange={this.handleLeaveTypeChange}>
-                  <option></option>
-                  <option>full</option>
-                  <option>half day am</option>
-                  <option>half day pm</option>
-                </select>
-              </div>
-              <div className="row">
-                <div className="col-sm-6">
-                  <div className="form-group">
-                    <label for="startDate">Start date</label>
-                    <DatePicker className="form-control"
-                      selected={this.state.startDate}
-                      startDate={this.state.startDate}
-                      endDate={this.state.endDate}
-                      onChange={this.handleStartDateChange} />
-              	   </div>
+        <div className="LeaveApplications">
+          <div className="col-xs-12 col-sm-3">
+            <p>{user_detail.othernames} {user_detail.surname}</p>
+            <ul className="list-group">
+              <li className="list-group-item">
+                <span className="tag tag-primary tag-pill pull-xs-right">{user_detail.annual}</span>
+                Annual
+              </li>
+              <li className="list-group-item">
+                <span className="tag tag-primary tag-pill pull-xs-right">{user_detail.sick}</span>
+                Sick
+              </li>
+              <li className="list-group-item">
+                <span className="tag tag-primary tag-pill pull-xs-right">{user_detail.bereavement}</span>
+                Bereavment
+              </li>
+              <li className="list-group-item">
+                <span className="tag tag-primary tag-pill pull-xs-right">{user_detail.christmas}</span>
+                Christmas
+              </li>
+              {user_detail.maternity ?
+                <li className="list-group-item">
+                  <span className="tag tag-primary tag-pill pull-xs-right">{user_detail.maternity}</span>
+                  Maternity
+                </li>
+                : ''}
+            </ul>
+          </div>
+          <div className="col-xs-12 col-sm-6">
+            <div className="card card-block">
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label for="leave">Leave</label>
+                  <select className="form-control" id="leave" onChange={this.handleLeaveChange}>
+                    <option></option>
+                    <option>annual</option>
+                    <option>sick</option>
+                    <option>bereavement</option>
+                    <option>christmas</option>
+                    <option>birthday</option>
+                    <option>maternity</option>
+                    <option>lwop</option>
+                    <option>other</option>
+                  </select>
                 </div>
-                <div className="col-sm-6">
-                  <div className="form-group">
-                    <label for="endDate">End date</label>
-                    <DatePicker className="form-control"
-                      selected={this.state.endDate}
-                      startDate={this.state.startDate}
-                      endDate={this.state.endDate}
-                      onChange={this.handleEndDateChange} />
+                <div className="form-group">
+                  <label for="leaveType">Leave type</label>
+                  <select className="form-control" id="leaveType" onChange={this.handleLeaveTypeChange}>
+                    <option></option>
+                    <option>full</option>
+                    <option>half day am</option>
+                    <option>half day pm</option>
+                  </select>
+                </div>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <div className="form-group">
+                      <label for="startDate">Start date</label>
+                      <DatePicker className="form-control"
+                        selected={this.state.startDate}
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
+                        onChange={this.handleStartDateChange} />
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <div className="form-group">
+                      <label for="endDate">End date</label>
+                      <DatePicker className="form-control"
+                        selected={this.state.endDate}
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
+                        onChange={this.handleEndDateChange} />
+                    </div>
                   </div>
                 </div>
+                <div className="form-group">
+                  <label for="supervisorEmail">Supervisor email</label>
+                  <input type="email" className="form-control"
+                    placeholder="Supervisor email" id="supervisorEmail"
+                    onChange={this.handleSupervisorEmailChange} />
+                </div>
+                <div className="form-group">
+                  <label for="secretaryEmail">Second supervisor / secretary email</label>
+                  <input type="email" className="form-control"
+                    placeholder="Second supervisor / secretary email" id="secretaryEmail"
+                    onChange={this.handleSecretaryEmailChange} />
+                </div>
+                <div className="form-group">
+                  <label for="reason">Reason</label>
+                  <input type="text" className="form-control"
+                    placeholder="Reason for leave" id="reason"
+                    onChange={this.handleReasonChange} />
+                </div>
+                <div className="form-group">
+                  <label for="sicksheet">Sick sheet</label>
+                  <input type="file" className="form-control-file" id="sicksheet" />
+                  <small className="form-text text-muted">A medical certificate is required for absence of two consecutive days or more and after four single day absences.</small>
+                </div>
+                <div className="form-group">
+                  <button type="submit" className="btn btn-primary col-xs-12 col-sm-12">Submit</button>
+                </div>
+              </form>
+              <div className="text-danger text-xs-center">
+                {isFetching ?
+                  <Loader color="#0275d8" size="20px" />:
+                  message}
               </div>
-              <div className="form-group">
-                <label for="supervisorEmail">Supervisor email</label>
-                <input type="email" className="form-control"
-                  placeholder="Supervisor email" id="supervisorEmail"
-                  onChange={this.handleSupervisorEmailChange} />
+              <div className="text-danger text-xs-center">
+                {this.state.errorMessage ?
+                  <div>{this.state.errorMessage}</div> :
+                     ''}
               </div>
-              <div className="form-group">
-                <label for="secretaryEmail">Second supervisor / secretary email</label>
-                <input type="email" className="form-control"
-                  placeholder="Second supervisor / secretary email" id="secretaryEmail"
-                  onChange={this.handleSecretaryEmailChange} />
-              </div>
-              <div className="form-group">
-                <label for="reason">Reason</label>
-                <input type="text" className="form-control"
-                  placeholder="Reason for leave" id="reason"
-                  onChange={this.handleReasonChange} />
-              </div>
-              <div className="form-group">
-                <label for="sicksheet">Sick sheet</label>
-                <input type="file" className="form-control-file" id="sicksheet" />
-                <small className="form-text text-muted">A medical certificate is required for absence of two consecutive days or more and after four single day absences.</small>
-              </div>
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary col-xs-12 col-sm-12">Submit</button>
-              </div>
-            </form>
-            <div className="text-danger text-xs-center">
-              {isFetching ?
-                <Loader color="#0275d8" size="20px" />:
-                message}
-            </div>
-            <div className="text-danger text-xs-center">
-              {this.state.errorMessage ?
-                <div>{this.state.errorMessage}</div> :
-                   ''}
             </div>
           </div>
         </div>
