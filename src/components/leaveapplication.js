@@ -103,7 +103,7 @@ export default class LeaveApplications extends Component {
     const daysExcludingWeekendSet = new Set([...dateRangeSet].filter(x => !weekendSet.has(x)));
 
     // exclude public holidays
-    // get public holiday dates from db
+    // to-do get public holiday dates from db
     const publicHolidays = ["07, 09, 2016", "08, 09, 2016"];
     const publicHolidaysSet = new Set(publicHolidays);
     const daysExcludingHolidaysSet = new Set([...daysExcludingWeekendSet].filter(x => !publicHolidaysSet.has(x)));
@@ -145,6 +145,11 @@ export default class LeaveApplications extends Component {
         this.setState({errorMessage: 'The date you selected as your date of birth does not match our record!'});
         return;
       }
+    }
+
+    if(applicationDays < 0) {
+      this.setState({errorMessage: 'Your leave balance cannnot be negative!'});
+      return;
     }
 
     console.log(leaveDays);
