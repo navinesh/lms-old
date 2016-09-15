@@ -57,7 +57,7 @@ export default class LeaveApplications extends Component {
     const sickDays = user_detail.sick;
     const bereavmentDays = user_detail.bereavement;
     const christmasDays = user_detail.christmas;
-    const dateOfBirth = user_detail.date_if_birth;
+    const dateOfBirth = user_detail.date_of_birth;
     const maternityDays = user_detail.maternity ? user_detail.maternity : null;
 
     const leave = this.state.leave;
@@ -68,18 +68,21 @@ export default class LeaveApplications extends Component {
     const secretaryEmail = this.state.secretaryEmail ? this.state.secretaryEmail.trim() : null;
     const reason = this.state.reason ? this.state.reason.trim() : null;
 
-    if (!user_id || !leave || !leaveType || !startDate || !endDate || !supervisorEmail || !reason) {
-      this.setState({errorMessage: 'One or more required fields are missing!'});
-      return;
-    }
+  //  if (!user_id || !leave || !leaveType || !startDate || !endDate || !supervisorEmail || !reason) {
+  //    this.setState({errorMessage: 'One or more required fields are missing!'});
+  //    return;
+  //  }
 
+    // get date range from user selection
     const leaveRangeDays = (endDate.diff(startDate, 'days') + 1);
 
+    // check user data range selection
     if (leaveRangeDays <= 0) {
       this.setState({ errorMessage: 'The dates you selected are invalid!'});
       return;
     }
 
+    // create date range
     const range = moment.range(startDate, endDate);
 
     const dateRange = [];
@@ -130,10 +133,20 @@ export default class LeaveApplications extends Component {
       applicationDays = leaveDays;
     }
     else if (leave === 'birthday') {
-      if(dateOfBirth === startDate) {
+      // create date
+      let dOB = new Date(dateOfBirth);
+      dOB.setHours(dOB.getHours() - 12);
+      let birthDate = moment.utc(dOB);
+      // check date of birth
+      if(moment(startDate).isSame(birthDate) && moment(endDate).isSame(birthDate)) {
         applicationDays = leaveDays;
       }
+      else {
+        this.setState({errorMessage: 'The date you selected as your date of birth does not match our record!'});
+        return;
+      }
     }
+
     console.log(leaveDays);
     console.log(applicationDays);
     return;
