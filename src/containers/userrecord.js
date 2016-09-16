@@ -8,18 +8,14 @@ var Loader = require('halogen/PulseLoader');
 class UserRecords extends Component {
   componentDidMount() {
     const { dispatch, auth_info } = this.props
-    const auth_token = auth_info.auth_token;
-    const user_id = auth_info.user_id;
-    if(auth_token || user_id) {
-      const userData = { auth_token: auth_token, user_id: user_id }
-      dispatch(fetchUserRecord(userData))
+    let auth_token = auth_info.auth_token;
+    if(auth_token) {
+      dispatch(fetchUserRecord(auth_token))
     }
     else {
-      const auth_token_local = localStorage.getItem('auth_token')
-      const user_id_local = localStorage.getItem('user_id')
-      if(auth_token_local || user_id_local) {
-        const userData = { auth_token: auth_token_local, user_id: user_id_local }
-        dispatch(fetchUserRecord(userData))
+      auth_token = localStorage.getItem('auth_token')
+      if(auth_token) {
+        dispatch(fetchUserRecord(auth_token))
       }
     }
   }
