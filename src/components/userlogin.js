@@ -30,24 +30,24 @@ export default class Login extends Component {
       <div className="Login">
         <div className="card card-block">
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <fieldset className="form-group">
+            <div className="form-group">
               <label for="email">Email address</label>
               <input type="email" className="form-control"
                 placeholder="Enter email" id="email"
                 onChange={this.handleEmailChange.bind(this)} />
-            </fieldset>
-            <fieldset className="form-group">
+            </div>
+            <div className="form-group">
               <label for="password">Password</label>
               <input type="password" className="form-control"
                 placeholder="Password" id="password"
                 onChange={this.handlePasswordChange.bind(this)} />
               <small className="text-muted">Enter your leave management system password.</small>
-            </fieldset>
-            <fieldset className="form-group">
+            </div>
+            <div className="form-group">
               <button type="submit" className="btn btn-primary col-xs-12 col-sm-12">Log in</button>
-            </fieldset>
+            </div>
           </form>
-          <div className="text-danger text-xs-center">
+          <div className="text-danger text-xs-center p-t-3">
             {this.props.isFetching ?
               <Loader color="#0275d8" size="20px" />:
               this.props.message}
