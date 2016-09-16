@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import { Link } from 'react-router'
 
 const PendingRecordList = ({ user_record }) => {
   const userItems = []
@@ -18,23 +19,25 @@ const PendingRecordList = ({ user_record }) => {
   }
   if(userItems.length > 0) {
     return (
-      <div>
-      <h6>PENDING LEAVE SCHEDULE</h6>
-      <table className="table table-bordered table-hover">
-        <thead className="thead-default">
-          <tr>
-            <th>Leave type</th>
-            <th>Leave days</th>
-            <th>Start date</th>
-            <th>End date</th>
-            <th>Reason</th>
-          </tr>
-        </thead>
-        <tbody>
-        {userItems}
-        </tbody>
-      </table>
-    </div>
+      <div className="col-xs-12 col-sm-12">
+        <div className="card card-block">
+          <h5 className="card-title">Pending</h5>
+          <table className="table table-bordered table-hover">
+            <thead className="thead-default">
+              <tr>
+                <th>Leave type</th>
+                <th>Leave days</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+            {userItems}
+            </tbody>
+          </table>
+        </div>
+      </div>
     )
   }
   else {
@@ -60,23 +63,25 @@ const ApprovedRecordList = ({ user_record }) => {
   }
   if(userItems.length > 0) {
     return (
-      <div>
-      <h6>APPROVED LEAVE SCHEDULE</h6>
-      <table className="table table-bordered table-hover">
-        <thead className="thead-default">
-          <tr>
-            <th>Leave type</th>
-            <th>Leave days</th>
-            <th>Start date</th>
-            <th>End date</th>
-            <th>Reason</th>
-          </tr>
-        </thead>
-        <tbody>
-        {userItems}
-        </tbody>
-      </table>
-    </div>
+      <div className="col-xs-12 col-sm-12">
+        <div className="card card-block">
+          <h5 className="card-title">Approved</h5>
+          <table className="table table-bordered table-hover">
+            <thead className="thead-default">
+              <tr>
+                <th>Leave type</th>
+                <th>Leave days</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+            {userItems}
+            </tbody>
+          </table>
+        </div>
+      </div>
     )
   }
   else {
@@ -96,78 +101,46 @@ const UserRecordList = ({ user_record, message }) => {
   }
 
   const userItem = user_record.map((user) => {
-    if(user.maternity) {
-      return (
-        <div key={user.id}>
-          <div className="row">
-            <h5 className="card-title col-sm-12">{user.othernames} {user.surname}</h5>
-            <div className="col-sm-3">
-              <div className="card card-block text-xs-center">
-                <h3 className="card-title">{user.annual}</h3>
-                <p className="card-text">Annual</p>
-              </div>
-            </div>
-            <div className="col-sm-2">
-              <div className="card card-block text-xs-center">
-                <h3 className="card-title">{user.sick}</h3>
-                <p className="card-text">Sick</p>
-              </div>
-            </div>
-            <div className="col-sm-2">
-              <div className="card card-block text-xs-center">
-                <h3 className="card-title">{user.bereavement}</h3>
-                <p className="card-text">Bereavement</p>
-              </div>
-            </div>
-            <div className="col-sm-2">
-              <div className="card card-block text-xs-center">
-                <h3 className="card-title">{user.christmas}</h3>
-                <p className="card-text">Christmas</p>
-              </div>
-            </div>
-            <div className="col-sm-3">
-              <div className="card card-block text-xs-center">
-                <h3 className="card-title">{user.maternity}</h3>
-                <p className="card-text">Maternity</p>
-              </div>
-            </div>
-          </div>
+    return (
+      <div key={user.id}>
+        <div className="col-xs-12 col-sm-12">
+        <div className="card card-block">
+        <div className="col-sm-3 p-b-2">
+          <h5>{user.othernames} {user.surname}</h5>
         </div>
-      )
-    }
-    else {
-      return (
-        <div key={user.id}>
-          <div className="row">
-            <h5 className="card-title col-sm-12">{user.othernames} {user.surname}</h5>
-            <div className="col-sm-3">
-              <div className="card card-block text-xs-center">
-                <h3 className="card-title">{user.annual}</h3>
-                <p className="card-text">Annual</p>
-              </div>
-            </div>
-            <div className="col-sm-3">
-              <div className="card card-block text-xs-center">
-                <h3 className="card-title">{user.sick}</h3>
-                <p className="card-text">Sick</p>
-              </div>
-            </div>
-            <div className="col-sm-3">
-              <div className="card card-block text-xs-center">
-                <h3 className="card-title">{user.bereavement}</h3>
-                <p className="card-text">Bereavement</p>
-              </div>
-            </div>
-            <div className="col-sm-3">
-              <div className="card card-block text-xs-center">
-                <h3 className="card-title">{user.christmas}</h3>
-                <p className="card-text">Christmas</p>
-              </div>
-            </div>
-          </div>
+        <div className="col-sm-7">
+          <ul className="list-inline">
+            <li className="list-inline-item">
+              Annual&nbsp;
+              <span className="tag tag-primary tag-pill">{user.annual}</span>
+            </li>
+            <li className="list-inline-item m-l-2">
+              Sick&nbsp;
+              <span className="tag tag-primary tag-pill">{user.sick}</span>
+            </li>
+            <li className="list-inline-item m-l-2">
+              Bereavment&nbsp;
+              <span className="tag tag-primary tag-pill">{user.bereavement}</span>
+            </li>
+            <li className="list-inline-item m-l-2">
+              Christmas&nbsp;
+              <span className="tag tag-primary tag-pill">{user.christmas}</span>
+            </li>
+            {user.maternity ?
+              <li className="list-inline-item m-l-2">
+                Maternity&nbsp;
+                <span className="tag tag-primary tag-pill">{user.maternity}</span>
+              </li>
+              : ''}
+          </ul>
         </div>
-      )
-    }
+        <div className="col-sm-2 text-xs-right">
+          <Link to="/reset" className="card-link">Change password</Link>
+        </div>
+      </div>
+    </div>
+      </div>
+    )
   })
   return (
     <div>
@@ -179,14 +152,10 @@ const UserRecordList = ({ user_record, message }) => {
 const UserRecord = ({ user_record, message }) => {
   return (
     <div className="UserRecord">
-      <UserRecordList user_record={user_record} message={message} />
       <div className="row">
-        <div className="col-sm-12">
-          <PendingRecordList user_record={user_record} />
-        </div>
-        <div className="col-sm-12">
-          <ApprovedRecordList user_record={user_record} />
-        </div>
+        <UserRecordList user_record={user_record} message={message} />
+        <PendingRecordList user_record={user_record} />
+        <ApprovedRecordList user_record={user_record} />
       </div>
     </div>
   )
