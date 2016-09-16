@@ -68,10 +68,10 @@ export default class LeaveApplications extends Component {
     const secretaryEmail = this.state.secretaryEmail ? this.state.secretaryEmail.trim() : null;
     const reason = this.state.reason ? this.state.reason.trim() : null;
 
-  //  if (!user_id || !leave || !leaveType || !startDate || !endDate || !supervisorEmail || !reason) {
-  //    this.setState({errorMessage: 'One or more required fields are missing!'});
-  //    return;
-  //  }
+    if (!user_id || !leave || !leaveType || !startDate || !endDate || !supervisorEmail || !reason) {
+      this.setState({errorMessage: 'One or more required fields are missing!'});
+      return;
+    }
 
     // get date range from user selection
     const leaveRangeDays = (endDate.diff(startDate, 'days') + 1);
@@ -154,7 +154,6 @@ export default class LeaveApplications extends Component {
 
     console.log(leaveDays);
     console.log(applicationDays);
-    return;
 
     this.setState({errorMessage: ''});
     this.setState({successMessage: 'Your application has been submitted.'});
@@ -181,8 +180,8 @@ export default class LeaveApplications extends Component {
     else {
       return(
         <div className="LeaveApplications">
-          <div className="col-xs-12 col-sm-3">
-            <p>{user_detail.othernames} {user_detail.surname}</p>
+          <div className="col-xs-12 col-sm-3 offset-sm-1">
+            <h5>{user_detail.othernames} {user_detail.surname}</h5>
             <ul className="list-group">
               <li className="list-group-item">
                 <span className="tag tag-primary tag-pill pull-xs-right">{user_detail.annual}</span>
@@ -283,12 +282,12 @@ export default class LeaveApplications extends Component {
                   <button type="submit" className="btn btn-primary col-xs-12 col-sm-12">Submit</button>
                 </div>
               </form>
-              <div className="text-danger text-xs-center">
+              <div className="text-danger text-xs-center p-t-2">
                 {isFetching ?
                   <Loader color="#0275d8" size="20px" />:
                   message}
               </div>
-              <div className="text-danger text-xs-center">
+              <div className="text-danger text-xs-center p-t-2">
                 {this.state.errorMessage ?
                   <div>{this.state.errorMessage}</div> :
                      ''}
