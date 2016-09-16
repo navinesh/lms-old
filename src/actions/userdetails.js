@@ -4,9 +4,9 @@ export const REQUEST_USER_DETAILS = 'REQUEST_USER_DETAILS'
 export const RECEIVE_USER_DETAILS = 'RECEIVE_USER_DETAILS'
 export const USER_DETAILS_ERROR = 'USER_DETAILS_ERROR'
 
-export const requestUserDetails = (userData) => ({
+export const requestUserDetails = (auth_token) => ({
   type: REQUEST_USER_DETAILS,
-  userData
+  auth_token
 });
 
 export const userDetailsError = (data) => ({
@@ -19,14 +19,12 @@ export const receiveUserDetails = (data) => ({
   user_detail: data.user_detail
 });
 
-export const fetchUserDetails = (userData) => {
+export const fetchUserDetails = (auth_token) => {
   return dispatch => {
-    dispatch(requestUserDetails(userData))
+    dispatch(requestUserDetails(auth_token))
     axios({
-      method: 'post',
       url: 'user-detail.api',
-      auth: { username: userData.auth_token },
-      data: { user_id: userData.user_id }
+      auth: { username: auth_token }
       })
       .then((response) => {
         if (response.status === 200){
@@ -38,7 +36,6 @@ export const fetchUserDetails = (userData) => {
       })
       .catch((error) => {
         localStorage.removeItem('auth_token')
-        localStorage.removeItem('user_id')
         dispatch({ type: 'LOGIN_FAILURE_FROM_TOKEN' })
       })
   }

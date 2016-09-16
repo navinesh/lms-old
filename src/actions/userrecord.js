@@ -4,9 +4,9 @@ export const REQUEST_USER_RECORD = 'REQUEST_USER_RECORD'
 export const RECEIVE_USER_RECORD = 'RECEIVE_USER_RECORD'
 export const USER_RECORD_ERROR = 'USER_RECORD_ERROR'
 
-export const requestUserRecord = (userData) => ({
+export const requestUserRecord = (auth_token) => ({
   type: REQUEST_USER_RECORD,
-  userData
+  auth_token
 });
 
 export const userRecordError = (data) => ({
@@ -19,14 +19,12 @@ export const receiveUserRecord = (data) => ({
   user_record: data.user_record
 });
 
-export const fetchUserRecord = (userData) => {
+export const fetchUserRecord = (auth_token) => {
   return dispatch => {
-    dispatch(requestUserRecord(userData))
+    dispatch(requestUserRecord(auth_token))
     axios({
-      method: 'post',
       url: 'user-record.api',
-      auth: { username: userData.auth_token },
-      data: { user_id: userData.user_id }
+      auth: { username: auth_token }
       })
       .then((response) => {
         if (response.status === 200){
@@ -38,7 +36,6 @@ export const fetchUserRecord = (userData) => {
       })
       .catch((error) => {
         localStorage.removeItem('auth_token')
-        localStorage.removeItem('user_id')
         dispatch({ type: 'LOGIN_FAILURE_FROM_TOKEN' })
       })
   }
