@@ -57,7 +57,6 @@ export const fetchLogin = (creds) => {
         }
         else {
           localStorage.setItem('auth_token', response.data.auth_token)
-          localStorage.setItem('user_id', response.data.user_id)
           dispatch(receiveUserLogin(response.data))
         }
       })
@@ -73,7 +72,6 @@ export const fetchLoginFromToken = (auth_token) => {
       .then((response) => {
         if (response.status === 200){
           localStorage.removeItem('auth_token')
-          localStorage.removeItem('user_id')
           dispatch(loginUserErrorFromToken(response.data))
         }
         else {
