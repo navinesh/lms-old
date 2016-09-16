@@ -14,8 +14,8 @@ export default class Login extends Component {
 
   handleSubmit (e) {
     e.preventDefault();
-    const email = this.state.email.trim();
-    const password = this.state.password.trim();
+    const email = this.state.email ? this.state.email.trim() : null;
+    const password = this.state.password ? this.state.password.trim() : null;
 
     if (!email || !password) {
       return;
