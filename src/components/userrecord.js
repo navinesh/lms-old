@@ -2,41 +2,35 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 
 const PendingRecordList = ({ user_record }) => {
-  const userItems = []
-  for (let x = 0; x < user_record.length; x++) {
-    user_record[x].leaverecord.map((record) => {
-      if (record.leave_status === 'pending') {
-        userItems.push(<tr key={record.id}>
-                    <td>{record.leave_name}</td>
-                    <td>{record.leave_days} day(s)</td>
-                    <td>{record.start_date}</td>
-                    <td>{record.end_date}</td>
-                    <td>{record.leave_reason}</td>
-                  </tr>)
-      }
-      return (userItems)
-    })
-  }
-  if(userItems.length > 0) {
+  const pendingList = user_record.map(record => record.leaverecord.filter((data =>
+    data.leave_status === 'pending')).map((record) => {
+      return (<tr key={record.id}>
+        <td>{record.leave_name}</td>
+        <td>{record.leave_days} day(s)</td>
+        <td>{record.start_date}</td>
+        <td>{record.end_date}</td>
+        <td>{record.leave_reason}</td>
+      </tr>)
+    }))
+
+  if(pendingList.length > 0) {
     return (
       <div className="col-xs-12 col-sm-12">
-        <div className="card card-block">
-          <h5 className="card-title">Pending</h5>
-          <table className="table table-bordered table-hover">
-            <thead className="thead-default">
-              <tr>
-                <th>Leave type</th>
-                <th>Leave days</th>
-                <th>Start date</th>
-                <th>End date</th>
-                <th>Reason</th>
-              </tr>
-            </thead>
-            <tbody>
-            {userItems}
-            </tbody>
-          </table>
-        </div>
+        PENDING LEAVE SCHEDULE
+        <table className="table table-bordered table-hover">
+          <thead className="thead-default">
+            <tr>
+              <th>Leave type</th>
+              <th>Leave days</th>
+              <th>Start date</th>
+              <th>End date</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+          {pendingList}
+          </tbody>
+        </table>
       </div>
     )
   }
@@ -46,26 +40,21 @@ const PendingRecordList = ({ user_record }) => {
 }
 
 const ApprovedRecordList = ({ user_record }) => {
-  const userItems = []
-  for (let x = 0; x < user_record.length; x++) {
-    user_record[x].leaverecord.map((record) => {
-      if (record.leave_status === 'approved') {
-        userItems.push(<tr key={record.id}>
-                    <td>{record.leave_name}</td>
-                    <td>{record.leave_days} day(s)</td>
-                    <td>{record.start_date}</td>
-                    <td>{record.end_date}</td>
-                    <td>{record.leave_reason}</td>
-                  </tr>)
-      }
-      return (userItems)
-    })
-  }
-  if(userItems.length > 0) {
+  const approvedList = user_record.map(record => record.leaverecord.filter((data =>
+    data.leave_status === 'approved')).map((record) => {
+      return (<tr key={record.id}>
+        <td>{record.leave_name}</td>
+        <td>{record.leave_days} day(s)</td>
+        <td>{record.start_date}</td>
+        <td>{record.end_date}</td>
+        <td>{record.leave_reason}</td>
+      </tr>)
+    }))
+
+  if(approvedList.length > 0) {
     return (
       <div className="col-xs-12 col-sm-12">
-        <div className="card card-block">
-          <h5 className="card-title">Approved</h5>
+          APPROVED LEAVE SCHEDULE
           <table className="table table-bordered table-hover">
             <thead className="thead-default">
               <tr>
@@ -77,10 +66,9 @@ const ApprovedRecordList = ({ user_record }) => {
               </tr>
             </thead>
             <tbody>
-            {userItems}
+            {approvedList}
             </tbody>
           </table>
-        </div>
       </div>
     )
   }
@@ -103,42 +91,38 @@ const UserRecordList = ({ user_record, message }) => {
   const userItem = user_record.map((user) => {
     return (
       <div key={user.id}>
-        <div className="col-xs-12 col-sm-12">
-        <div className="card card-block">
-        <div className="col-sm-3 p-b-2">
-          <h5>{user.othernames} {user.surname}</h5>
+        <div className="col-sm-3">
+          <div className="card card-block">
+            <p className="text-uppercase">{user.othernames} {user.surname}</p>
+            <Link to="/account" className="card-link">Change password</Link>
+          </div>
         </div>
-        <div className="col-sm-7">
+        <div className="col-sm-9">
           <ul className="list-inline">
             <li className="list-inline-item">
-              Annual&nbsp;
+              ANNUAL&nbsp;
               <span className="tag tag-primary tag-pill">{user.annual}</span>
             </li>
             <li className="list-inline-item m-l-2">
-              Sick&nbsp;
+              SICK&nbsp;
               <span className="tag tag-primary tag-pill">{user.sick}</span>
             </li>
             <li className="list-inline-item m-l-2">
-              Bereavment&nbsp;
+              BEREAVEMENT&nbsp;
               <span className="tag tag-primary tag-pill">{user.bereavement}</span>
             </li>
             <li className="list-inline-item m-l-2">
-              Christmas&nbsp;
+              CHRISTMAS&nbsp;
               <span className="tag tag-primary tag-pill">{user.christmas}</span>
             </li>
             {user.maternity ?
               <li className="list-inline-item m-l-2">
-                Maternity&nbsp;
+                MATERNITY&nbsp;
                 <span className="tag tag-primary tag-pill">{user.maternity}</span>
               </li>
               : ''}
           </ul>
         </div>
-        <div className="col-sm-2 text-xs-right">
-          <Link to="/reset" className="card-link">Change password</Link>
-        </div>
-      </div>
-    </div>
       </div>
     )
   })
