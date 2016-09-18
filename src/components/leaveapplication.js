@@ -181,7 +181,7 @@ export default class LeaveApplications extends Component {
       return(
         <div className="LeaveApplications">
           <div className="col-xs-12 col-sm-3 offset-sm-1">
-            <h5>{user_detail.othernames} {user_detail.surname}</h5>
+            <p>{user_detail.othernames} {user_detail.surname}</p>
             <ul className="list-group">
               <li className="list-group-item">
                 <span className="tag tag-primary tag-pill pull-xs-right">{user_detail.annual}</span>
