@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import LeaveCalendarContainer from './leavecalendarcontainer'
 import UserLoginBox from './userlogincontainer'
 
 const MainUserLoginBox = ({ isAuthenticated }) => {
