@@ -3,6 +3,7 @@ import axios from 'axios'
 export const REQUEST_USER_DETAILS = 'REQUEST_USER_DETAILS'
 export const RECEIVE_USER_DETAILS = 'RECEIVE_USER_DETAILS'
 export const USER_DETAILS_ERROR = 'USER_DETAILS_ERROR'
+export const CLEAR_USER_DETAILS = 'CLEAR_USER_DETAILS'
 
 export const requestUserDetails = (auth_token) => ({
   type: REQUEST_USER_DETAILS,
@@ -17,6 +18,10 @@ export const userDetailsError = (data) => ({
 export const receiveUserDetails = (data) => ({
   type: RECEIVE_USER_DETAILS,
   user_detail: data.user_detail
+});
+
+export const clearUserDetails = () => ({
+  type: CLEAR_USER_DETAILS
 });
 
 export const fetchUserDetails = (auth_token) => {
