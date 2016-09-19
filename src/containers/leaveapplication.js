@@ -9,12 +9,12 @@ class LeaveApplication extends Component {
   componentDidMount() {
     const { dispatch, auth_info } = this.props
     let auth_token = auth_info.auth_token;
-    if (auth_token) {
+    if(auth_token) {
       dispatch(fetchUserDetailsIfNeeded(auth_token))
     }
     else {
       auth_token= localStorage.getItem('auth_token')
-      if (auth_token) {
+      if(auth_token) {
         dispatch(fetchUserDetailsIfNeeded(auth_token))
       }
     }
