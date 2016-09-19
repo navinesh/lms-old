@@ -14,7 +14,7 @@ class UserRecords extends Component {
     }
     else {
       auth_token= localStorage.getItem('auth_token')
-      if (auth_token) {
+      if(auth_token) {
         dispatch(fetchUserRecordIfNeeded(auth_token))
       }
     }
