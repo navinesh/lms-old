@@ -40,3 +40,28 @@ export const fetchUserDetails = (auth_token) => {
       })
   }
 };
+
+export const shouldfetchUserDetails = (state, userDetails) => {
+  const userState = state.userDetails
+  const { userDetail } = userState
+  const details = Object.keys(userDetail).length
+
+  if(!details) {
+    return true
+  }
+  else if(userState.isFetching) {
+    return false
+  }
+}
+
+export const fetchUserDetailsIfNeeded = (auth_token) => {
+  return (dispatch, getState) => {
+    if (shouldfetchUserDetails(getState(), auth_token)) {
+      // Dispatch a thunk from thunk!
+      return dispatch(fetchUserDetails(auth_token))
+    } else {
+      // Let the calling code know there's nothing to wait for.
+      return Promise.resolve()
+    }
+  }
+}
