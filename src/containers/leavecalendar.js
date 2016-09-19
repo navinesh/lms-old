@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchLeave } from '../actions/leavecalendar'
+import { fetchLeaveIfNeeded } from '../actions/leavecalendar'
 import Leaves from '../components/leavecalendar'
 
 var Loader = require('halogen/PulseLoader');
@@ -8,7 +8,7 @@ var Loader = require('halogen/PulseLoader');
 class LeaveCalendar extends Component {
   componentDidMount() {
     const { dispatch } = this.props
-    dispatch(fetchLeave())
+    dispatch(fetchLeaveIfNeeded())
   }
 
   render() {
