@@ -40,3 +40,28 @@ export const fetchUserRecord = (auth_token) => {
       })
   }
 };
+
+export const shouldfetchUserRecord = (state, userRecords) => {
+  const recordState = state.userRecords
+  const { userRecord } = recordState
+  const records = userRecord.length
+
+  if(!records) {
+    return true
+  }
+  else if(recordState.isFetching) {
+    return false
+  }
+}
+
+export const fetchUserRecordIfNeeded = (auth_token) => {
+  return (dispatch, getState) => {
+    if (shouldfetchUserRecord(getState(), auth_token)) {
+      // Dispatch a thunk from thunk!
+      return dispatch(fetchUserRecord(auth_token))
+    } else {
+      // Let the calling code know there's nothing to wait for.
+      return Promise.resolve()
+    }
+  }
+}
