@@ -3,6 +3,7 @@ import axios from 'axios'
 export const REQUEST_USER_RECORD = 'REQUEST_USER_RECORD'
 export const RECEIVE_USER_RECORD = 'RECEIVE_USER_RECORD'
 export const USER_RECORD_ERROR = 'USER_RECORD_ERROR'
+export const CLEAR_USER_RECORD = 'CLEAR_USER_RECORD'
 
 export const requestUserRecord = (auth_token) => ({
   type: REQUEST_USER_RECORD,
@@ -17,6 +18,10 @@ export const userRecordError = (data) => ({
 export const receiveUserRecord = (data) => ({
   type: RECEIVE_USER_RECORD,
   user_record: data.user_record
+});
+
+export const clearUserRecord = () => ({
+  type: CLEAR_USER_RECORD
 });
 
 export const fetchUserRecord = (auth_token) => {
