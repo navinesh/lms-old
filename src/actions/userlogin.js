@@ -41,7 +41,7 @@ export const loginUserErrorFromToken = (data) => ({
 });
 
 export const loginFailureFromToken = () => ({
-  type: LOGIN_FAILURE_FROM_TOKEN,
+  type: LOGIN_FAILURE_FROM_TOKEN
 });
 
 export const fetchLogin = (creds) => {
