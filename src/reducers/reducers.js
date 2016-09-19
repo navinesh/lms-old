@@ -10,10 +10,10 @@ import { LOGOUT_USER_REQUEST } from '../actions/userlogout'
 import { LOGOUT_USER_SUCCESS } from '../actions/userlogout'
 
 import { REQUEST_USER_RECORD, RECEIVE_USER_RECORD,
-        USER_RECORD_ERROR } from '../actions/userrecord'
+        USER_RECORD_ERROR, CLEAR_USER_RECORD } from '../actions/userrecord'
 
 import { REQUEST_USER_DETAILS, RECEIVE_USER_DETAILS,
-        USER_DETAILS_ERROR } from '../actions/userdetails'
+        USER_DETAILS_ERROR, CLEAR_USER_DETAILS } from '../actions/userdetails'
 
 import { LEAVE_APPLICATION_REQUEST, LEAVE_APPLICATION_SUCCESS,
         LEAVE_APPLICATION_FAILURE } from '../actions/leaveapplication'
@@ -106,6 +106,11 @@ const userRecords = (state = {isFetching: false,
     return { ...state,
       isFetching: false,
       message: action.message}
+    case CLEAR_USER_RECORD:
+    return {...state,
+      isFetching: false,
+      message: '',
+      userRecord: []}
     default:
       return state
   }
@@ -125,6 +130,11 @@ const userDetails = (state = {isFetching: false,
     return { ...state,
       isFetching: false,
       message: action.message}
+    case CLEAR_USER_DETAILS:
+    return {...state,
+      isFetching: false,
+      message: '',
+      userDetail: {}}
     default:
       return state
   }
