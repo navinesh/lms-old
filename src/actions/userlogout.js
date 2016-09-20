@@ -13,8 +13,8 @@ export const logoutUser = () => {
   return dispatch => {
     dispatch(requestLogout())
     dispatch(receiveLogout())
+    localStorage.removeItem('auth_token')    
     dispatch({ type: 'CLEAR_USER_RECORD' })
     dispatch({ type: 'CLEAR_USER_DETAILS' })
-    localStorage.removeItem('auth_token')
   }
 };
