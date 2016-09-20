@@ -13,7 +13,7 @@ const PendingRecordList = ({ user_record }) => {
       </tr>)
     }))
 
-  if(pendingList.length > 0) {
+  if(pendingList.length > 0 && pendingList[0].length > 0) {
     return (
       <div className="col-xs-12 col-sm-12">
         PENDING LEAVE SCHEDULE
@@ -51,7 +51,7 @@ const ApprovedRecordList = ({ user_record }) => {
       </tr>)
     }))
 
-  if(approvedList.length > 0) {
+  if(approvedList.length > 0 && approvedList[0].length > 0) {
     return (
       <div className="col-xs-12 col-sm-12">
           APPROVED LEAVE SCHEDULE
