@@ -31,11 +31,14 @@ export function fetchLeaveApplication(applicationDetails) {
       user_id: applicationDetails.user_id,
       leave: applicationDetails.leave,
       leaveType: applicationDetails.leaveType,
-      dateFrom: applicationDetails.dateFrom,
-      dateTo: applicationDetails.dateTo,
+      startDate: applicationDetails.startDate,
+      endDate: applicationDetails.endDate,
       supervisorEmail: applicationDetails.supervisorEmail,
       secretaryEmail: applicationDetails.secretaryEmail,
+      leaveDays: applicationDetails.leaveDays,
+      applicationDays: applicationDetails.applicationDays,
       reason: applicationDetails.reason,
+      sickSheet: applicationDetails.sickSheet,
       })
       .then((response) => {
         if (response.status === 200){
