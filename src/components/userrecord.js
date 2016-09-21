@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 
 const PendingRecordList = ({ user_record }) => {
-  const pendingList = user_record.map(record => record.leaverecord.filter((data =>
-    data.leave_status === 'pending')).map((record) => {
+  const pendingList = user_record.filter((data) =>
+    data.leave_status === 'pending').map((record) => {
       return (<tr key={record.id}>
         <td>{record.leave_name}</td>
         <td>{record.leave_days} day(s)</td>
@@ -11,9 +11,9 @@ const PendingRecordList = ({ user_record }) => {
         <td>{record.end_date}</td>
         <td>{record.leave_reason}</td>
       </tr>)
-    }))
+    })
 
-  if(pendingList.length > 0 && pendingList[0].length > 0) {
+  if(pendingList.length > 0) {
     return (
       <div className="col-xs-12 col-sm-12">
         PENDING LEAVE SCHEDULE
@@ -40,8 +40,8 @@ const PendingRecordList = ({ user_record }) => {
 }
 
 const ApprovedRecordList = ({ user_record }) => {
-  const approvedList = user_record.map(record => record.leaverecord.filter((data =>
-    data.leave_status === 'approved')).map((record) => {
+  const approvedList = user_record.filter((data) =>
+    data.leave_status === 'approved').map((record) => {
       return (<tr key={record.id}>
         <td>{record.leave_name}</td>
         <td>{record.leave_days} day(s)</td>
@@ -49,9 +49,9 @@ const ApprovedRecordList = ({ user_record }) => {
         <td>{record.end_date}</td>
         <td>{record.leave_reason}</td>
       </tr>)
-    }))
+    })
 
-  if(approvedList.length > 0 && approvedList[0].length > 0) {
+  if(approvedList.length > 0) {
     return (
       <div className="col-xs-12 col-sm-12">
           APPROVED LEAVE SCHEDULE
@@ -77,7 +77,7 @@ const ApprovedRecordList = ({ user_record }) => {
   }
 }
 
-const UserRecordList = ({ user_record, message }) => {
+const UserRecordList = ({ user_detail, message }) => {
   if(message) {
     return (
       <div className="container text-xs-center" style={{paddingTop: '100px'}}>
@@ -87,13 +87,12 @@ const UserRecordList = ({ user_record, message }) => {
       </div>
     )
   }
-
-  const userItem = user_record.map((user) => {
+  else {
     return (
-      <div key={user.id}>
+      <div>
         <div className="col-sm-3">
           <div className="card card-block">
-            <p className="text-uppercase">{user.othernames} {user.surname}</p>
+            <p className="text-uppercase">{user_detail.othernames} {user_detail.surname}</p>
             <Link to="/account" className="card-link">Change password</Link>
           </div>
         </div>
@@ -101,43 +100,38 @@ const UserRecordList = ({ user_record, message }) => {
           <ul className="list-inline">
             <li className="list-inline-item">
               ANNUAL&nbsp;
-              <span className="tag tag-primary tag-pill">{user.annual}</span>
+              <span className="tag tag-primary tag-pill">{user_detail.annual}</span>
             </li>
             <li className="list-inline-item m-l-2">
               SICK&nbsp;
-              <span className="tag tag-primary tag-pill">{user.sick}</span>
+              <span className="tag tag-primary tag-pill">{user_detail.sick}</span>
             </li>
             <li className="list-inline-item m-l-2">
               BEREAVEMENT&nbsp;
-              <span className="tag tag-primary tag-pill">{user.bereavement}</span>
+              <span className="tag tag-primary tag-pill">{user_detail.bereavement}</span>
             </li>
             <li className="list-inline-item m-l-2">
               CHRISTMAS&nbsp;
-              <span className="tag tag-primary tag-pill">{user.christmas}</span>
+              <span className="tag tag-primary tag-pill">{user_detail.christmas}</span>
             </li>
-            {user.maternity ?
+            {user_detail.maternity ?
               <li className="list-inline-item m-l-2">
                 MATERNITY&nbsp;
-                <span className="tag tag-primary tag-pill">{user.maternity}</span>
+                <span className="tag tag-primary tag-pill">{user_detail.maternity}</span>
               </li>
               : ''}
           </ul>
         </div>
       </div>
     )
-  })
-  return (
-    <div>
-      {userItem}
-    </div>
-  )
+  }
 }
 
-const UserRecord = ({ user_record, message }) => {
+const UserRecord = ({ user_detail ,user_record, message }) => {
   return (
     <div className="UserRecord">
       <div className="row">
-        <UserRecordList user_record={user_record} message={message} />
+        <UserRecordList user_detail={user_detail} message={message} />
         <PendingRecordList user_record={user_record} />
         <ApprovedRecordList user_record={user_record} />
       </div>
@@ -146,6 +140,7 @@ const UserRecord = ({ user_record, message }) => {
 }
 
 UserRecord.propTypes = {
+  user_detail: PropTypes.array.isRequired,
   user_record: PropTypes.array.isRequired,
   message: PropTypes.string
 }
