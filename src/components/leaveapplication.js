@@ -18,6 +18,7 @@ export default class LeaveApplications extends Component {
     this.handleSupervisorEmailChange = this.handleSupervisorEmailChange.bind(this);
     this.handleSecretaryEmailChange = this.handleSecretaryEmailChange.bind(this);
     this.handleReasonChange = this.handleReasonChange.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -49,6 +50,10 @@ export default class LeaveApplications extends Component {
     this.setState({reason: e.target.value});
   }
 
+  handleFileChange (e) {
+    this.setState({sickSheet: e.target.files[0]});
+  }
+
   handleSubmit (e) {
     e.preventDefault();
     const { user_detail } = this.props
@@ -67,6 +72,7 @@ export default class LeaveApplications extends Component {
     const supervisorEmail = this.state.supervisorEmail ? this.state.supervisorEmail.trim() : null;
     const secretaryEmail = this.state.secretaryEmail ? this.state.secretaryEmail.trim() : null;
     const reason = this.state.reason ? this.state.reason.trim() : null;
+    const sickSheet = this.state.sickSheet ? this.state.sickSheet : null;
 
     if (!user_id || !leave || !leaveType || !startDate || !endDate || !supervisorEmail || !reason) {
       this.setState({errorMessage: 'One or more required fields are missing!'});
@@ -109,58 +115,75 @@ export default class LeaveApplications extends Component {
     const daysExcludingHolidaysSet = new Set([...daysExcludingWeekendSet].filter(x => !publicHolidaysSet.has(x)));
     const leaveDays = daysExcludingHolidaysSet.size;
 
+    // if half day then subtract 0.5
+    const myLeaveDays = (leaveType === 'half day am' || leaveType === 'half day pm' ? leaveDays - 0.5 : leaveDays)
+    console.log(myLeaveDays)
+
     // calculate total leave days
-    let applicationDays = '';
-    if (leave === 'annual') {
-      applicationDays = annualDays - leaveDays;
+    const getLeaveDays = (type) => {
+      const totalDays = {
+        'annual': () => {
+          return annualDays - myLeaveDays;
+        },
+        'sick': () => {
+          return ((myLeaveDays >= 2 || sickDays <= 6) && !sickSheet ? null : sickDays - myLeaveDays)
+        },
+        'bereavement': () => {
+          return bereavmentDays - myLeaveDays;
+        },
+        'christmas': () => {
+          return christmasDays - myLeaveDays;
+        },
+        'birthday': () => {
+          // create date
+          const dOB = new Date(dateOfBirth);
+          dOB.setHours(dOB.getHours() - 12);
+          const birthDate = moment.utc(dOB);
+          // check date of birth
+          return (moment(startDate).isSame(birthDate) && moment(endDate).isSame(birthDate) ? myLeaveDays : undefined)
+        },
+        'maternity': () => {
+          return maternityDays - myLeaveDays;
+        },
+
+        'lwop': () => {
+          return myLeaveDays;
+        },
+        'other': () => {
+          return myLeaveDays;
+        }
+      };
+      return (totalDays[type])();
     }
-    else if (leave === 'sick') {
-      applicationDays = sickDays - leaveDays;
-    }
-    else if (leave === 'bereavement') {
-      applicationDays = bereavmentDays - leaveDays;
-    }
-    else if (leave === 'christmas') {
-      applicationDays = christmasDays - leaveDays;
-    }
-    else if (leave === 'maternity') {
-      applicationDays = maternityDays - leaveDays;
-    }
-    else if (leave === 'other') {
-      applicationDays = leaveDays;
-    }
-    else if (leave === 'lwop') {
-      applicationDays = leaveDays;
-    }
-    else if (leave === 'birthday') {
-      // create date
-      let dOB = new Date(dateOfBirth);
-      dOB.setHours(dOB.getHours() - 12);
-      let birthDate = moment.utc(dOB);
-      // check date of birth
-      if(moment(startDate).isSame(birthDate) && moment(endDate).isSame(birthDate)) {
-        applicationDays = leaveDays;
-      }
-      else {
-        this.setState({errorMessage: 'The date you selected as your date of birth does not match our record!'});
-        return;
-      }
-    }
+
+    const applicationDays = getLeaveDays(leave)
 
     if(applicationDays < 0) {
       this.setState({errorMessage: 'Your leave balance cannnot be negative!'});
       return;
     }
 
-    console.log(leaveDays);
-    console.log(applicationDays);
+    if(applicationDays === null) {
+      this.setState({errorMessage: 'A medical certificate is required for absence of two consecutive days or more and after four single day absences!'});
+      return;
+    }
+
+    if(applicationDays === undefined) {
+      this.setState({errorMessage: 'The date you selected as your date of birth does not match our record!'});
+      return;
+    }
+
+    const sDate = moment(startDate).format("DD/MM/YYYY");
+    const eDate = moment(endDate).format("DD/MM/YYYY");
 
     this.setState({errorMessage: ''});
-    this.setState({successMessage: 'Your application has been submitted.'});
+    console.log(sickSheet)
+    //this.setState({successMessage: 'Your application has been submitted.'});
 
     const applicationDetails = { user_id: user_id, leave: leave, leaveType: leaveType,
-      startDate: startDate, endDate: endDate, supervisorEmail: supervisorEmail,
-      secretaryEmail: secretaryEmail, reason: reason }
+      startDate: sDate, endDate: eDate, supervisorEmail: supervisorEmail,
+      secretaryEmail: secretaryEmail, reason: reason, leaveDays: leaveDays,
+      applicationDays: applicationDays, sickSheet: sickSheet }
     this.props.onLeaveApplicationClick(applicationDetails)
   }
 
@@ -209,7 +232,7 @@ export default class LeaveApplications extends Component {
           </div>
           <div className="col-xs-12 col-sm-6">
             <div className="card card-block">
-              <form onSubmit={this.handleSubmit}>
+              <form encType='multipart/form-data' onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <label for="leave">Leave</label>
                   <select className="form-control" id="leave" onChange={this.handleLeaveChange}>
@@ -275,14 +298,15 @@ export default class LeaveApplications extends Component {
                 </div>
                 <div className="form-group">
                   <label for="sicksheet">Sick sheet</label>
-                  <input type="file" className="form-control-file" id="sicksheet" />
+                  <input type="file" className="form-control-file" id="sicksheet"
+                    onChange={this.handleFileChange} />
                   <small className="form-text text-muted">A medical certificate is required for absence of two consecutive days or more and after four single day absences.</small>
                 </div>
                 <div className="form-group">
                   <button type="submit" className="btn btn-primary col-xs-12 col-sm-12">Submit</button>
                 </div>
               </form>
-              <div className="text-danger text-xs-center p-t-2">
+              <div className="text-danger text-xs-center">
                 {isFetching ?
                   <Loader color="#0275d8" size="20px" />:
                   message}
