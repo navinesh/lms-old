@@ -77,7 +77,7 @@ const ApprovedRecordList = ({ user_record }) => {
   }
 }
 
-export const UserRecordList = ({ user_detail, message }) => {
+export const UserRecord = ({ user_detail, message }) => {
   if(message) {
     return (
       <div className="container text-xs-center" style={{paddingTop: '100px'}}>
@@ -89,38 +89,31 @@ export const UserRecordList = ({ user_detail, message }) => {
   }
   else {
     return (
-      <div>
+      <div style={{backgroundColor: '#c1e1ec'}}>
         <div className="col-sm-3">
-          <div className="card card-block">
-            <p className="text-uppercase">{user_detail.othernames} {user_detail.surname}</p>
-            <Link to="/account" className="card-link">Change password</Link>
+          <p className="text-uppercase">{user_detail.othernames} {user_detail.surname}</p>
+          <Link to="/account" className="card-link">Change password</Link>
+        </div>
+        <div className="col-sm-3">
+          <div className="col-sm-12">
+            <p>ANNUAL &nbsp;<span className="tag tag-primary tag-pill">{user_detail.annual}</span></p>
+          </div>
+          <div className="col-sm-12">
+            <p>SICK &nbsp;<span className="tag tag-primary tag-pill">{user_detail.sick}</span></p>
           </div>
         </div>
-        <div className="col-sm-9">
-          <ul className="list-inline">
-            <li className="list-inline-item">
-              ANNUAL&nbsp;
-              <span className="tag tag-primary tag-pill">{user_detail.annual}</span>
-            </li>
-            <li className="list-inline-item m-l-2">
-              SICK&nbsp;
-              <span className="tag tag-primary tag-pill">{user_detail.sick}</span>
-            </li>
-            <li className="list-inline-item m-l-2">
-              BEREAVEMENT&nbsp;
-              <span className="tag tag-primary tag-pill">{user_detail.bereavement}</span>
-            </li>
-            <li className="list-inline-item m-l-2">
-              CHRISTMAS&nbsp;
-              <span className="tag tag-primary tag-pill">{user_detail.christmas}</span>
-            </li>
-            {user_detail.maternity ?
-              <li className="list-inline-item m-l-2">
-                MATERNITY&nbsp;
-                <span className="tag tag-primary tag-pill">{user_detail.maternity}</span>
-              </li>
-              : ''}
-          </ul>
+        <div className="col-sm-3">
+          <div className="col-sm-12">
+            <p>BEREAVEMENT &nbsp;<span className="tag tag-primary tag-pill">{user_detail.bereavement}</span></p>
+          </div>
+          {user_detail.maternity ?
+          <div className="col-sm-12">
+            <p>MATERNITY &nbsp;<span className="tag tag-primary tag-pill">{user_detail.maternity}</span></p>
+          </div>
+          : ''}
+        </div>
+        <div className="col-sm-3">
+          <p>CHRISTMAS &nbsp;<span className="tag tag-primary tag-pill">{user_detail.christmas}</span></p>
         </div>
       </div>
     )
@@ -136,7 +129,7 @@ export const RecordList = ({ user_record }) => {
   )
 }
 
-UserRecordList.propTypes = {
+UserRecord.propTypes = {
   user_record: PropTypes.array.isRequired,
   message: PropTypes.string
 }
