@@ -73,6 +73,8 @@ export const fetchLoginFromToken = (auth_token) => {
         if (response.status === 200){
           localStorage.removeItem('auth_token')
           dispatch(loginUserErrorFromToken(response.data))
+          dispatch({ type: 'CLEAR_USER_RECORD' })
+          dispatch({ type: 'CLEAR_USER_DETAILS' })          
         }
         else {
           dispatch(receiveUserLoginFromToken(response.data))

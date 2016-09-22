@@ -42,6 +42,8 @@ export const fetchUserRecord = (auth_token) => {
       .catch((error) => {
         localStorage.removeItem('auth_token')
         dispatch({ type: 'LOGIN_FAILURE_FROM_TOKEN' })
+        dispatch({ type: 'CLEAR_USER_RECORD' })
+        dispatch({ type: 'CLEAR_USER_DETAILS' })        
       })
   }
 };
