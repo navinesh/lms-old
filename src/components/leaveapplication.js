@@ -158,7 +158,7 @@ export default class LeaveApplications extends Component {
     const applicationDays = getLeaveDays(leave)
 
     if(applicationDays < 0) {
-      this.setState({errorMessage: 'Your leave balance cannnot be negative!'});
+      this.setState({errorMessage: 'Your leave balance cannot be negative!'});
       return;
     }
 
