@@ -77,7 +77,7 @@ const ApprovedRecordList = ({ user_record }) => {
   }
 }
 
-const UserRecordList = ({ user_detail, message }) => {
+export const UserRecordList = ({ user_detail, message }) => {
   if(message) {
     return (
       <div className="container text-xs-center" style={{paddingTop: '100px'}}>
@@ -127,22 +127,20 @@ const UserRecordList = ({ user_detail, message }) => {
   }
 }
 
-const UserRecord = ({ user_detail ,user_record, message }) => {
+export const RecordList = ({ user_record }) => {
   return (
     <div className="UserRecord">
-      <div className="row">
-        <UserRecordList user_detail={user_detail} message={message} />
-        <PendingRecordList user_record={user_record} />
-        <ApprovedRecordList user_record={user_record} />
-      </div>
+      <PendingRecordList user_record={user_record} />
+      <ApprovedRecordList user_record={user_record} />
     </div>
   )
 }
 
-UserRecord.propTypes = {
-  user_detail: PropTypes.array.isRequired,
+UserRecordList.propTypes = {
   user_record: PropTypes.array.isRequired,
   message: PropTypes.string
 }
 
-export default UserRecord
+RecordList.propTypes = {
+  user_record: PropTypes.array.isRequired
+}
