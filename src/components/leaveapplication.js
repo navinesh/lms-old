@@ -117,7 +117,6 @@ export default class LeaveApplications extends Component {
 
     // if half day then subtract 0.5
     const myLeaveDays = (leaveType === 'half day am' || leaveType === 'half day pm' ? leaveDays - 0.5 : leaveDays)
-    console.log(myLeaveDays)
 
     // calculate total leave days
     const getLeaveDays = (type) => {
@@ -177,12 +176,11 @@ export default class LeaveApplications extends Component {
     const eDate = moment(endDate).format("DD/MM/YYYY");
 
     this.setState({errorMessage: ''});
-    console.log(sickSheet)
-    //this.setState({successMessage: 'Your application has been submitted.'});
+    this.setState({successMessage: 'Your application has been submitted.'});
 
     const applicationDetails = { user_id: user_id, leave: leave, leaveType: leaveType,
       startDate: sDate, endDate: eDate, supervisorEmail: supervisorEmail,
-      secretaryEmail: secretaryEmail, reason: reason, leaveDays: leaveDays,
+      secretaryEmail: secretaryEmail, reason: reason, leaveDays: myLeaveDays,
       applicationDays: applicationDays, sickSheet: sickSheet }
     this.props.onLeaveApplicationClick(applicationDetails)
   }
