@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchLeaveIfNeeded } from '../actions/leavecalendar'
 import Leaves from '../components/leavecalendar'
 
-var Loader = require('halogen/PulseLoader');
+const BeatLoader = require('halogen/BeatLoader');
 
 class LeaveCalendar extends Component {
   componentDidMount() {
@@ -15,7 +15,10 @@ class LeaveCalendar extends Component {
     const { records, isFetching } = this.props
     return (
       <div className="LeaveCalendar">
-      {(isFetching ? <div className="offset-sm-5"><Loader color="#0275d8" size="12px" /></div> : <Leaves records={records} />)}
+        {isFetching ?
+          <div className="offset-sm-5"><BeatLoader color="#0275d8" size="12px" /></div> :
+          <Leaves records={records} />
+        }
       </div>
     )
   }
