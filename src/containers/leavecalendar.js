@@ -16,7 +16,7 @@ class LeaveCalendar extends Component {
     return (
       <div className="LeaveCalendar">
         {isFetching ?
-          <div className="offset-sm-5"><BeatLoader color="#0275d8" size="12px" /></div> :
+          <div className="text-xs-center"><BeatLoader color="#0275d8" size="12px" /></div> :
           <Leaves records={records} />
         }
       </div>
