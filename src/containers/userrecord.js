@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchUserDetailsIfNeeded } from '../actions/userdetails'
-import { fetchUserRecord, fetchUserRecordIfNeeded } from '../actions/userrecord'
-import UserRecord from '../components/userrecord'
+import { fetchUserRecord } from '../actions/userrecord'
+import { UserRecordList, RecordList } from '../components/userrecord'
 
-var Loader = require('halogen/PulseLoader');
+const BeatLoader = require('halogen/BeatLoader');
+const PulseLoader = require('halogen/PulseLoader');
 
 class UserRecords extends Component {
   componentDidMount() {
@@ -24,12 +25,19 @@ class UserRecords extends Component {
   }
 
   render() {
-    const { isFetching, user_detail, user_record, message } = this.props
+    const { isFetching, isRecordFetching, user_detail, user_record, message } = this.props
     return (
       <div className="UserDetailsContainer">
-      {(isFetching ? <div className="offset-sm-5">
-      <Loader color="#0275d8" size="12px" /></div> :
-      <UserRecord user_detail={user_detail} user_record={user_record} message={message} />)}
+        <div className="row">
+          {isFetching ? <div className="offset-sm-5">
+            <BeatLoader color="#0275d8" size="12px" /></div> :
+            <UserRecordList user_detail={user_detail} message={message} />
+          }
+          {isRecordFetching ? <div className="offset-sm-5" style={{paddingTop: '150px'}}>
+            <PulseLoader color="#0275d8" size="12px" /></div> :
+            <RecordList user_record={user_record} />
+          }
+        </div>
       </div>
     )
   }
@@ -38,15 +46,16 @@ class UserRecords extends Component {
 const mapStateToProps = (state) => {
   const {userRecords, userAuth, userDetails} = state
   const { auth_info} = userAuth
-  const { userDetail: user_detail } = userDetails
+  const { isFetching, userDetail: user_detail } = userDetails
   const {
-    isFetching,
+    isFetching: isRecordFetching,
     userRecord: user_record,
     message
   } = userRecords
 
   return {
     isFetching,
+    isRecordFetching,
     user_record,
     message,
     auth_info,
