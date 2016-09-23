@@ -8,21 +8,21 @@ export const CLEAR_USER_RECORD = 'CLEAR_USER_RECORD'
 export const requestUserRecord = (auth_token) => ({
   type: REQUEST_USER_RECORD,
   auth_token
-});
+})
 
 export const userRecordError = (data) => ({
   type: USER_RECORD_ERROR,
   message: data.message
-});
+})
 
 export const receiveUserRecord = (data) => ({
   type: RECEIVE_USER_RECORD,
   user_record: data.user_record
-});
+})
 
 export const clearUserRecord = () => ({
   type: CLEAR_USER_RECORD
-});
+})
 
 export const fetchUserRecord = (auth_token) => {
   return dispatch => {
@@ -43,10 +43,10 @@ export const fetchUserRecord = (auth_token) => {
         localStorage.removeItem('auth_token')
         dispatch({ type: 'LOGIN_FAILURE_FROM_TOKEN' })
         dispatch({ type: 'CLEAR_USER_RECORD' })
-        dispatch({ type: 'CLEAR_USER_DETAILS' })        
+        dispatch({ type: 'CLEAR_USER_DETAILS' })
       })
   }
-};
+}
 
 export const shouldfetchUserRecord = (state, userRecords) => {
   const recordState = state.userRecords
