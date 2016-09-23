@@ -17,7 +17,7 @@ const UserLogin = ({ dispatch, message, isAuthenticated, isFetching }) => {
 }
 
 const mapStateToProps = (state) => {
-  const {userAuth} = state
+  const { userAuth } = state
   const {
     isAuthenticated,
     message,
