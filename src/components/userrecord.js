@@ -6,7 +6,7 @@ const PendingRecordList = ({ user_record }) => {
     data.leave_status === 'pending').map((record) => {
       return (<tr key={record.id}>
         <td>{record.leave_name}</td>
-        <td>{record.leave_days} day(s)</td>
+        <td>{record.leave_days}</td>
         <td>{record.start_date}</td>
         <td>{record.end_date}</td>
         <td>{record.leave_reason}</td>
@@ -44,7 +44,7 @@ const ApprovedRecordList = ({ user_record }) => {
     data.leave_status === 'approved').map((record) => {
       return (<tr key={record.id}>
         <td>{record.leave_name}</td>
-        <td>{record.leave_days} day(s)</td>
+        <td>{record.leave_days}</td>
         <td>{record.start_date}</td>
         <td>{record.end_date}</td>
         <td>{record.leave_reason}</td>
@@ -89,33 +89,47 @@ export const UserRecord = ({ user_detail, message }) => {
   }
   else {
     return (
-      <div style={{backgroundColor: '#c1e1ec'}}>
-        <div className="col-sm-3">
-          <p className="text-uppercase">{user_detail.othernames} {user_detail.surname}</p>
-          <Link to="/account" className="card-link">Change password</Link>
-        </div>
-        <div className="col-sm-3">
-          <div className="col-sm-12">
-            <p>ANNUAL &nbsp;<span className="tag tag-primary tag-pill">{user_detail.annual}</span></p>
+      <div className="jumbotron jumbotron-fluid p-t-2 p-b-2">
+        <div className="container">
+          <div className="col-sm-3">
+              <p className="lead">{user_detail.othernames} {user_detail.surname}</p>
+              <Link to="/account" className="card-link">Change password</Link>
           </div>
-          <div className="col-sm-12">
-            <p>SICK &nbsp;<span className="tag tag-primary tag-pill">{user_detail.sick}</span></p>
-          </div>
-        </div>
-        <div className="col-sm-3">
-          <div className="col-sm-12">
-            <p>BEREAVEMENT &nbsp;<span className="tag tag-primary tag-pill">{user_detail.bereavement}</span></p>
-          </div>
-          {user_detail.maternity ?
-          <div className="col-sm-12">
-            <p>MATERNITY &nbsp;<span className="tag tag-primary tag-pill">{user_detail.maternity}</span></p>
-          </div>
-          : ''}
-        </div>
-        <div className="col-sm-3">
-          <p>CHRISTMAS &nbsp;<span className="tag tag-primary tag-pill">{user_detail.christmas}</span></p>
-        </div>
-      </div>
+          <div className="col-sm-9">
+            <ul className="list-inline">
+               <li className="list-inline-item">
+                 <p className="lead">
+                   Annual&nbsp;<span className="tag tag-primary tag-pill">{user_detail.annual}</span>
+                 </p>
+               </li>
+               <li className="list-inline-item m-l-2">
+                 <p className="lead">
+                   Sick&nbsp;<span className="tag tag-primary tag-pill">{user_detail.sick}</span>
+                 </p>
+               </li>
+               <li className="list-inline-item m-l-2">
+                 <p className="lead">
+                   Bereavement&nbsp;<span className="tag tag-primary tag-pill">{user_detail.bereavement}</span>
+                 </p>
+               </li>
+               <li className="list-inline-item m-l-2">
+                 <p className="lead">
+                   Christmas&nbsp;<span className="tag tag-primary tag-pill">{user_detail.christmas}</span>
+                 </p>
+               </li>
+               {user_detail.maternity ?
+                 <li className="list-inline-item m-l-2">
+                   <p className="lead">
+                     Maternity&nbsp;<span className="tag tag-primary tag-pill">{user_detail.maternity}</span>
+                   </p>
+                 </li>
+                 : ''}
+             </ul>
+         </div>
+         </div>
+       </div>
+
+
     )
   }
 }
