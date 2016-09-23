@@ -42,8 +42,8 @@ class UserRecords extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {userRecords, userAuth, userDetails} = state
-  const { auth_info} = userAuth
+  const { userRecords, userAuth, userDetails } = state
+  const { auth_info } = userAuth
   const { isFetching, userDetail: user_detail } = userDetails
   const {
     isFetching: isRecordFetching,
