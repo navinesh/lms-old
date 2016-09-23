@@ -29,7 +29,7 @@ const Main = ({ isAuthenticated }) => {
 }
 
 const mapStateToProps = (state) => {
-  const {userAuth} = state
+  const { userAuth } = state
   const { isAuthenticated } = userAuth
 
   return { isAuthenticated }
