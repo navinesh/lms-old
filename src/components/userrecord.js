@@ -128,8 +128,6 @@ export const UserRecord = ({ user_detail, message }) => {
          </div>
          </div>
        </div>
-
-
     )
   }
 }
@@ -144,7 +142,7 @@ export const RecordList = ({ user_record }) => {
 }
 
 UserRecord.propTypes = {
-  user_record: PropTypes.array.isRequired,
+  user_detail: PropTypes.object.isRequired,
   message: PropTypes.string
 }
 
