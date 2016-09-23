@@ -18,6 +18,9 @@ import { REQUEST_USER_DETAILS, RECEIVE_USER_DETAILS,
 import { LEAVE_APPLICATION_REQUEST, LEAVE_APPLICATION_SUCCESS,
         LEAVE_APPLICATION_FAILURE } from '../actions/leaveapplication'
 
+import { REQUEST_PASSWORD_CHANGE, PASSWORD_CHANGE_SUCCESS,
+        PASSWORD_CHANGE_ERROR } from '../actions/changepassword'
+
 import { REQUEST_PASSWORD_RESET, PASSWORD_RESET_SUCCESS,
         PASSWORD_RESET_ERROR } from '../actions/resetpassword'
 
@@ -159,6 +162,25 @@ const leaveApplication = (state = {isFetching: false,
   }
 };
 
+const changePassword = (state = {isFetching: false,
+  message: ''}, action) => {
+  switch (action.type) {
+    case REQUEST_PASSWORD_CHANGE:
+    return { ...state,
+      isFetching: true}
+    case PASSWORD_CHANGE_SUCCESS:
+    return { ...state,
+      isFetching: false,
+      message: action.message}
+    case PASSWORD_CHANGE_ERROR:
+    return { ...state,
+      isFetching: false,
+      message: action.message}
+    default:
+      return state
+  }
+};
+
 const resetPassword = (state = {isFetching: false,
   message: ''}, action) => {
   switch (action.type) {
@@ -184,6 +206,7 @@ const rootReducer = combineReducers({
   userRecords,
   userDetails,
   leaveApplication,
+  changePassword,
   resetPassword
 });
 
