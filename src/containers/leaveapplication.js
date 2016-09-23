@@ -43,7 +43,7 @@ class LeaveApplication extends Component {
 const mapStateToProps = (state) => {
   const { userAuth, leaveApplication, userDetails } = state
   const { isAuthenticated, auth_info } = userAuth
-  const { isFetching, message} = leaveApplication
+  const { isFetching, message } = leaveApplication
   const { userDetail: user_detail } = userDetails
 
   return {
