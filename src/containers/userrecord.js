@@ -32,7 +32,7 @@ class UserRecords extends Component {
           <BeatLoader color="#0275d8" size="12px" /></div> :
           <UserRecord user_detail={user_detail} message={message} />
         }
-        {isRecordFetching ? <div className="text-xs-center" style={{paddingTop: '150px'}}>
+        {isRecordFetching ? <div className="text-xs-center" style={{paddingTop: '100px'}}>
           <PulseLoader color="#0275d8" size="12px" /></div> :
           <RecordList user_record={user_record} />
         }
