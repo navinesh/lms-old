@@ -8,21 +8,21 @@ export const CLEAR_USER_DETAILS = 'CLEAR_USER_DETAILS'
 export const requestUserDetails = (auth_token) => ({
   type: REQUEST_USER_DETAILS,
   auth_token
-});
+})
 
 export const userDetailsError = (data) => ({
   type: USER_DETAILS_ERROR,
   message: data.message
-});
+})
 
 export const receiveUserDetails = (data) => ({
   type: RECEIVE_USER_DETAILS,
   user_detail: data.user_detail
-});
+})
 
 export const clearUserDetails = () => ({
   type: CLEAR_USER_DETAILS
-});
+})
 
 export const fetchUserDetails = (auth_token) => {
   return dispatch => {
@@ -43,10 +43,10 @@ export const fetchUserDetails = (auth_token) => {
         localStorage.removeItem('auth_token')
         dispatch({ type: 'LOGIN_FAILURE_FROM_TOKEN' })
         dispatch({ type: 'CLEAR_USER_RECORD' })
-        dispatch({ type: 'CLEAR_USER_DETAILS' })        
+        dispatch({ type: 'CLEAR_USER_DETAILS' })
       })
   }
-};
+}
 
 export const shouldfetchUserDetails = (state, userDetails) => {
   const userState = state.userDetails

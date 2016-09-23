@@ -12,37 +12,37 @@ export const LOGIN_FAILURE_FROM_TOKEN = 'LOGIN_FAILURE_FROM_TOKEN'
 export const requestUserLogin = (creds) => ({
   type: LOGIN_USER_REQUEST,
   creds
-});
+})
 
 export const receiveUserLogin = (data) => ({
   type: LOGIN_USER_SUCCESS,
   auth_info: data
 
-});
+})
 
 export const loginUserError = (data) => ({
   type: LOGIN_USER_FAILURE,
   message: data.message
-});
+})
 
 export const requestUserLoginFromToken = (auth_token) => ({
   type: LOGIN_USER_REQUEST_FROM_TOKEN,
   auth_token
-});
+})
 
 export const receiveUserLoginFromToken = (data) => ({
   type: LOGIN_USER_SUCCESS_FROM_TOKEN,
   auth_info: data
-});
+})
 
 export const loginUserErrorFromToken = (data) => ({
   type: LOGIN_USER_FAILURE_FROM_TOKEN,
   message: data.message
-});
+})
 
 export const loginFailureFromToken = () => ({
   type: LOGIN_FAILURE_FROM_TOKEN
-});
+})
 
 export const fetchLogin = (creds) => {
   return dispatch => {
@@ -61,7 +61,7 @@ export const fetchLogin = (creds) => {
         }
       })
   }
-};
+}
 
 export const fetchLoginFromToken = (auth_token) => {
   return dispatch => {
@@ -74,11 +74,11 @@ export const fetchLoginFromToken = (auth_token) => {
           localStorage.removeItem('auth_token')
           dispatch(loginUserErrorFromToken(response.data))
           dispatch({ type: 'CLEAR_USER_RECORD' })
-          dispatch({ type: 'CLEAR_USER_DETAILS' })          
+          dispatch({ type: 'CLEAR_USER_DETAILS' })
         }
         else {
           dispatch(receiveUserLoginFromToken(response.data))
         }
       })
   }
-};
+}
