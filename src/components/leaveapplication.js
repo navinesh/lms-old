@@ -326,5 +326,5 @@ LeaveApplications.propTypes = {
   onLeaveApplicationClick: PropTypes.func.isRequired,
   message: PropTypes.string,
   isFetching: PropTypes.bool.isRequired,
-  user_detail: PropTypes.array.isRequired
+  user_detail: PropTypes.object.isRequired
 }
