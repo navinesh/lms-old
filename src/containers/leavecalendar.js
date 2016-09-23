@@ -25,7 +25,7 @@ class LeaveCalendar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {leaveRecords} = state
+  const { leaveRecords } = state
   const {
     isFetching,
     items: records
