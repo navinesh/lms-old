@@ -3,25 +3,32 @@ import axios from 'axios'
 export const REQUEST_PASSWORD_CHANGE = 'REQUEST_PASSWORD_CHANGE'
 export const PASSWORD_CHANGE_SUCCESS = 'PASSWORD_CHANGE_SUCCESS'
 export const PASSWORD_CHANGE_ERROR = 'PASSWORD_CHANGE_ERROR'
+export const CLEAR_CHANGE_PASSWORD_ERROR = 'CLEAR_CHANGE_PASSWORD_ERROR'
 
-export function requestPasswordChange(creds) {
+export const requestPasswordChange = (creds) => {
   return {
     type: REQUEST_PASSWORD_CHANGE,
     creds
   }
 }
 
-export function passwordChangeError(data){
+export const passwordChangeError = (data) => {
   return {
     type: PASSWORD_CHANGE_ERROR,
     message: data.message
   }
 }
 
-export function passwordChangeSuccess(data) {
+export const passwordChangeSuccess = (data) => {
   return {
     type: PASSWORD_CHANGE_SUCCESS,
     message: data.message,
+  }
+}
+
+export const clearChangePasswordError = () => {
+  return {
+    type: CLEAR_CHANGE_PASSWORD_ERROR
   }
 }
 
