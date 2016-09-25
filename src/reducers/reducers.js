@@ -19,7 +19,7 @@ import { LEAVE_APPLICATION_REQUEST, LEAVE_APPLICATION_SUCCESS,
         LEAVE_APPLICATION_FAILURE } from '../actions/leaveapplication'
 
 import { REQUEST_PASSWORD_CHANGE, PASSWORD_CHANGE_SUCCESS,
-        PASSWORD_CHANGE_ERROR } from '../actions/changepassword'
+        PASSWORD_CHANGE_ERROR, CLEAR_CHANGE_PASSWORD_ERROR } from '../actions/changepassword'
 
 import { REQUEST_PASSWORD_RESET, PASSWORD_RESET_SUCCESS,
         PASSWORD_RESET_ERROR } from '../actions/resetpassword'
@@ -176,6 +176,10 @@ const changePassword = (state = {isFetching: false,
     return { ...state,
       isFetching: false,
       message: action.message}
+    case CLEAR_CHANGE_PASSWORD_ERROR:
+    return {...state,
+      isFetching: false,
+      message: ''}
     default:
       return state
   }
