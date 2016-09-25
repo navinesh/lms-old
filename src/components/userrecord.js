@@ -93,7 +93,7 @@ export const UserRecord = ({ user_detail, message }) => {
         <div className="container">
           <div className="col-sm-3">
             <p className="lead">{user_detail.othernames} {user_detail.surname}</p>
-            <Link to="/account" className="card-link">Change password</Link>
+            <Link to="/changepassword" className="card-link">Change password</Link>
           </div>
           <div className="col-sm-2">
             <p className="lead">Annual&nbsp;<span className="tag tag-primary tag-pill">{user_detail.annual}</span></p>
