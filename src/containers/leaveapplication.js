@@ -22,7 +22,6 @@ class LeaveApplication extends Component {
 
   render() {
     const { dispatch, message, isAuthenticated, isFetching, user_detail } = this.props
-
     return (
       <div className="LeaveApplication">
         {isAuthenticated &&
