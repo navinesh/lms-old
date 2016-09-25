@@ -10,7 +10,7 @@ import Header from './containers/header'
 import Main from './containers/main'
 import LeaveCalendar from './containers/leavecalendar'
 import ResetPassword from './containers/resetpassword'
-import UserAccount from './containers/UserAccount'
+import UserChangePassword from './containers/changepassword'
 import UserError from './components/usererror'
 import LeaveApplication from './containers/leaveapplication'
 
@@ -24,7 +24,7 @@ render(
         <Route path="/leavecalendar" component={LeaveCalendar} />
         <Route path="/leaveapplication" component={LeaveApplication} />
         <Route path="/reset" component={ResetPassword} />
-        <Route path="/account" component={UserAccount} />
+        <Route path="/changepassword" component={UserChangePassword} />
       </Route>
       <Route path="*" component={UserError}/>
     </Router>
