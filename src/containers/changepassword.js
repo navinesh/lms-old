@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
-import UserChange from '../components/useraccount'
+import UserChange from '../components/changepassword'
 import { changePassword, clearChangePasswordError } from '../actions/changepassword'
 
-class UserAccount extends Component {
+class UserChangePassword extends Component {
   componentDidMount() {
     const { dispatch } = this.props
     dispatch(clearChangePasswordError())
@@ -53,4 +53,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(UserAccount)
+export default connect(mapStateToProps)(UserChangePassword)
