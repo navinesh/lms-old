@@ -92,42 +92,28 @@ export const UserRecord = ({ user_detail, message }) => {
       <div className="jumbotron jumbotron-fluid p-t-2 p-b-2">
         <div className="container">
           <div className="col-sm-3">
-              <p className="lead">{user_detail.othernames} {user_detail.surname}</p>
-              <Link to="/account" className="card-link">Change password</Link>
+            <p className="lead">{user_detail.othernames} {user_detail.surname}</p>
+            <Link to="/account" className="card-link">Change password</Link>
           </div>
-          <div className="col-sm-9">
-            <ul className="list-inline">
-               <li className="list-inline-item">
-                 <p className="lead">
-                   Annual&nbsp;<span className="tag tag-primary tag-pill">{user_detail.annual}</span>
-                 </p>
-               </li>
-               <li className="list-inline-item m-l-2">
-                 <p className="lead">
-                   Sick&nbsp;<span className="tag tag-primary tag-pill">{user_detail.sick}</span>
-                 </p>
-               </li>
-               <li className="list-inline-item m-l-2">
-                 <p className="lead">
-                   Bereavement&nbsp;<span className="tag tag-primary tag-pill">{user_detail.bereavement}</span>
-                 </p>
-               </li>
-               <li className="list-inline-item m-l-2">
-                 <p className="lead">
-                   Christmas&nbsp;<span className="tag tag-primary tag-pill">{user_detail.christmas}</span>
-                 </p>
-               </li>
-               {user_detail.maternity ?
-                 <li className="list-inline-item m-l-2">
-                   <p className="lead">
-                     Maternity&nbsp;<span className="tag tag-primary tag-pill">{user_detail.maternity}</span>
-                   </p>
-                 </li>
-                 : ''}
-             </ul>
-         </div>
-         </div>
-       </div>
+          <div className="col-sm-2">
+            <p className="lead">Annual&nbsp;<span className="tag tag-primary tag-pill">{user_detail.annual}</span></p>
+          </div>
+          <div className="col-sm-2">
+            <p className="lead">Sick&nbsp;<span className="tag tag-primary tag-pill">{user_detail.sick}</span></p>
+          </div>
+          <div className="col-sm-2">
+            <p className="lead">Christmas&nbsp;<span className="tag tag-primary tag-pill">{user_detail.christmas}</span></p>
+          </div>
+          <div className="col-sm-2">
+            <p className="lead">Bereavment&nbsp;<span className="tag tag-primary tag-pill">{user_detail.bereavement}</span></p>
+          </div>
+          <div className="col-sm-2">
+            {user_detail.maternity >= 1 ?
+              <p className="lead">Maternity&nbsp;<span className="tag tag-primary tag-pill">{user_detail.maternity}</span></p>
+            : ''}
+          </div>
+        </div>
+      </div>
     )
   }
 }
