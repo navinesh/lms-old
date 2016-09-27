@@ -2,7 +2,7 @@
 
 ##ReactJS
 
-**This repo container user files**
+**This repo contains user files**
 
 to-do
 
